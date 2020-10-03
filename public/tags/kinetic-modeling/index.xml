@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kinetic modeling on Pushkar Ghanekar</title>
+    <link>/tags/kinetic-modeling/</link>
+    <description>Recent content in Kinetic modeling on Pushkar Ghanekar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 03 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/kinetic-modeling/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Catalysis at Metal/Oxide Interfaces: Water Gas Shift at Pt/MgO Boundaries</title>
+      <link>/publications/ptmgo/</link>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/ptmgo/</guid>
+      <description>Synopsis: Catalysts comprising of metal nanoparticles dispersed on oxide supports have found applications in a vast number of chemical processes related to energy generation and environmental. In some cases, the interface between the metal and the supporting oxide is theorized to exhibit unique reactivity compared to just the metal or the oxide in isolation.
+Water-Gas Shift reaction (WGSR) is one such reaction which is expected to show sensitivity to such metal/oxide interfaces.</description>
+    </item>
+    
+  </channel>
+</rss>

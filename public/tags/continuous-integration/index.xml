@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Continuous Integration on Pushkar Ghanekar</title>
+    <link>/tags/continuous-integration/</link>
+    <description>Recent content in Continuous Integration on Pushkar Ghanekar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Nov 2016 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/continuous-integration/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Organically DevOps: Building Quality and Security into the Software Supply Chain at Liberty Mutual</title>
+      <link>/blog/alldaydevops/</link>
+      <pubDate>Tue, 08 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/alldaydevops/</guid>
+      <description>This talk looked at Liberty Mutual’s transformation to Continuous Integration, Continuous Delivery, and DevOps. For a large, heavily regulated industry, this task can not only be daunting, but viewed by many as impossible. Often, organizations try to reduce the friction through micro-fixes, but Eddie’s team asked how to change the culture to reduce the friction and concluded with the following final points:
+ Don’t mandate DevOps. Give employees the chance to master their discipline with examples to set and follow.</description>
+    </item>
+    
+    <item>
+      <title>Beautiful Links</title>
+      <link>/blog/beautiful_links/</link>
+      <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/beautiful_links/</guid>
+      <description>###YouTubers Vsauce Sizty Symbols &amp;ndash; https://www.youtube.com/user/sixtysymbols Tom Scott &amp;ndash; https://www.youtube.com/user/enyay 3Blue1Brown &amp;ndash; https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw Vertisasium &amp;ndash; https://www.youtube.com/user/1veritasium Applied Science &amp;ndash; https://www.youtube.com/user/bkraz333 StatQuest &amp;ndash; https://www.youtube.com/user/joshstarmer J Kenji Lopez-Alt &amp;ndash; https://www.youtube.com/user/kenjialt Bon Appetit &amp;ndash; https://www.youtube.com/user/BonAppetitDotCom Binging w/ Babish &amp;ndash; https://www.youtube.com/user/bgfilms Dan Mace &amp;ndash; https://www.youtube.com/channel/UCZfPrUL62TN74Mmrn-O_pZQ
+Probaility + Statistics: https://www.khanacademy.org/math/statistics-probability/ https://www.johndcook.com/blog/ https://www.allendowney.com/blog/
+Essence of Linear Algebra https://www.youtube.com/watch?v=fNk_z...
+Khan Academy https://www.khanacademy.org/math/line... https://betterexplained.com/articles/... Essence of Calculus https://www.youtube.com/watch?v=WUvTy... https://www.khanacademy.org/math/calc... https://www.khanacademy.org/math/calc... https://www.khanacademy.org/math/mult... Virtual library of functions: http://www.sfu.ca/~ssurjano/uq.html
+DataIsBeautiful https://fivethirtyeight.com/ https://pudding.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on Pushkar Ghanekar</title>
+    <link>/publications/</link>
+    <description>Recent content in Publications on Pushkar Ghanekar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Jan 2020 16:47:30 +0000</lastBuildDate>
+    
+	<atom:link href="/publications/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Catalysis at Metal/Oxide Interfaces: Water Gas Shift at Pt/MgO Boundaries</title>
+      <link>/publications/ptmgo/</link>
+      <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/ptmgo/</guid>
+      <description>Synopsis: Catalysts comprising of metal nanoparticles dispersed on oxide supports have found applications in a vast number of chemical processes related to energy generation and environmental. In some cases, the interface between the metal and the supporting oxide is theorized to exhibit unique reactivity compared to just the metal or the oxide in isolation.
+Water-Gas Shift reaction (WGSR) is one such reaction which is expected to show sensitivity to such metal/oxide interfaces.</description>
+    </item>
+    
+    <item>
+      <title>Electronic and Structural modification of Pt-V alloy and its consequences for Propane Dehydrogenation Catalysis</title>
+      <link>/publications/pt3v/</link>
+      <pubDate>Tue, 07 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/pt3v/</guid>
+      <description>Synopsis: Using experiment and theory to investigate the active site for propane dehydrogenation reaction. Alloying noble metals, platinum in this case, with another element (like vanadium) leads to changes in the catalytic performance which are explained by perturbation in the electronic and structural properties of the alloys as evidenced through multiple characterisation techniques and atomic-structure theory calculations.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+[
+  {
+      "grouping":"Research",
+      "skills":[ "Kinetic Modeling", "Catlayst Model Development", "Material Informatics", "Quantitative Structure Property Relationships", "High-throughput screening", "Theory/Experiment Collaborations" ]
+  },
+  {
+      "grouping":"Languages, Operating Systems",
+      "skills":[ "Python",{"name":"html/css","icon":"html5"}, 
+      "C", "git","linux","bash","beautifulsoup", "selenium"]
+  },
+  {
+      "grouping":"Technologies",
+      "skills":[ "High Performance Computing", {"name":"PyTorch", "icon":"pytorch", "link":"https://pytorch.org/"},
+      {"name":"Dask", "link":"https://dask.org/"},
+      {"name":"RAPIDS.ai","link":"https://rapids.ai/"},
+      "GPU/CUDA", "MATLAB","VASP","Aspen Plus",
+      {"name":"Adobe Creative Suite","icon":"photoshop"},
+      "Blender"]
+  },
+  {
+      "grouping":"Data Management",
+      "skills":[
+        "MongoDB"
+      ]
+  },
+  {
+    "grouping":"Containers & Cloud",
+      "skills":[
+          {"name":"Docker","link":"https://docker.com"}
+      ]
+  }
+]
