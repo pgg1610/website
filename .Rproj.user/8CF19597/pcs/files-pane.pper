@@ -1,5 +1,5 @@
 {
-    "path" : "~/Documents/Personal/new_website/themes/hugo-resume/layouts/_default",
+    "path" : "~/Documents/Personal/new_website/themes/hugo-resume/layouts/blog",
     "sortOrder" : [
         {
             "ascending" : false,

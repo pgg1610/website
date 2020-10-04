@@ -18,15 +18,15 @@
       "Blender"]
   },
   {
-      "grouping":"Data Management",
+      "grouping":"Data Management & Containers",
       "skills":[
-        "MongoDB"
+        "MongoDB", {"name":"Docker","link":"https://docker.com"}
       ]
   },
   {
-    "grouping":"Containers & Cloud",
+    "grouping":"Relevant Coursework",
       "skills":[
-          {"name":"Docker","link":"https://docker.com"}
+        {"name":"Deep Learning Specialization (deeplearning.ai)", "link":"https://www.coursera.org/account/accomplishments/specialization/CNHSC8BFDBK3?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=s12n"}
       ]
   }
 ]

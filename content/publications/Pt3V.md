@@ -1,6 +1,6 @@
 ---
 date: "2020-01-07"
-description: Electronic characterization of the Pt-V alloy phase for propane dehydrogenation using theory and experiments to understand the factor influencing the reaction selectivity and catalyst stability. 
+description: Electronic characterization of the Pt-V alloy phase for propane dehydrogenation using theory and experiments to understand the factors influencing the reaction selectivity and catalyst stability. 
 fact: 
 featured: true
 image: /img/PtV.png
@@ -19,4 +19,4 @@ weight: 400
 
 ### Synopsis: 
 
-Using experiment and theory to investigate the active site for propane dehydrogenation reaction. Alloying noble metals, platinum in this case, with another element (like vanadium) leads to changes in the catalytic performance which are explained by perturbation in the electronic and structural properties of the alloys as evidenced through multiple characterisation techniques and atomic-structure theory calculations. 
+Combination of experimental kinetics, state-of-the-art characterisation techiques and computation catalyst models to investigate the active site for propane dehydrogenation reaction. It is shown that alloying noble metals, platinum in this case, with another element (like vanadium) leads to changes in the catalytic performance. Through combined experiment/theory effort these performance and stability changes can be explained by perturbation in the electronic and structural properties of the alloys.
