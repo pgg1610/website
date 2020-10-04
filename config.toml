@@ -27,7 +27,7 @@ showBlog = false
 [params.google]
 
 [params.google.analytics]
-trackerID = "XX-123446-01"
+trackerID = "UA-167983168-1"
 
 [[params.handles]]
 link = "https://www.linkedin.com/in/pushkar-ghanekar-a077a557/"
