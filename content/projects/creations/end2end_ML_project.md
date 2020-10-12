@@ -1,5 +1,5 @@
 ---
-description: The aim to predict median house values in Californian districts, given a number of features from these districts.
+description: Regression model to predict median house values in Californian districts
 fact: 
 featured: true
 image: 
