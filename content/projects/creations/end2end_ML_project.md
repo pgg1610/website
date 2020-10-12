@@ -11,12 +11,13 @@ tags:
 title: End-to-end Machine Learning Project
 ---
 
-This project is obtained from Aurelien Geron's Hands-on Machine Leanring with Scikit-learn and Tensorflow [(github link)](https://github.com/ageron/handson-ml2). The aim to predict median house values in Californian districts, given a number of features from these districts.
+This project is adapted from Aurelien Geron's Hands-on Machine Learning Book [(github link)](https://github.com/ageron/handson-ml2). We build a regression model to predict median house values in Californian districts, given a number of features from these districts. More importantly, this project go through the basic building blocks when setting up any ML projects. 
 
-Main steps we will go through:
-* Formulate the problem
-* Get the data
+Following are main steps to consider: 
+* Formulating the problem, defining the boundary conditions
+* Data acquisition
 * Discover and visualize data / Data exploration to gain insight
-* Prep data for ML algorithm testing
+* Prepare data for ML algorithm training and testing
+* Explore various model architectures to use
 * Select model and train it
 * Fine-tuning the model
