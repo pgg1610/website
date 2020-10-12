@@ -6,7 +6,8 @@ image: /img/Perovskite_screening.png
 link: 
 tags:
 - Python
-- Optimization
+- Thermodynamics
+- DFT
 
 title: High throughput perovskite screening
 ---
