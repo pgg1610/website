@@ -1,0 +1,14 @@
+---
+description: Notebook looking at workings of SVM (support vector machine). 
+fact: 
+featured: true
+image: /img/SVM.png
+link: https://github.com/pgg1610/misc_notebooks/blob/master/SVM_example.ipynb
+tags:
+- Python
+- Machine learning
+title: Support Vector Machines example
+---
+
+This tutorial is adapted from Jake VanderPlas's example of SVM as given in his reference book: Python Data Science Handbook
+

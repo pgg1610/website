@@ -13,10 +13,10 @@
     
     <item>
       <title>Added Docker Build Status Badge to shields.io</title>
-      <link>/projects/contributions/shields-docker/</link>
+      <link>/projects/copyofcontributions/shields-docker/</link>
       <pubDate>Tue, 07 Jan 2020 17:09:26 +0000</pubDate>
       
-      <guid>/projects/contributions/shields-docker/</guid>
+      <guid>/projects/copyofcontributions/shields-docker/</guid>
       <description>Shields.io is a massive library of badges that can be inserted into project README&amp;rsquo;s or websites displaying various statuses (code coverage, health, version, etc). Support for docker was missing the current build health, and was a pretty trivial addition.</description>
     </item>
     

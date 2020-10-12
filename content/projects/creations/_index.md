@@ -1,12 +1,12 @@
 ---
 date: "2020-01-07T15:00:28.528Z"
-description: Not applicable
+description: Hello
 image: /img/marketplace-summary.webp
 link: Not applicable
 sitemap:
-  priority: 0.5
+  priority: 0.9
   weight: 0.8
-title: Creations
+title: Personal projects
 weight: 10
 ---
 <!--

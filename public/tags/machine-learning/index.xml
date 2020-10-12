@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Machine learning on Pushkar Ghanekar</title>
+    <link>/tags/machine-learning/</link>
+    <description>Recent content in Machine learning on Pushkar Ghanekar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>End-to-end Machine Learning Project</title>
+      <link>/projects/creations/end2end_ml_project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/creations/end2end_ml_project/</guid>
+      <description>This project is obtained from Aurelien Geron&amp;rsquo;s Hands-on Machine Leanring with Scikit-learn and Tensorflow (github link). The aim to predict median house values in Californian districts, given a number of features from these districts.
+Main steps we will go through:
+ Formulate the problem Get the data Discover and visualize data / Data exploration to gain insight Prep data for ML algorithm testing Select model and train it Fine-tuning the model  </description>
+    </item>
+    
+    <item>
+      <title>Support Vector Machines example</title>
+      <link>/projects/creations/svm_usecase/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/creations/svm_usecase/</guid>
+      <description>This tutorial is adapted from Jake VanderPlas&amp;rsquo;s example of SVM as given in his reference book: Python Data Science Handbook</description>
+    </item>
+    
+  </channel>
+</rss>
