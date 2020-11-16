@@ -18,6 +18,9 @@ Recently I found a dataset from Kaggle which tabulated 6000+ recipes from https:
 * Dataset for Indian recipe: This dataset 6000+ recipe scrapped from: [Dataset](https://www.kaggle.com/kanishk307/6000-indian-food-recipes-dataset)
 
 ### Key results:
+![freq_plot](/img/food_graph/frequency_plot.png)
+Plot showing the number of times a spices occurs in the list of 6000+ recipes. I am showing only top few entries for clarity.
+
 ![graph](/img/food_graph/Graph.png)
 Circular graph amongst the indian spices. Size of the node is the relevance of that spice in Indian cuisine i.e. number of times that spice occured in entire recipe collection. Edge color/width shows the strength of the connection amongst different spices. Right away it is seen that: Turmeric, chilli powder, and cumin are always used together. 
 
