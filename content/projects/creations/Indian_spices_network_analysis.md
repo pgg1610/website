@@ -1,5 +1,5 @@
 ---
-description: Scrapped IMDB database to analyze trends in Bollywood movie ratings and release volume over the years 
+description: Analyze 6000+ recipes to tease out relations between most commonly used Indian spice. 
 fact: 
 featured: true
 image: /img/food_graph/frequency_plot.png
@@ -19,4 +19,7 @@ Recently I found a dataset from Kaggle which tabulated 6000+ recipes from https:
 
 ### Key results:
 ![graph](/img/food_graph/Graph.png)
+Circular graph amongst the indian spices. Size of the node is the relevance of that spice in Indian cuisine i.e. number of times that spice occured in entire recipe collection. Edge color/width shows the strength of the connection amongst different spices. Right away it is seen that: Turmeric, chilli powder, and cumin are always used together. 
+
 ![correlation plot](/img/food_graph/heatmap.png)
+Correlation plot showing binary correlations between different spices. 
