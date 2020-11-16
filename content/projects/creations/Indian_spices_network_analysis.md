@@ -18,7 +18,7 @@ Recently I found a dataset from Kaggle which tabulated 6000+ recipes from https:
 * Dataset for Indian recipe: This dataset 6000+ recipe scrapped from: [Dataset](https://www.kaggle.com/kanishk307/6000-indian-food-recipes-dataset)
 
 ### Key results:
-![freq_plot](/img/food_graph/frequency_plot.png)
+![freq_plot](/img/food_graph/frequency_plot.png){width=20%}
 
 Plot showing the number of times a spices occurs in the list of 6000+ recipes. I am showing only top few entries for clarity.
 
