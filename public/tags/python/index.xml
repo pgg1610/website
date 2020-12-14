@@ -35,7 +35,7 @@
       <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/blog/sp500/</guid>
-      <description></description>
+      <description>Generate list of companies in the S&amp;amp;P500 using BeautifulSoup. Next, use yfinance (Yahoo Finance) module to extract stock information. Plot year-to-date return on certain stocks to check trends.</description>
     </item>
     
     <item>
@@ -75,7 +75,9 @@ The dataset is divided into five training batches and one test batch, each with 
       <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/blog/svm_usecase/</guid>
-      <description>This tutorial is adapted from Jake VanderPlas&amp;rsquo;s example of SVM as given in his reference book: Python Data Science Handbook</description>
+      <description>This tutorial is adapted from Jake VanderPlas&amp;rsquo;s example of SVM as given in his reference book: Python Data Science Handbook
+Motivation for Support Vector Machines We want to find a line/curve (in 2D) or a manifold (in n-D) that divides the class from each other. This is a type of Discriminative Classification
+Consider a simple case of classification task, in which the two classes of points are well separated. We can find region in space which best separates the data into two classes.</description>
     </item>
     
     <item>

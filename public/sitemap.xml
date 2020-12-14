@@ -27,6 +27,21 @@
   </url>
   
   <url>
+    <loc>/tags/guide/</loc>
+    <lastmod>2020-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/blog/helpful_links/</loc>
+    <lastmod>2020-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-11-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/blog/indian_spices_network_analysis/</loc>
     <lastmod>2020-11-08T00:00:00+00:00</lastmod>
   </url>
@@ -38,11 +53,6 @@
   
   <url>
     <loc>/tags/python/</loc>
-    <lastmod>2020-11-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-11-08T00:00:00+00:00</lastmod>
   </url>
   

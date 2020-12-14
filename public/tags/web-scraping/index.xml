@@ -35,7 +35,7 @@
       <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/blog/sp500/</guid>
-      <description></description>
+      <description>Generate list of companies in the S&amp;amp;P500 using BeautifulSoup. Next, use yfinance (Yahoo Finance) module to extract stock information. Plot year-to-date return on certain stocks to check trends.</description>
     </item>
     
   </channel>
