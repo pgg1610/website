@@ -1,6 +1,7 @@
 ---
 date: "2020-08-11"
 description: Scrapped IMDB database to analyze trends in Bollywood movie ratings and release volume over the years 
+pubtype: Jupyter Notebook
 fact: 
 featured: true
 image: /img/imdb_logo.png
