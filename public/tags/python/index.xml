@@ -1,99 +1,90 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on Pushkar Ghanekar</title>
+    <title>Python on Pushkar Ghanekar</title>
     <link>/tags/python/</link>
-    <description>Recent content in python on Pushkar Ghanekar</description>
+    <description>Recent content in Python on Pushkar Ghanekar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Feb 2018 12:41:05 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>BOSH release for Bamboo &amp; Remote Agents</title>
-      <link>/projects/copyofcreations/bosh-agents/</link>
-      <pubDate>Sun, 11 Feb 2018 12:41:05 -0500</pubDate>
+      <title>Analysis on Spice Use in Indian Food</title>
+      <link>/blog/indian_spices_network_analysis/</link>
+      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>/projects/copyofcreations/bosh-agents/</guid>
-      <description>BOSH (Bosh Outer SHell) &amp;ldquo;&amp;hellip;is an open source tool for release engineering, deployment, lifecycle management, and monitoring of distributed systems.&amp;rdquo; And it&amp;rsquo;s amazingly powerful. This examples uses BOSH to provision an Alassian vendor app running on JDK along with the support Postgres database and agents to support it. The releases manages the health of services and will automatically provision, start/stop processes across the various services.</description>
+      <guid>/blog/indian_spices_network_analysis/</guid>
+      <description>Indian food, like most of the food from the tropical region, uses a variety of different spices. Historically, the spices are thought to have been a way to increase the shelf-life and keep pests away. Anyways, if you are planning to cook more Indian food lately, it would be great to know which spices would give you most bang for your buck. More so, which spices are often used together? What is the relation between each of them?</description>
     </item>
     
     <item>
-      <title>Bayesian optimization using Gaussian Processes</title>
-      <link>/projects/creations/bo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Bollywood Movie Rating Analysis</title>
+      <link>/blog/imdb_scrapping/</link>
+      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/projects/creations/bo/</guid>
+      <guid>/blog/imdb_scrapping/</guid>
+      <description>Key results: </description>
+    </item>
+    
+    <item>
+      <title>Web scraping S&amp;P 500 data</title>
+      <link>/blog/sp500/</link>
+      <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/sp500/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bayesian Optimization using Gaussian Processes</title>
+      <link>/blog/bo/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/bo/</guid>
       <description> Notebook explaining the idea behind bayesian optimization alongside a small example showing its use. This notebook was adapted from Martin Krasser&amp;rsquo;s blogpost Good introductory write-up on Bayesian optimization here Nice lecture explaining the working of Gaussian Processes here  </description>
     </item>
     
     <item>
-      <title>Docker image for Bitbucket CI/CD Pipelines  &#34;shipit&#34;</title>
-      <link>/projects/copyofcreations/docker-marketplace/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Property Price Prediction ML-model</title>
+      <link>/blog/end2end_ml_project/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/projects/copyofcreations/docker-marketplace/</guid>
-      <description>Provides required dependencies and additional utilities to simplify and codify the process of building, testing and delivering Atlassian plugins all the way to the live marketplace.Executes integration/AUT level tests against all stated compatible versions for the productUploads generated artifact to Atlassian marketplaceProvides corresponding metadata indicating version, release notes, and compatibility</description>
+      <guid>/blog/end2end_ml_project/</guid>
+      <description>This project is adapted from Aurelien Geron&amp;rsquo;s Hands-on Machine Learning Book (github link). We build a regression model to predict median house values in Californian districts, given a number of features from these districts. More importantly, this project go through the basic building blocks when setting up any ML projects.
+Following are main steps to consider:
+ Formulating the problem, defining the boundary conditions Data acquisition Discover and visualize data / Data exploration to gain insight Prepare data for ML algorithm training and testing Explore various model architectures to use Select model and train it Fine-tuning the model  </description>
     </item>
     
     <item>
-      <title>End-to-end Machine Learning Project</title>
-      <link>/projects/creations/end2end_ml_project/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Implement CNN in PyTorch</title>
+      <link>/blog/pytorch_cnn_example/</link>
+      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/projects/creations/end2end_ml_project/</guid>
-      <description>This project is obtained from Aurelien Geron&amp;rsquo;s Hands-on Machine Leanring with Scikit-learn and Tensorflow (github link). The aim to predict median house values in Californian districts, given a number of features from these districts.
-Main steps we will go through:
- Formulate the problem Get the data Discover and visualize data / Data exploration to gain insight Prep data for ML algorithm testing Select model and train it Fine-tuning the model  </description>
-    </item>
-    
-    <item>
-      <title>High throughput perovskite screening</title>
-      <link>/projects/creations/perovskites/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/creations/perovskites/</guid>
-      <description>High throughput screening of MaterialsProject dataset using pymatgen API for estimating perovskite bulk stability. For selected candidates, analyze their surface morphology using ab-initio thermodynamic analysis.</description>
-    </item>
-    
-    <item>
-      <title>PyTorch CNN example</title>
-      <link>/projects/creations/pytorch_cnn_example/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/creations/pytorch_cnn_example/</guid>
+      <guid>/blog/pytorch_cnn_example/</guid>
       <description>Convolutional neural network is used to train on the CIFAR-10 dataset using PyTorch.
 What does it consists of? The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images.
 The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class.</description>
     </item>
     
     <item>
-      <title>Support Vector Machines example</title>
-      <link>/projects/creations/svm_usecase/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>About Support Vector Machines</title>
+      <link>/blog/svm_usecase/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>/projects/creations/svm_usecase/</guid>
+      <guid>/blog/svm_usecase/</guid>
       <description>This tutorial is adapted from Jake VanderPlas&amp;rsquo;s example of SVM as given in his reference book: Python Data Science Handbook</description>
     </item>
     
     <item>
-      <title>Web scraping IMDB Bollywood data</title>
-      <link>/projects/creations/imdb_scrapping/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Perovskite Stability Analysis</title>
+      <link>/blog/perovskites/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/projects/creations/imdb_scrapping/</guid>
-      <description>Key results: </description>
-    </item>
-    
-    <item>
-      <title>Web scraping S&amp;P 500 data</title>
-      <link>/projects/creations/sp500/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/creations/sp500/</guid>
-      <description></description>
+      <guid>/blog/perovskites/</guid>
+      <description>High throughput screening of MaterialsProject dataset using pymatgen API for estimating perovskite bulk stability. For selected candidates, analyze their surface morphology using ab-initio thermodynamic analysis.</description>
     </item>
     
   </channel>

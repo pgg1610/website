@@ -1,54 +1,90 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogs on Pushkar Ghanekar</title>
+    <title>Blog on Pushkar Ghanekar</title>
     <link>/blog/</link>
-    <description>Recent content in Blogs on Pushkar Ghanekar</description>
+    <description>Recent content in Blog on Pushkar Ghanekar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Nov 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2020 15:00:28 +0000</lastBuildDate>
     
 	<atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Organically DevOps: Building Quality and Security into the Software Supply Chain at Liberty Mutual</title>
-      <link>/blog/alldaydevops/</link>
-      <pubDate>Tue, 08 Nov 2016 00:00:00 +0000</pubDate>
+      <title>Analysis on Spice Use in Indian Food</title>
+      <link>/blog/indian_spices_network_analysis/</link>
+      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>/blog/alldaydevops/</guid>
-      <description>This talk looked at Liberty Mutual’s transformation to Continuous Integration, Continuous Delivery, and DevOps. For a large, heavily regulated industry, this task can not only be daunting, but viewed by many as impossible. Often, organizations try to reduce the friction through micro-fixes, but Eddie’s team asked how to change the culture to reduce the friction and concluded with the following final points:
- Don’t mandate DevOps. Give employees the chance to master their discipline with examples to set and follow.</description>
+      <guid>/blog/indian_spices_network_analysis/</guid>
+      <description>Indian food, like most of the food from the tropical region, uses a variety of different spices. Historically, the spices are thought to have been a way to increase the shelf-life and keep pests away. Anyways, if you are planning to cook more Indian food lately, it would be great to know which spices would give you most bang for your buck. More so, which spices are often used together? What is the relation between each of them?</description>
     </item>
     
     <item>
-      <title>Beautiful Links</title>
-      <link>/blog/beautiful_links/</link>
-      <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
+      <title>Bollywood Movie Rating Analysis</title>
+      <link>/blog/imdb_scrapping/</link>
+      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/blog/beautiful_links/</guid>
-      <description>YouTubers Vsauce</description>
+      <guid>/blog/imdb_scrapping/</guid>
+      <description>Key results: </description>
     </item>
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>/blog/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      <title>Web scraping S&amp;P 500 data</title>
+      <link>/blog/sp500/</link>
+      <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/blog/2015-07-23-r-rmarkdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.</description>
+      <guid>/blog/sp500/</guid>
+      <description></description>
     </item>
     
     <item>
-      <title>Forcing Visits to use SSL</title>
-      <link>/blog/force-ssl/</link>
-      <pubDate>Thu, 01 Jan 2009 14:09:10 +0000</pubDate>
+      <title>Bayesian Optimization using Gaussian Processes</title>
+      <link>/blog/bo/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/blog/force-ssl/</guid>
-      <description>Intro Doesn&amp;rsquo;t matter whether it&amp;rsquo;s a CakePHP app for a client, your own personal CMS, or any other web based application. If your passing around passwords or other sensitive info you should really implement SSL. SSL provides 2 main perks to your visitors.
- First it encrypts all communication that flies across the web. This prevents curious or devious billies from getting your secrets. Secondly it ensures to the user that your server is in fact who it claims, and not a nasty &amp;lsquo;man in the middle&amp;rdquo; attack.</description>
+      <guid>/blog/bo/</guid>
+      <description> Notebook explaining the idea behind bayesian optimization alongside a small example showing its use. This notebook was adapted from Martin Krasser&amp;rsquo;s blogpost Good introductory write-up on Bayesian optimization here Nice lecture explaining the working of Gaussian Processes here  </description>
+    </item>
+    
+    <item>
+      <title>Property Price Prediction ML-model</title>
+      <link>/blog/end2end_ml_project/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/end2end_ml_project/</guid>
+      <description>This project is adapted from Aurelien Geron&amp;rsquo;s Hands-on Machine Learning Book (github link). We build a regression model to predict median house values in Californian districts, given a number of features from these districts. More importantly, this project go through the basic building blocks when setting up any ML projects.
+Following are main steps to consider:
+ Formulating the problem, defining the boundary conditions Data acquisition Discover and visualize data / Data exploration to gain insight Prepare data for ML algorithm training and testing Explore various model architectures to use Select model and train it Fine-tuning the model  </description>
+    </item>
+    
+    <item>
+      <title>Implement CNN in PyTorch</title>
+      <link>/blog/pytorch_cnn_example/</link>
+      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/pytorch_cnn_example/</guid>
+      <description>Convolutional neural network is used to train on the CIFAR-10 dataset using PyTorch.
+What does it consists of? The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images.
+The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class.</description>
+    </item>
+    
+    <item>
+      <title>About Support Vector Machines</title>
+      <link>/blog/svm_usecase/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/svm_usecase/</guid>
+      <description>This tutorial is adapted from Jake VanderPlas&amp;rsquo;s example of SVM as given in his reference book: Python Data Science Handbook</description>
+    </item>
+    
+    <item>
+      <title>Perovskite Stability Analysis</title>
+      <link>/blog/perovskites/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/perovskites/</guid>
+      <description>High throughput screening of MaterialsProject dataset using pymatgen API for estimating perovskite bulk stability. For selected candidates, analyze their surface morphology using ab-initio thermodynamic analysis.</description>
     </item>
     
   </channel>

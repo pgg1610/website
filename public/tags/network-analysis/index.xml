@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network analysis on Pushkar Ghanekar</title>
+    <link>/tags/network-analysis/</link>
+    <description>Recent content in Network analysis on Pushkar Ghanekar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/network-analysis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Analysis on Spice Use in Indian Food</title>
+      <link>/blog/indian_spices_network_analysis/</link>
+      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/indian_spices_network_analysis/</guid>
+      <description>Indian food, like most of the food from the tropical region, uses a variety of different spices. Historically, the spices are thought to have been a way to increase the shelf-life and keep pests away. Anyways, if you are planning to cook more Indian food lately, it would be great to know which spices would give you most bang for your buck. More so, which spices are often used together? What is the relation between each of them?</description>
+    </item>
+    
+  </channel>
+</rss>

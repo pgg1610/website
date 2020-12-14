@@ -30,5 +30,14 @@ Water-Gas Shift reaction (WGSR) is one such reaction which is expected to show s
       <description>Synopsis: Combination of experimental kinetics, state-of-the-art characterisation techiques and computation catalyst models to investigate the active site for propane dehydrogenation reaction. It is shown that alloying noble metals, platinum in this case, with another element (like vanadium) leads to changes in the catalytic performance. Through combined experiment/theory effort these performance and stability changes can be explained by perturbation in the electronic and structural properties of the alloys.</description>
     </item>
     
+    <item>
+      <title>Perovskite Stability Analysis</title>
+      <link>/blog/perovskites/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/perovskites/</guid>
+      <description>High throughput screening of MaterialsProject dataset using pymatgen API for estimating perovskite bulk stability. For selected candidates, analyze their surface morphology using ab-initio thermodynamic analysis.</description>
+    </item>
+    
   </channel>
 </rss>

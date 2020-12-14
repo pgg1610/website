@@ -6,17 +6,18 @@
     <description>Recent content in Thermodynamics on Pushkar Ghanekar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 10 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/thermodynamics/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Estimating thermodynamic stability of Perovskites</title>
-      <link>/projects/creations/perovskites/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Perovskite Stability Analysis</title>
+      <link>/blog/perovskites/</link>
+      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
       
-      <guid>/projects/creations/perovskites/</guid>
-      <description>High throughput screening of MaterialsProject dataset using pymatgen API to estimate perovskite bulk stability. For selected candidates, the surface morphology is investigated using ab-initio thermodynamic analysis.</description>
+      <guid>/blog/perovskites/</guid>
+      <description>High throughput screening of MaterialsProject dataset using pymatgen API for estimating perovskite bulk stability. For selected candidates, analyze their surface morphology using ab-initio thermodynamic analysis.</description>
     </item>
     
   </channel>

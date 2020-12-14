@@ -6,16 +6,17 @@
     <description>Recent content in PyTorch on Pushkar Ghanekar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>PyTorch CNN example</title>
-      <link>/projects/creations/pytorch_cnn_example/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Implement CNN in PyTorch</title>
+      <link>/blog/pytorch_cnn_example/</link>
+      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/projects/creations/pytorch_cnn_example/</guid>
+      <guid>/blog/pytorch_cnn_example/</guid>
       <description>Convolutional neural network is used to train on the CIFAR-10 dataset using PyTorch.
 What does it consists of? The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images.
 The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class.</description>

@@ -6,27 +6,39 @@
     <description>Recent content in Machine learning on Pushkar Ghanekar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Fri, 01 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>End-to-end Machine Learning Project</title>
-      <link>/projects/creations/end2end_ml_project/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Property Price Prediction ML-model</title>
+      <link>/blog/end2end_ml_project/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>/projects/creations/end2end_ml_project/</guid>
-      <description>This project is obtained from Aurelien Geron&amp;rsquo;s Hands-on Machine Leanring with Scikit-learn and Tensorflow (github link). The aim to predict median house values in Californian districts, given a number of features from these districts.
-Main steps we will go through:
- Formulate the problem Get the data Discover and visualize data / Data exploration to gain insight Prep data for ML algorithm testing Select model and train it Fine-tuning the model  </description>
+      <guid>/blog/end2end_ml_project/</guid>
+      <description>This project is adapted from Aurelien Geron&amp;rsquo;s Hands-on Machine Learning Book (github link). We build a regression model to predict median house values in Californian districts, given a number of features from these districts. More importantly, this project go through the basic building blocks when setting up any ML projects.
+Following are main steps to consider:
+ Formulating the problem, defining the boundary conditions Data acquisition Discover and visualize data / Data exploration to gain insight Prepare data for ML algorithm training and testing Explore various model architectures to use Select model and train it Fine-tuning the model  </description>
     </item>
     
     <item>
-      <title>Support Vector Machines example</title>
-      <link>/projects/creations/svm_usecase/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Implement CNN in PyTorch</title>
+      <link>/blog/pytorch_cnn_example/</link>
+      <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/projects/creations/svm_usecase/</guid>
+      <guid>/blog/pytorch_cnn_example/</guid>
+      <description>Convolutional neural network is used to train on the CIFAR-10 dataset using PyTorch.
+What does it consists of? The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images.
+The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class.</description>
+    </item>
+    
+    <item>
+      <title>About Support Vector Machines</title>
+      <link>/blog/svm_usecase/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/svm_usecase/</guid>
       <description>This tutorial is adapted from Jake VanderPlas&amp;rsquo;s example of SVM as given in his reference book: Python Data Science Handbook</description>
     </item>
     
