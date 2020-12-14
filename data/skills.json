@@ -1,19 +1,23 @@
 [
   {
       "grouping":"Research",
-      "skills":[ "Kinetic Modeling", "Catlayst Model Development", "Material Informatics", "Quantitative Structure Property Relationships", "High-throughput screening", "Theory/Experiment Collaborations" ]
+      "skills":[ "Kinetic Modeling", "Catalyst Model Development", "High-throughput Screening", "Theory/Experiment Collaborations" ]
   },
   {
       "grouping":"Languages, Operating Systems",
-      "skills":[ "Python",{"name":"html/css","icon":"html5"}, 
-      "C", "git","linux","bash","beautifulsoup", "selenium"]
+      "skills":[ "Python","shell", {"name":"Julia","icon":"julia"}, {"name":"html/css","icon":"html5"}]
   },
+  
+  {
+      "grouping":"Tools, Packages",
+      "skills":[ "Scikit-learn", "Tableau/Plotly", "NumPy", "SciPy", "Pandas", "Matplotlib", "Git","Beautifulsoup", "Selenium"]
+  },
+  
   {
       "grouping":"Technologies",
-      "skills":[ "High Performance Computing", {"name":"PyTorch", "icon":"pytorch", "link":"https://pytorch.org/"},
-      {"name":"Dask", "link":"https://dask.org/"},
-      {"name":"RAPIDS.ai","link":"https://rapids.ai/"},
-      "GPU/CUDA", "MATLAB","VASP","Aspen Plus",
+      "skills":[ "High Performance Computing (CPU/GPU)", {"name":"PyTorch", "icon":"pytorch", "link":"https://pytorch.org/"}, "XGBoost", "RDKit", "SIMCA",
+      {"name":"Dask", "link":"https://dask.org/"}, "JMP",
+      {"name":"RAPIDS.ai","link":"https://rapids.ai/"}, "MATLAB","VASP","Aspen Plus",
       {"name":"Adobe Creative Suite","icon":"photoshop"},
       "Blender"]
   },
