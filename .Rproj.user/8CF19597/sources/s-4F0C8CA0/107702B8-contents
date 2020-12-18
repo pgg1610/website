@@ -11,9 +11,68 @@ tags:
 title: Helpful links
 ---
 
-List of links pertaining to eclectic areas: 
+List of links pertaining to eclectic areas of interest: 
 
+## Probability + Statistics: 
+https://www.khanacademy.org/math/statistics-probability/
+https://www.johndcook.com/blog/
+https://www.allendowney.com/blog/
 
+Essence of Linear Algebra https://www.youtube.com/watch?v=fNk_z... 
+
+Khan Academy https://www.khanacademy.org/math/line... https://betterexplained.com/articles/... 
+Essence of Calculus https://www.youtube.com/watch?v=WUvTy... https://www.khanacademy.org/math/calc... https://www.khanacademy.org/math/calc... https://www.khanacademy.org/math/mult... 
+Virtual library of functions: http://www.sfu.ca/~ssurjano/uq.html
+
+## DataIsBeautiful
+* [Nate Silver's 538](https://fivethirtyeight.com/)
+* [Pudding's data viz](https://pudding.cool/)
+* [Spurious Correlations](https://www.tylervigen.com/spurious-correlations)
+* [Understanding uncertaintly](https://understandinguncertainty.org/blog)
+* [Math3ma Blog](https://www.math3ma.com/blog/)
+
+## Misc: 
+* [Paul Graham](http://www.paulgraham.com/index.html)
+* [Sam Altman](https://blog.samaltman.com/)
+* [Beauty of Science](https://www.beautyofscience.com/)
+* [Maria Popova's Brain Pickings](https://www.brainpickings.org/)
+* [Wait But Why](https://waitbutwhy.com/)
+* [Brad Feld's Personal Blog](https://feld.com/about)
+* [Melthing Asphalt](https://meltingasphalt.com/)
+
+## Comics: 
+* [Xkcd]
+* [Oatmeal](https://theoatmeal.com/comics/creativity_things)
+ 
+
+## ML + datascience: 
+https://github.com/ageron/handson-ml
+http://www.r2d3.us/visual-intro-to-machine-learning-part-1/
+https://chsasank.github.io/deep-learning-crash-course-2.html
+https://colah.github.io/
+https://www.jeremyjordan.me/
+http://d2l.ai/chapter_preface/index.html
+https://adeshpande3.github.io/adeshpande3.github.io/
+https://poloclub.github.io/cnn-explainer/
+http://jalammar.github.io/
+
+* [Distil Blog](https://distill.pub)
+
+## Learning Python 
+* [Jakevdp Python Datascience Notbook](https://github.com/jakevdp/PythonDataScienceHandbook)
+* [Python Practice Projects](https://github.com/tuvtran/project-based-learning#python)
+* [Project Euler](https://projecteuler.net/)
+* [Chris Albon's notes](https://chrisalbon.com/)
+
+## Cool Courses: 
+* [Harvard's CS 109](http://cs109.github.io/2015/pages/videos.html)
+* [Stanford's CS - CNN course](http://cs231n.stanford.edu/)
+* [MIT's Intro to Deep Learning](http://introtodeeplearning.com/)
+* [Google's ML crash course](https://developers.google.com/machine-learning/crash-course)
+* [Deep learning for molecules](https://whitead.github.io/dmol-book/dl/gnn.html)
+* [NYU's PyTorch Deep learning](https://atcold.github.io/pytorch-Deep-Learning/)
+* [CMU's course on Computer Graphics](http://15462.courses.cs.cmu.edu/fall2020/)
+* [MIT's course on Computational Thinking](https://computationalthinking.mit.edu/Fall20/)
 
 ## YouTubers 
 https://www.youtube.com/user/Vsauce
@@ -29,66 +88,4 @@ Binging w/ Babish -- https://www.youtube.com/user/bgfilms
 Dan Mace -- https://www.youtube.com/channel/UCZfPrUL62TN74Mmrn-O_pZQ
 
 
-## Probability + Statistics: 
-https://www.khanacademy.org/math/statistics-probability/
-https://www.johndcook.com/blog/
-https://www.allendowney.com/blog/
 
-Essence of Linear Algebra https://www.youtube.com/watch?v=fNk_z... 
-
-Khan Academy https://www.khanacademy.org/math/line... https://betterexplained.com/articles/... 
-Essence of Calculus https://www.youtube.com/watch?v=WUvTy... https://www.khanacademy.org/math/calc... https://www.khanacademy.org/math/calc... https://www.khanacademy.org/math/mult... 
-Virtual library of functions: http://www.sfu.ca/~ssurjano/uq.html
-
-## DataIsBeautiful
-https://fivethirtyeight.com/
-https://pudding.cool/
-https://www.tylervigen.com/spurious-correlations
-https://understandinguncertainty.org/blog
-
-## Misc: 
-http://www.paulgraham.com/index.html
-https://blog.samaltman.com/
-https://www.beautyofscience.com/
-https://www.brainpickings.org/
-https://waitbutwhy.com/
-https://feld.com/about
-https://meltingasphalt.com/
-https://www.scottadamssays.com/
-https://writings.stephenwolfram.com
-
-## Comics: 
-https://theoatmeal.com/comics/creativity_things
-Xkcd 
-
-## ML + datascience: 
-https://github.com/ageron/handson-ml
-http://www.r2d3.us/visual-intro-to-machine-learning-part-1/
-https://chsasank.github.io/deep-learning-crash-course-2.html
-https://www.math3ma.com/blog/
-https://colah.github.io/
-https://www.jeremyjordan.me/
-http://d2l.ai/chapter_preface/index.html
-https://adeshpande3.github.io/adeshpande3.github.io/
-https://poloclub.github.io/cnn-explainer/
-https://www.python-engineer.com/
-http://vanderplas.com/
-http://jalammar.github.io/
-https://chrisalbon.com/
-http://karpathy.github.io/
-
-## Learning Python 
-* [Jakevdp Python Datascience Notbook](https://github.com/jakevdp/PythonDataScienceHandbook)
-* [Python Practice Projects](https://github.com/tuvtran/project-based-learning#python)
-* [Project Euler](https://projecteuler.net/)
-
-
-## Cool Courses: 
-* [Harvard's CS 109](http://cs109.github.io/2015/pages/videos.html)
-* [Stanford's CS - CNN course](http://cs231n.stanford.edu/)
-* [MIT's Intro to Deep Learning](http://introtodeeplearning.com/)
-* [Google's ML crash course](https://developers.google.com/machine-learning/crash-course)
-* [Deep learning for molecules](https://whitead.github.io/dmol-book/dl/gnn.html)
-* [NYU's PyTorch Deep learning](https://atcold.github.io/pytorch-Deep-Learning/)
-* [CMU's course on Computer Graphics](http://15462.courses.cs.cmu.edu/fall2020/)
-* [MIT's course on Computational Thinking](https://computationalthinking.mit.edu/Fall20/)
