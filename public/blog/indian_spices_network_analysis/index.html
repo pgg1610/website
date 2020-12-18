@@ -121,9 +121,102 @@
 <ul>
 <li>Dataset for Indian recipe: This dataset 6000+ recipe scrapped from: <a href="https://www.kaggle.com/kanishk307/6000-indian-food-recipes-dataset">Dataset</a></li>
 </ul>
-<h3 id="key-results">Key results:</h3>
+<p>The dataset from the Kaggle csv has entries as follows:
+<img src="/img/food_graph/dataset_first_img.png" alt="df_first"></p>
+<p>Some entries in the <code>TranslatedIngredients</code> have non-english entries. To filter those out I made the following function:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">filter_english</span>(string):
+    <span style="color:#66d9ef">try</span>:
+        string<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;ascii&#39;</span>)
+        out <span style="color:#f92672">=</span> True
+    <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">UnicodeDecodeError</span>: 
+        out <span style="color:#f92672">=</span> False
+    <span style="color:#66d9ef">return</span> out
+</code></pre></div><p>Next for consistent tabulation I needed a list of spices to look for. Wikipedia has a page on Indian spices which lists various spices used in Indian cuisin <a href="https://en.wikipedia.org/wiki/List_of_Indian_spices">(Link)</a>. I use this list to search names of spices in the recipe entries.</p>
+<p>One more step is editing the spices so that my string counter can find different versions of the same spice.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">spices_list <span style="color:#f92672">=</span> spices_list<span style="color:#f92672">.</span>str<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;amchoor&#39;</span>, <span style="color:#e6db74">&#39;amchur/amchoor/mango extract&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;asafoetida&#39;</span>, <span style="color:#e6db74">&#39;asafetida/asafoetida/hing&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;thymol/carom seed&#39;</span>, <span style="color:#e6db74">&#39;ajwain/thymol/carom seed&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;alkanet root&#39;</span>, <span style="color:#e6db74">&#39;alkanet/alkanet root&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;chilli powder&#39;</span>, <span style="color:#e6db74">&#39;red chilli powder/chilli powder/kashmiri red chilli powder&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;celery / radhuni seed&#39;</span>, <span style="color:#e6db74">&#39;celery/radhuni seed&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;bay leaf, indian bay leaf&#39;</span>, <span style="color:#e6db74">&#39;bay leaf/bay leaves/tej patta&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;curry tree or sweet neem leaf&#39;</span>, <span style="color:#e6db74">&#39;curry leaf/curry leaves&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;fenugreek leaf&#39;</span>, <span style="color:#e6db74">&#39;fenugreek/kasoori methi&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;nigella seed&#39;</span>, <span style="color:#e6db74">&#39;nigella/black cumin&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;ginger&#39;</span>, <span style="color:#e6db74">&#39;dried ginger/ginger powder&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;cloves&#39;</span>, <span style="color:#e6db74">&#39;cloves/laung&#39;</span>) \
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;green cardamom&#39;</span>, <span style="color:#e6db74">&#39;cardamom/green cardamom/black cardamom&#39;</span>)\
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;indian gooseberry&#39;</span>, <span style="color:#e6db74">&#39;indian gooseberry/amla&#39;</span>)\
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;coriander seed&#39;</span>, <span style="color:#e6db74">&#39;coriander seed/coriander powder&#39;</span>)\
+                    <span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;cumin seed&#39;</span>, <span style="color:#e6db74">&#39;cumin powder/cumin seeds/cumin/jeera&#39;</span>)
+</code></pre></div><p>For every food entries I consider the <code>TranslatedIngredient</code> column:
+<img src="/img/food_graph/translated_entries.png" alt="df_translate"></p>
+<p>I used regular expression to search for spice names in the entries</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> re 
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">search_spice</span>(ingredient_string, spice_string):
+    spice_list <span style="color:#f92672">=</span> spice_string<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;/&#39;</span>)
+    <span style="color:#66d9ef">for</span> _spice <span style="color:#f92672">in</span> spice_list:
+        <span style="color:#66d9ef">if</span> re<span style="color:#f92672">.</span>search(_spice<span style="color:#f92672">.</span>lower(), ingredient_string<span style="color:#f92672">.</span>lower()):
+            <span style="color:#66d9ef">return</span> True
+            <span style="color:#66d9ef">break</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">food_spice_mix[spices_list<span style="color:#f92672">.</span>to_list()] <span style="color:#f92672">=</span> <span style="color:#ae81ff">42</span> 
+<span style="color:#66d9ef">for</span> row, values <span style="color:#f92672">in</span> food_spice_mix<span style="color:#f92672">.</span>iterrows():
+    <span style="color:#66d9ef">for</span> spice_entry <span style="color:#f92672">in</span> spices_list:
+        <span style="color:#66d9ef">if</span> search_spice(values[<span style="color:#e6db74">&#39;TranslatedIngredients&#39;</span>], spice_entry):
+            food_spice_mix<span style="color:#f92672">.</span>loc[row, spice_entry] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">else</span>:
+            food_spice_mix<span style="color:#f92672">.</span>loc[row, spice_entry] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><p>This way each food item is searched for a particular spice. A one-hot type binary list is made for every food item.</p>
+<p>Based on this binary entries we can create a adjacency matrix and a frequency plot counting the occurence of every spice in entirety of the food recipe corpus.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">spice_col_name <span style="color:#f92672">=</span> spices_list
+spice_adj_freq <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(np<span style="color:#f92672">.</span>zeros(shape<span style="color:#f92672">=</span>(len(spices_list),len(spices_list))), columns<span style="color:#f92672">=</span> spice_col_name, index<span style="color:#f92672">=</span>spice_col_name)
+
+<span style="color:#66d9ef">for</span> row, value <span style="color:#f92672">in</span> food_spice_mix<span style="color:#f92672">.</span>iterrows():
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> spice_col_name:
+        <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> spice_col_name:
+            <span style="color:#66d9ef">if</span> (value[i] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">&amp;</span> (value[j] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>):
+                spice_adj_freq<span style="color:#f92672">.</span>loc[i,j] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+
+spice_adj_freq <span style="color:#f92672">=</span> spice_adj_freq<span style="color:#f92672">/</span>len(food_spice_mix) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>
+</code></pre></div><p>Using frequency adjacency matrix we can plot a heatmap showing the pair-wise occurence for a given pair of spices. The idea with such an analysis is that if we can check the variation of Spice 1 with all the other spices in the list and compare that to Spice 2&rsquo;s variation with all the other spices in the list, if spice 1 and spice 2 should have similar variation.</p>
+<p><img src="/img/food_graph/heatmap.png" alt="heat_map2"></p>
+<p>This map itself is quite interesting. The color intensity of each title shows the frequency that pair of spice occurred together in a recipe. Brighter the color higher their occurence together.
+Some prominent spice pairs which show similarity are:</p>
+<ol>
+<li>Curry leaves and Mustard seeds</li>
+<li>Tumeric and Chilli Powder</li>
+</ol>
+<p>Some pair of spices never occur together:</p>
+<ol>
+<li>Saffron and Fenugreek seeds</li>
+<li>Nutmeg and Mustard Seeds</li>
+</ol>
+<p>Those who cook or know indian recipes would see that these pairs make sense and thereby validate the correlation seen from corpus of Indian recipes.</p>
+<p>With that analysis, we can go a step further and analyze this information in form of a circular network graph.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">nodes_data <span style="color:#f92672">=</span> [(i, {<span style="color:#e6db74">&#39;count&#39;</span>:spice_adj_freq<span style="color:#f92672">.</span>loc[i, i]}) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> spice_col_name]
+edges_data <span style="color:#f92672">=</span> [] 
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> temp_name:
+    <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> temp_name:
+        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">!=</span> j:
+            <span style="color:#66d9ef">if</span> spice_adj_freq<span style="color:#f92672">.</span>loc[i,j] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0.0</span>:
+                edges_data<span style="color:#f92672">.</span>append((i, j, {<span style="color:#e6db74">&#39;weight&#39;</span>:spice_adj_freq<span style="color:#f92672">.</span>loc[i,j], <span style="color:#e6db74">&#39;distance&#39;</span>:<span style="color:#ae81ff">1</span>}))
+
+<span style="color:#75715e">#BUILD THE INITIAL FULL GRAPH</span>
+G<span style="color:#f92672">=</span>nx<span style="color:#f92672">.</span>Graph()
+G<span style="color:#f92672">.</span>add_nodes_from(nodes_data)
+G<span style="color:#f92672">.</span>add_edges_from(edges_data)
+
+<span style="color:#75715e">#Assigning weights to each node as per occurence </span>
+weights <span style="color:#f92672">=</span> [G[u][v][<span style="color:#e6db74">&#39;weight&#39;</span>] <span style="color:#66d9ef">for</span> u,v <span style="color:#f92672">in</span> edges]
+w_arr <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(weights)
+norm_weight <span style="color:#f92672">=</span>  (w_arr <span style="color:#f92672">-</span> w_arr<span style="color:#f92672">.</span>min())<span style="color:#f92672">/</span>(w_arr<span style="color:#f92672">.</span>max() <span style="color:#f92672">-</span> w_arr<span style="color:#f92672">.</span>min())
+</code></pre></div><p>Finally a <code>networkx</code> circular graph is made where each node is a spice entry. Each edge between a pair of spice is a connection provided those two spices are found together in a recipe. The size of the node is the frequency of that spice to occur in all of 6000 food recipes. The thickness of the edge connecting a give spice-pair is the normalized frequency that pair occured among 6000 recipes. Representing the analysis this way we find few key takeaways:</p>
+<ol>
+<li>Tumeric, Mustard Seeds, Chilli Powder, Corriander Seeds, Cumin Seeds, Curry Leaves, Green Chillies, Asafoetida are the key spices in the Indian cuisine.</li>
+<li>Most recipes have strong tendancy to use Tumeric + Chilli Powder + Cumin Seed in them.</li>
+</ol>
 <p><img src="/img/food_graph/food_graphs.png" alt="graph"></p>
-<p>Circular graph represents the relation between various spices as found in the 6000+ recipes. Size of the node is the relevance of that spice in the Indian cuisine i.e. number of times that spice occured in entire recipe collection. Edge width shows the strength of the connection amongst different spices. Right away it is seen that: Turmeric, chilli powder, and cumin are always used together.</p>
 
     <p class="mt-3">
     <ul class="tags">
