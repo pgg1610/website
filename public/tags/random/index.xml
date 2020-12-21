@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Random on Pushkar Ghanekar</title>
+    <link>/tags/random/</link>
+    <description>Recent content in Random on Pushkar Ghanekar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/random/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Central limit theorem</title>
+      <link>/blog/central_limit_theorem/</link>
+      <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/central_limit_theorem/</guid>
+      <description>What? Sampling points from a distribution and plotting the frequency of the sample mean approaches a normal distribution.
+ We start with some crazy distribution that has got nothing to do with a normal distribution. Sample points from that distribution with some arbitrary sample size, following which we plot the sample mean (or sample sum) on a frequency table &amp;ndash; repeat this lot of times (tending to infinity) we end up getting a normal distribution of sample means!</description>
+    </item>
+    
+  </channel>
+</rss>

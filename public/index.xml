@@ -31,16 +31,22 @@ Water-Gas Shift reaction (WGSR) is one such reaction which is expected to show s
     </item>
     
     <item>
+      <title>Simple Dropout using PyTorch</title>
+      <link>/blog/simple_dropout/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/simple_dropout/</guid>
+      <description>Adapted from Deep Learning online course notes from NYU. Note link Paper about using Dropout as a Bayesian Approximation  In addition to predicting a value from a model it is also important to know the confidence in that prediction. Dropout is one way of estimating this. After multiple rounds of predictions, the mean and standard deviation in the prediction can be viewed as the prediction value and the corresponding confidence in the prediction.</description>
+    </item>
+    
+    <item>
       <title>Helpful links</title>
       <link>/blog/helpful_links/</link>
       <pubDate>Sun, 29 Nov 2020 00:00:00 +0000</pubDate>
       
       <guid>/blog/helpful_links/</guid>
-      <description>List of links pertaining to eclectic areas:
-YouTubers https://www.youtube.com/user/Vsauce Sizty Symbols &amp;ndash; https://www.youtube.com/user/sixtysymbols Tom Scott &amp;ndash; https://www.youtube.com/user/enyay 3Blue1Brown &amp;ndash; https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw Vertisasium &amp;ndash; https://www.youtube.com/user/1veritasium Applied Science &amp;ndash; https://www.youtube.com/user/bkraz333 StatQuest &amp;ndash; https://www.youtube.com/user/joshstarmer J Kenji Lopez-Alt &amp;ndash; https://www.youtube.com/user/kenjialt Bon Appetit &amp;ndash; https://www.youtube.com/user/BonAppetitDotCom Binging w/ Babish &amp;ndash; https://www.youtube.com/user/bgfilms Dan Mace &amp;ndash; https://www.youtube.com/channel/UCZfPrUL62TN74Mmrn-O_pZQ
-Probability + Statistics: https://www.khanacademy.org/math/statistics-probability/ https://www.johndcook.com/blog/ https://www.allendowney.com/blog/
-Essence of Linear Algebra https://www.youtube.com/watch?v=fNk_z...
-Khan Academy https://www.khanacademy.org/math/line... https://betterexplained.com/articles/... Essence of Calculus https://www.youtube.com/watch?v=WUvTy... https://www.khanacademy.org/math/calc... https://www.khanacademy.org/math/calc... https://www.khanacademy.org/math/mult... Virtual library of functions: http://www.</description>
+      <description>List of links pertaining to eclectic areas of interest:
+Special Mentions  John Kitchin&amp;rsquo;s DFT book Andrew Deep Learning for Molecules and Materials Fundamentals of Data Visualization  Linear Algebra + Stats  Khan Academy Lectures 3Blue1Brown&amp;rsquo;s Essence of Linear Algebra Series Intuitive guide to Linear Algebra StatQuest  Calculus  3Blue1Brown&amp;rsquo;s Calculus Series Khan Academy&amp;rsquo;s Multivariate Calculus  DataIsBeautiful  Nate Silver&amp;rsquo;s 538 Pudding&amp;rsquo;s data viz Spurious Correlations Understanding uncertaintly Math3ma Blog John Cook Allen Downey  Python  Automate Boring Stuff with Python Scientific programing with Python Visual Guide to Numpy Project Euler Github Repo for Projects Python DataScience Handbook  ML + datascience:  Hands-on Machine Learning Jakevdp Python Datascience Notbook Cool visual intro to ML Blog entry for Deep learning crash course Distill Blog  Learning Python  Python Practice Projects Project Euler Chris Albon&amp;rsquo;s notes  Cool Courses:  Harvard&amp;rsquo;s CS 109 Stanford&amp;rsquo;s CS - CNN course MIT&amp;rsquo;s Intro to Deep Learning Google&amp;rsquo;s ML crash course Deep learning for molecules NYU&amp;rsquo;s PyTorch Deep learning CMU&amp;rsquo;s course on Computer Graphics MIT&amp;rsquo;s course on Computational Thinking  YouTubers List of YouTuber channels that never fail to inspire me</description>
     </item>
     
     <item>
@@ -77,6 +83,16 @@ Khan Academy https://www.khanacademy.org/math/line... https://betterexplained.co
       
       <guid>/blog/bo/</guid>
       <description> Notebook explaining the idea behind bayesian optimization alongside a small example showing its use. This notebook was adapted from Martin Krasser&amp;rsquo;s blogpost Good introductory write-up on Bayesian optimization here Nice lecture explaining the working of Gaussian Processes here  </description>
+    </item>
+    
+    <item>
+      <title>Central limit theorem</title>
+      <link>/blog/central_limit_theorem/</link>
+      <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/central_limit_theorem/</guid>
+      <description>What? Sampling points from a distribution and plotting the frequency of the sample mean approaches a normal distribution.
+ We start with some crazy distribution that has got nothing to do with a normal distribution. Sample points from that distribution with some arbitrary sample size, following which we plot the sample mean (or sample sum) on a frequency table &amp;ndash; repeat this lot of times (tending to infinity) we end up getting a normal distribution of sample means!</description>
     </item>
     
     <item>

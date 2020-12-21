@@ -6,10 +6,19 @@
     <description>Recent content in PyTorch on Pushkar Ghanekar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Simple Dropout using PyTorch</title>
+      <link>/blog/simple_dropout/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/simple_dropout/</guid>
+      <description>Adapted from Deep Learning online course notes from NYU. Note link Paper about using Dropout as a Bayesian Approximation  In addition to predicting a value from a model it is also important to know the confidence in that prediction. Dropout is one way of estimating this. After multiple rounds of predictions, the mean and standard deviation in the prediction can be viewed as the prediction value and the corresponding confidence in the prediction.</description>
+    </item>
     
     <item>
       <title>Implement CNN in PyTorch</title>

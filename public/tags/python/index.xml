@@ -6,10 +6,19 @@
     <description>Recent content in Python on Pushkar Ghanekar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Simple Dropout using PyTorch</title>
+      <link>/blog/simple_dropout/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/simple_dropout/</guid>
+      <description>Adapted from Deep Learning online course notes from NYU. Note link Paper about using Dropout as a Bayesian Approximation  In addition to predicting a value from a model it is also important to know the confidence in that prediction. Dropout is one way of estimating this. After multiple rounds of predictions, the mean and standard deviation in the prediction can be viewed as the prediction value and the corresponding confidence in the prediction.</description>
+    </item>
     
     <item>
       <title>Analysis on Spice Use in Indian Food</title>
@@ -45,6 +54,16 @@
       
       <guid>/blog/bo/</guid>
       <description> Notebook explaining the idea behind bayesian optimization alongside a small example showing its use. This notebook was adapted from Martin Krasser&amp;rsquo;s blogpost Good introductory write-up on Bayesian optimization here Nice lecture explaining the working of Gaussian Processes here  </description>
+    </item>
+    
+    <item>
+      <title>Central limit theorem</title>
+      <link>/blog/central_limit_theorem/</link>
+      <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/central_limit_theorem/</guid>
+      <description>What? Sampling points from a distribution and plotting the frequency of the sample mean approaches a normal distribution.
+ We start with some crazy distribution that has got nothing to do with a normal distribution. Sample points from that distribution with some arbitrary sample size, following which we plot the sample mean (or sample sum) on a frequency table &amp;ndash; repeat this lot of times (tending to infinity) we end up getting a normal distribution of sample means!</description>
     </item>
     
     <item>
