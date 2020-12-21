@@ -1,13 +1,15 @@
 ---
 date: "2020-11-29"
 description: 
-pubtype:
+pubtype: --
 fact: 
-featured: false
+featured: true
 image:
 link: 
 tags:
 - Guide
+sitemap:
+  priority: 1.0
 title: Helpful links
 ---
 
@@ -15,7 +17,7 @@ List of links pertaining to eclectic areas of interest:
 
 ## Special Mentions 
 * [John Kitchin's DFT book](http://kitchingroup.cheme.cmu.edu/dft-book/dft.html)
-* [Andrew Deep Learning for Molecules and Materials](https://whitead.github.io/dmol-book/math/tensors-and-shapes.html)
+* [Andrew White's Deep Learning for Molecules and Materials Notebook](https://whitead.github.io/dmol-book/intro.html)
 * [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/)
 
 ## Linear Algebra + Stats 
@@ -28,34 +30,28 @@ List of links pertaining to eclectic areas of interest:
 * [3Blue1Brown's Calculus Series](https://www.youtube.com/watch?v=WUvTyaaNkzM&list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr&ab_channel=3Blue1Brown)
 * [Khan Academy's Multivariate Calculus](https://www.khanacademy.org/math/multivariable-calculus)
 
-## DataIsBeautiful
+## Data Science Blogs
 * [Nate Silver's 538](https://fivethirtyeight.com/)
 * [Pudding's data viz](https://pudding.cool/)
 * [Spurious Correlations](https://www.tylervigen.com/spurious-correlations)
 * [Understanding uncertaintly](https://understandinguncertainty.org/blog)
 * [Math3ma Blog](https://www.math3ma.com/blog/)
-* [John Cook](https://www.johndcook.com/blog/)
-* [Allen Downey](https://www.allendowney.com/blog/)
 
-## Python 
+## Learning Python 
 * [Automate Boring Stuff with Python](https://automatetheboringstuff.com/)
 * [Scientific programing with Python](https://scipython.com/book/)
 * [Visual Guide to Numpy](http://jalammar.github.io/visual-numpy/)
 * [Project Euler](https://projecteuler.net/)
 * [Github Repo for Projects](https://github.com/tuvtran/project-based-learning#python)
 * [Python DataScience Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/)
+* [Chris Albon's notes](https://chrisalbon.com/)
 
-## ML + datascience: 
+## ML + Datascience: 
 * [ Hands-on Machine Learning](https://github.com/ageron/handson-ml)
 * [Jakevdp Python Datascience Notbook](https://github.com/jakevdp/PythonDataScienceHandbook)
 * [Cool visual intro to ML](http://www.r2d3.us/visual-intro-to-machine-learning-part-1/)
 * [Blog entry for Deep learning crash course](https://chsasank.github.io/deep-learning-crash-course-2.html)
 * [Distill Blog](https://distill.pub)
-
-## Learning Python 
-* [Python Practice Projects](https://github.com/tuvtran/project-based-learning#python)
-* [Project Euler](https://projecteuler.net/)
-* [Chris Albon's notes](https://chrisalbon.com/)
 
 ## Cool Courses: 
 * [Harvard's CS 109](http://cs109.github.io/2015/pages/videos.html)

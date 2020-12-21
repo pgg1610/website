@@ -17,7 +17,7 @@
       <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/blog/bo/</guid>
-      <description> Notebook explaining the idea behind bayesian optimization alongside a small example showing its use. This notebook was adapted from Martin Krasser&amp;rsquo;s blogpost Good introductory write-up on Bayesian optimization here Nice lecture explaining the working of Gaussian Processes here  </description>
+      <description>Notebook explaining the idea behind bayesian optimization alongside a small example showing its use. This notebook was adapted from Martin Krasser&amp;rsquo;s blogpost Good introductory write-up on Bayesian optimization here Nice lecture explaining the working of Gaussian Processes here  Setup If f (objective function) is cheap to evaluate we can sample various points and built a potential surface however, if the f is expensive &amp;ndash; like in case of first-principles electronic structure calculations, it is important to minimize the number of f calls and number of samples drawn from this evaluation.</description>
     </item>
     
   </channel>

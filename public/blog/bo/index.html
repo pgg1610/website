@@ -121,6 +121,66 @@
 <li>Good introductory write-up on Bayesian optimization <a href="https://distill.pub/2020/bayesian-optimization/">here</a></li>
 <li>Nice lecture explaining the working of Gaussian Processes <a href="https://www.youtube.com/watch?v=92-98SYOdlY&amp;t=4827s">here</a></li>
 </ul>
+<h2 id="setup">Setup</h2>
+<p>If <code>f</code> (objective function) is cheap to evaluate we can sample various points and built a potential surface however, if the <code>f</code> is expensive &ndash; like in case of first-principles electronic structure calculations, it is important to minimize the number of <code>f</code> calls and number of samples drawn from this evaluation. In that case, if an exact functional form for <code>f</code> is not available (that is, f behaves as a “black box”), what can we do?</p>
+<p>Bayesian optimization proceeds by maintaining a probabilistic belief about f and designing a so called <strong><em>acquisition function</em></strong> to determine where to evaluate the function next. Bayesian optimization is particularly well-suited to global optimization problems where <code>f</code> is an expensive black-box function. The idea is the find &ldquo;global&rdquo; minimum with least number of steps. Incorporating prior beliefs about the underlying process and update the prior with samples draw from the model to better estimate the posterior. Model used for approximating the objective function is called the <strong><em>surrogate model</em></strong>.</p>
+<h3 id="surrogate-model">Surrogate model</h3>
+<p>A popular surrogate model applied for Bayesian optimization, although strictly not required, are Gaussian Processes (GPs). These are used to define a prior beliefs about the objective function. The GP posterior is cheap to evaluate and is used to propose points in the search space where sampling is likely to yield an improvement. Herein, we could substitute this for a ANNs or other surrogate models.</p>
+<h3 id="acquisition-functions">Acquisition functions</h3>
+<p>Used to propose sampling points in the search space. Trade-off between exploitation vs exploration. Exploitation == sampling where objective function value is high; exploration == where uncertainty is high. Both correspond to high <code>acquisition function</code> value. The goal is the maximize the acquisition value to determine next sampling point.</p>
+<p>Popular acquisition functions:</p>
+<ul>
+<li>Maximum probability of improvement</li>
+<li>Expected improvement</li>
+<li>Upper confidence bound (UCB)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> norm
+<span style="color:#75715e">#Acquisition function modeled as Expected improvement </span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">expected_improvement</span>(X, X_sample, Y_sample, gpr, xi<span style="color:#f92672">=</span><span style="color:#ae81ff">0.05</span>):
+    <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">    Computes the EI at points X based on existing samples X_sample
+</span><span style="color:#e6db74">    and Y_sample using a Gaussian process surrogate model.
+</span><span style="color:#e6db74">    
+</span><span style="color:#e6db74">    PARAMETERS:
+</span><span style="color:#e6db74">    --------------------------------------
+</span><span style="color:#e6db74">        X: Points at which EI shall be computed (m x d).
+</span><span style="color:#e6db74">        X_sample: Sample locations (n x d).
+</span><span style="color:#e6db74">        Y_sample: Sample values (n x 1).
+</span><span style="color:#e6db74">        gpr: A GaussianProcessRegressor fitted to samples.
+</span><span style="color:#e6db74">        xi: Exploitation-exploration trade-off parameter.
+</span><span style="color:#e6db74">    
+</span><span style="color:#e6db74">    RETURNS:
+</span><span style="color:#e6db74">    -------------------------------------
+</span><span style="color:#e6db74">        ei: Expected improvement at points X
+</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+    
+    mu, sigma <span style="color:#f92672">=</span> gpr<span style="color:#f92672">.</span>predict(X, return_std<span style="color:#f92672">=</span>True)
+    mu_sample <span style="color:#f92672">=</span> gpr<span style="color:#f92672">.</span>predict(X_sample)
+
+    sigma <span style="color:#f92672">=</span> sigma<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
+
+    mu_sample_opt <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>min(mu_sample) <span style="color:#75715e">#Max for maximization </span>
+
+    <span style="color:#66d9ef">with</span> np<span style="color:#f92672">.</span>errstate(divide<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;warn&#39;</span>):
+        imp <span style="color:#f92672">=</span> <span style="color:#f92672">-</span> (mu <span style="color:#f92672">-</span> mu_sample_opt <span style="color:#f92672">-</span> xi) <span style="color:#75715e">#Positive for maximization </span>
+        Z <span style="color:#f92672">=</span> imp <span style="color:#f92672">/</span> sigma
+        ei <span style="color:#f92672">=</span> imp <span style="color:#f92672">*</span> norm<span style="color:#f92672">.</span>cdf(Z) <span style="color:#f92672">+</span> sigma <span style="color:#f92672">*</span> norm<span style="color:#f92672">.</span>pdf(Z)
+        ei[sigma <span style="color:#f92672">==</span> <span style="color:#ae81ff">0.0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
+    <span style="color:#66d9ef">return</span> ei
+</code></pre></div><p><img src="/img/bo/objective_function.png" alt="objective_function"></p>
+<p>Bayesian optimization runs for few iterations. In each iteration, a row with two plots is produced.</p>
+<ul>
+<li>
+<p>The left plot shows: the noise-free objective function, the surrogate function which is the GP predicted mean value, the 95% confidence interval of the mean and the noisy samples obtained from the objective function so far.</p>
+</li>
+<li>
+<p>The right plot shows the acquisition function value, EI in this case.</p>
+</li>
+</ul>
+<p>The vertical dashed line in both plots shows the proposed sampling point for the next iteration which corresponds to the maximum of the acquisition function.</p>
+<p><img src="/img/bo/iter.png" alt="iter"></p>
+<p>Note how the two initial samples at first drive search into the direction of the local maximum on the right side but exploration allows the algorithm to escape from that local optimum and find the minimum optimum on the left side. Also note how sampling point proposals often fall within regions of high uncertainty (exploration) and are not only driven by the highest surrogate function values (exploitation).</p>
+<p><img src="/img/bo/iter15.png" alt="iter_final"></p>
 
     <p class="mt-3">
     <ul class="tags">
