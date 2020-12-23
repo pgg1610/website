@@ -1,0 +1,89 @@
+---
+date: "2020-04-26"
+description: Minimal example explaining how bayesian optimization works 
+pubtype: Jupyter Notebook
+fact: 
+featured: true
+image: /img/BO.png
+link: https://github.com/pgg1610/misc_notebooks/blob/master/Bayesian_optimisation/bayesian_optimisation.ipynb
+tags:
+- Python
+- Optimization
+
+title: Bayesian Optimization using Gaussian Processes
+---
+* Notebook explaining the idea behind bayesian optimization alongside a small example showing its use. This notebook was adapted from Martin Krasser's [blogpost](http://krasserm.github.io/2018/03/21/bayesian-optimization/)
+* Good introductory write-up on Bayesian optimization [here](https://distill.pub/2020/bayesian-optimization/)
+* Nice lecture explaining the working of Gaussian Processes [here](https://www.youtube.com/watch?v=92-98SYOdlY&t=4827s)
+
+## Setup 
+
+If `f` (objective function) is cheap to evaluate we can sample various points and built a potential surface however, if the `f` is expensive -- like in case of first-principles electronic structure calculations, it is important to minimize the number of `f` calls and number of samples drawn from this evaluation. In that case, if an exact functional form for `f` is not available (that is, f behaves as a “black box”), what can we do? 
+
+Bayesian optimization proceeds by maintaining a probabilistic belief about f and designing a so called **_acquisition function_** to determine where to evaluate the function next. Bayesian optimization is particularly well-suited to global optimization problems where `f` is an expensive black-box function. The idea is the find "global" minimum with least number of steps. Incorporating prior beliefs about the underlying process and update the prior with samples draw from the model to better estimate the posterior. Model used for approximating the objective function is called the **_surrogate model_**. 
+
+### Surrogate model 
+
+A popular surrogate model applied for Bayesian optimization, although strictly not required, are Gaussian Processes (GPs). These are used to define a prior beliefs about the objective function. The GP posterior is cheap to evaluate and is used to propose points in the search space where sampling is likely to yield an improvement. Herein, we could substitute this for a ANNs or other surrogate models. 
+
+### Acquisition functions 
+
+Used to propose sampling points in the search space. Trade-off between exploitation vs exploration. Exploitation == sampling where objective function value is high; exploration == where uncertainty is high. Both correspond to high `acquisition function` value. The goal is the maximize the acquisition value to determine next sampling point. 
+
+Popular acquisition functions: 
+
+* Maximum probability of improvement    
+* Expected improvement
+* Upper confidence bound (UCB)
+
+```python 
+from scipy.stats import norm
+#Acquisition function modeled as Expected improvement 
+def expected_improvement(X, X_sample, Y_sample, gpr, xi=0.05):
+    '''
+    Computes the EI at points X based on existing samples X_sample
+    and Y_sample using a Gaussian process surrogate model.
+    
+    PARAMETERS:
+    --------------------------------------
+        X: Points at which EI shall be computed (m x d).
+        X_sample: Sample locations (n x d).
+        Y_sample: Sample values (n x 1).
+        gpr: A GaussianProcessRegressor fitted to samples.
+        xi: Exploitation-exploration trade-off parameter.
+    
+    RETURNS:
+    -------------------------------------
+        ei: Expected improvement at points X
+    '''
+    
+    mu, sigma = gpr.predict(X, return_std=True)
+    mu_sample = gpr.predict(X_sample)
+
+    sigma = sigma.reshape(-1, 1)
+
+    mu_sample_opt = np.min(mu_sample) #Max for maximization 
+
+    with np.errstate(divide='warn'):
+        imp = - (mu - mu_sample_opt - xi) #Positive for maximization 
+        Z = imp / sigma
+        ei = imp * norm.cdf(Z) + sigma * norm.pdf(Z)
+        ei[sigma == 0.0] = 0.0
+    return ei
+```
+
+![objective_function](/img/bo/objective_function.png)
+
+Bayesian optimization runs for few iterations. In each iteration, a row with two plots is produced. 
+
+* The left plot shows: the noise-free objective function, the surrogate function which is the GP predicted mean value, the 95% confidence interval of the mean and the noisy samples obtained from the objective function so far. 
+
+* The right plot shows the acquisition function value, EI in this case. 
+
+The vertical dashed line in both plots shows the proposed sampling point for the next iteration which corresponds to the maximum of the acquisition function.
+
+![iter](/img/bo/iter.png)
+
+Note how the two initial samples at first drive search into the direction of the local maximum on the right side but exploration allows the algorithm to escape from that local optimum and find the minimum optimum on the left side. Also note how sampling point proposals often fall within regions of high uncertainty (exploration) and are not only driven by the highest surrogate function values (exploitation).
+
+![iter_final](/img/bo/iter15.png)

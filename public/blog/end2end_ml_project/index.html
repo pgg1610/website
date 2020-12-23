@@ -116,8 +116,9 @@
   <div class="my-auto">
     <h2 class="mb-0"><span class="text-primary">Property Price Prediction ML-model</span></h2>
     <p><a href="https://github.com/pgg1610/misc_notebooks/blob/master/sample_machine_learning_project/end2endML_housing.ipynb">Link to Jupyter Notebook</a></p>
-    <p>This project is adapted from Aurelien Geron&rsquo;s Hands-on Machine Learning Book <a href="https://github.com/ageron/handson-ml2">(github link)</a>. We build a regression model to predict median house values in Californian districts, given a number of features from these districts. More importantly, this project go through the basic building blocks when setting up any ML projects.</p>
-<p>Following are main steps to consider:</p>
+    <p>This project is adapted from Aurelien Geron&rsquo;s Hands-on Machine Learning Book <a href="https://github.com/ageron/handson-ml2">(github link)</a>.</p>
+<p>I build a regression model to predict median house values in Californian districts, given a number of features from these districts. More importantly, this project go through the basic building blocks when setting up any ML projects.</p>
+<h4 id="following-are-main-steps-to-consider">Following are main steps to consider:</h4>
 <ul>
 <li>Formulating the problem, defining the boundary conditions</li>
 <li>Data acquisition</li>
@@ -127,6 +128,28 @@
 <li>Select model and train it</li>
 <li>Fine-tuning the model</li>
 </ul>
+<h3 id="problem-statement">Problem statement:</h3>
+<p>Prediction of district&rsquo;s median housing price given all other metrics.</p>
+<p>A supervised learning task is where we are given &lsquo;labelled&rsquo; data for training purpose. Regression model to predict a continuous variable i.e. district median housing price. Given multiple features, this is a multi-class regression type problem. Univariate regression since a single output is estimated.</p>
+<h3 id="dataset">Dataset:</h3>
+<p><img src="/img/end2endML/data_sample.png" alt="iter"></p>
+<p>Looking at quick statistics for the data at hand:</p>
+<p><img src="/img/end2endML/describe.png" alt="iter"></p>
+<p>Describe is powerful subroutine since that allows us to check the stat summary of numerical attributes. The 25%-50%-75% entries for each column show corresponding percentiles. It indicates the value below which a given percentage of observations in a group of observations fall. For example, 25% of observation have median income below 2.56, 50% observations have median income below 3.53, and 75% observations have median income below 4.74. 25% &ndash;&gt; 1st Quartile, 50% &ndash;&gt; Median, 75% &ndash;&gt; 3rd Quartile</p>
+<h3 id="plot-dataset">Plot dataset</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing<span style="color:#f92672">.</span>plot(kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;scatter&#34;</span>, x<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;longitude&#34;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;latitude&#34;</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.4</span>,
+    s<span style="color:#f92672">=</span>housing[<span style="color:#e6db74">&#34;population&#34;</span>]<span style="color:#f92672">/</span><span style="color:#ae81ff">100</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;population&#34;</span>, figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">10</span>),
+    c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;median_house_value&#34;</span>, cmap<span style="color:#f92672">=</span>plt<span style="color:#f92672">.</span>get_cmap(<span style="color:#e6db74">&#34;jet&#34;</span>), colorbar<span style="color:#f92672">=</span>True,
+    sharex<span style="color:#f92672">=</span>False)
+plt<span style="color:#f92672">.</span>legend()
+</code></pre></div><p><img src="/img/end2endML/california_heatmap.png" alt="iter"></p>
+<p>This is more interesting! We have now plotted the data with more information. Each data-point has two additional set of info apart of frequency of occurence. First being the color of the point is the median_house_value entry (option c). The radius of the data-point is the population of that district (option s). It can be seen that the housing prices are very much related to the location. The ones closer to the bay area are more expensive but need not be densely populated.</p>
+<h4 id="looking-for-simple-correlations">Looking for simple correlations</h4>
+<p>In addition to looking at the plot of housing price, we can check for simpler corealtions. Pearson&rsquo;s correlation matrix is something which is in-built in pandas and can be directly used. It checks for <strong>linear</strong> correlation between every pair of feature provided in the data-set. It estimates the covariance of the two features and estimates whether the correlation is inverse, direct, or none.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">corr_matrix<span style="color:#f92672">=</span>housing<span style="color:#f92672">.</span>corr()
+corr_matrix<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>background_gradient(cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;coolwarm&#39;</span>)<span style="color:#f92672">.</span>set_precision(<span style="color:#ae81ff">2</span>)
+</code></pre></div><p><img src="/img/end2endML/pearson_correlation.png" alt="iter"></p>
+<p>The correlation matrix suggests the amount of correlation between a pair of variables. When close to 1 it means a strong +ve correlation whereas, -1 means an inverse correlation. Looking at the correlation between median_house_values and other variables, we can see that there&rsquo;s some correlation with median_income (0.68 &ndash; so +ve), and with the latitude (-0.14 &ndash; so an inverse relation).</p>
 
     <p class="mt-3">
     <ul class="tags">
