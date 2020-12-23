@@ -116,7 +116,64 @@
   <div class="my-auto">
     <h2 class="mb-0"><span class="text-primary">Web scraping S&amp;P 500 data</span></h2>
     <p><a href="https://github.com/pgg1610/misc_notebooks/blob/master/SP_500.ipynb">Link to Jupyter Notebook</a></p>
-    <p>Generate list of companies in  the S&amp;P500 using <code>BeautifulSoup</code>. Next, use <code>yfinance</code> (Yahoo Finance) module to extract stock information. Plot year-to-date return on certain stocks to check trends.</p>
+    <p>Generate list of companies in  the S&amp;P500 using <code>BeautifulSoup</code>. Next, use <a href="https://pypi.org/project/yfinance/"><code>yfinance</code></a> a alternative to Yahoo! Finance&rsquo;s historical data API to extract stock information. Plot year-to-date return on certain stocks to check trends.</p>
+<p>List of SP500 companies is obtained from Wikipedia:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">wiki_url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://en.wikipedia.org/wiki/List_of_S%26P_500_companies&#39;</span>
+response <span style="color:#f92672">=</span> get(wiki_url)
+html_soup <span style="color:#f92672">=</span> BeautifulSoup(response<span style="color:#f92672">.</span>text, <span style="color:#e6db74">&#39;html.parser&#39;</span>)
+tab <span style="color:#f92672">=</span> html_soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;table&#34;</span>,{<span style="color:#e6db74">&#34;class&#34;</span>:<span style="color:#e6db74">&#34;wikitable sortable&#34;</span>})
+
+column_headings <span style="color:#f92672">=</span> [entry<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip() <span style="color:#66d9ef">for</span> entry <span style="color:#f92672">in</span> tab<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#39;th&#39;</span>)]
+SP_500_dict <span style="color:#f92672">=</span> {keys:[] <span style="color:#66d9ef">for</span> keys <span style="color:#f92672">in</span> column_headings}
+</code></pre></div><p>Populate pandas dataframe with the listings:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> row_entry <span style="color:#f92672">in</span> tab<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#39;tr&#39;</span>)[<span style="color:#ae81ff">1</span>:]:
+    row_elements <span style="color:#f92672">=</span> row_entry<span style="color:#f92672">.</span>findAll(<span style="color:#e6db74">&#39;td&#39;</span>)
+    <span style="color:#66d9ef">for</span> key, _elements <span style="color:#f92672">in</span> zip(SP_500_dict<span style="color:#f92672">.</span>keys(), row_elements):
+        SP_500_dict[key]<span style="color:#f92672">.</span>append(_elements<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip())
+
+SP_500_df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(SP_500_dict, columns<span style="color:#f92672">=</span>SP_500_dict<span style="color:#f92672">.</span>keys())
+</code></pre></div><p><img src="/img/sp500/sp500_list.png" alt="iter"></p>
+<p>Plotting year-to-date (July 26th, 2020) estimate for the share prices.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> yfinance <span style="color:#f92672">as</span> yf
+
+START_DATE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-01-01&#34;</span>
+END_DATE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-07-26&#34;</span>
+
+yf_tickr <span style="color:#f92672">=</span> yf<span style="color:#f92672">.</span>Ticker(<span style="color:#e6db74">&#39;ADBE&#39;</span>)
+
+_shares_outstanding <span style="color:#f92672">=</span> yf_tickr<span style="color:#f92672">.</span>info[<span style="color:#e6db74">&#39;sharesOutstanding&#39;</span>]
+_previous_close <span style="color:#f92672">=</span> yf_tickr<span style="color:#f92672">.</span>info[<span style="color:#e6db74">&#39;previousClose&#39;</span>]
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Outstanding shares: {}&#39;</span><span style="color:#f92672">.</span>format(_shares_outstanding))
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Market Cap: {} Million USD&#39;</span><span style="color:#f92672">.</span>format((_shares_outstanding <span style="color:#f92672">*</span> _previous_close)<span style="color:#f92672">/</span><span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">6</span>))
+
+df_tckr <span style="color:#f92672">=</span> yf_tickr<span style="color:#f92672">.</span>history(start<span style="color:#f92672">=</span>START_DATE, end<span style="color:#f92672">=</span>END_DATE, actions<span style="color:#f92672">=</span>False)
+df_tckr[<span style="color:#e6db74">&#39;Market_Cap&#39;</span>] <span style="color:#f92672">=</span> df_tckr[<span style="color:#e6db74">&#39;Open&#39;</span>] <span style="color:#f92672">*</span> _shares_outstanding
+df_tckr[<span style="color:#e6db74">&#39;YTD&#39;</span>] <span style="color:#f92672">=</span> (df_tckr[<span style="color:#e6db74">&#39;Open&#39;</span>] <span style="color:#f92672">-</span> df_tckr[<span style="color:#e6db74">&#39;Open&#39;</span>][<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">/</span> df_tckr[<span style="color:#e6db74">&#39;Open&#39;</span>][<span style="color:#ae81ff">0</span>]
+</code></pre></div><p><img src="/img/sp500/tsla.png" alt="iter"></p>
+<p>Plotting this data for multiple companies.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_market_cap</span>(tickr_list, START_DATE, END_DATE):
+    
+    total_data <span style="color:#f92672">=</span> {}
+    
+    <span style="color:#66d9ef">for</span> tickr <span style="color:#f92672">in</span> tickr_list:
+        total_data[tickr] <span style="color:#f92672">=</span> {}
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Looking at: {}&#39;</span><span style="color:#f92672">.</span>format(tickr))
+        yf_tickr <span style="color:#f92672">=</span> yf<span style="color:#f92672">.</span>Ticker(tickr)
+        <span style="color:#75715e">#try:</span>
+        <span style="color:#75715e">#    _shares_outstanding = yf_tickr.info[&#39;sharesOutstanding&#39;]</span>
+        <span style="color:#75715e">#except(IndexError):</span>
+        <span style="color:#75715e">#    print(&#39;Shares outstanding not found&#39;)</span>
+        <span style="color:#75715e">#    _shares_outstanding = None</span>
+        
+        df_tckr <span style="color:#f92672">=</span> yf_tickr<span style="color:#f92672">.</span>history(start<span style="color:#f92672">=</span>START_DATE, end<span style="color:#f92672">=</span>END_DATE, actions<span style="color:#f92672">=</span>False)
+        df_tckr[<span style="color:#e6db74">&#39;YTD&#39;</span>] <span style="color:#f92672">=</span> (df_tckr[<span style="color:#e6db74">&#39;Open&#39;</span>] <span style="color:#f92672">-</span> df_tckr[<span style="color:#e6db74">&#39;Open&#39;</span>][<span style="color:#ae81ff">0</span>]) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">/</span> df_tckr[<span style="color:#e6db74">&#39;Open&#39;</span>][<span style="color:#ae81ff">0</span>]
+            
+        total_data[tickr][<span style="color:#e6db74">&#39;hist&#39;</span>] <span style="color:#f92672">=</span> df_tckr
+        <span style="color:#75715e">#total_data[tickr][&#39;shares&#39;] = _shares_outstanding</span>
+        time<span style="color:#f92672">.</span>sleep(np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">10</span>))
+        
+    <span style="color:#66d9ef">return</span> total_data
+</code></pre></div><p><img src="/img/sp500/overall.png" alt="iter"></p>
 
     <p class="mt-3">
     <ul class="tags">

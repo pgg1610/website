@@ -4,7 +4,7 @@ description: Regression model to predict median house values in Californian dist
 pubtype: Jupyter Notebook
 fact: 
 featured: true
-image: /img/end2endML/california_heatmap.png)
+image: /img/end2endML/california_heatmap.png
 link: https://github.com/pgg1610/misc_notebooks/blob/master/sample_machine_learning_project/end2endML_housing.ipynb
 tags:
 - Python

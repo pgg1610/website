@@ -4,7 +4,7 @@ description: Analyze 6000+ recipes to find relations between spices most frequen
 pubtype: Jupyter Notebook
 fact: 
 featured: true
-image: /img/food_graph/frequency_plot.png
+image: /img/food_graph/food_graphs.png
 link: https://github.com/pgg1610/misc_notebooks/blob/master/food_database/food_relations.ipynb
 tags:
 - Web scraping

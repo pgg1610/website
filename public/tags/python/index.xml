@@ -44,7 +44,9 @@
       <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/blog/sp500/</guid>
-      <description>Generate list of companies in the S&amp;amp;P500 using BeautifulSoup. Next, use yfinance (Yahoo Finance) module to extract stock information. Plot year-to-date return on certain stocks to check trends.</description>
+      <description>Generate list of companies in the S&amp;amp;P500 using BeautifulSoup. Next, use yfinance a alternative to Yahoo! Finance&amp;rsquo;s historical data API to extract stock information. Plot year-to-date return on certain stocks to check trends.
+List of SP500 companies is obtained from Wikipedia:
+wiki_url = &amp;#39;https://en.wikipedia.org/wiki/List_of_S%26P_500_companies&amp;#39; response = get(wiki_url) html_soup = BeautifulSoup(response.text, &amp;#39;html.parser&amp;#39;) tab = html_soup.find(&amp;#34;table&amp;#34;,{&amp;#34;class&amp;#34;:&amp;#34;wikitable sortable&amp;#34;}) column_headings = [entry.text.strip() for entry in tab.findAll(&amp;#39;th&amp;#39;)] SP_500_dict = {keys:[] for keys in column_headings} Populate pandas dataframe with the listings:</description>
     </item>
     
     <item>
