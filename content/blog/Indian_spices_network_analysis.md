@@ -113,7 +113,7 @@ Some pair of spices never occur together:
 
 Those who cook or know indian recipes would see that these pairs make sense and thereby validate the correlation seen from corpus of Indian recipes. 
 
-With that analysis, we can go a step further and analyze this information in form of a circular network graph. 
+With that analysis, we can go a step further and analyze this information in form of a circular network graph. Using this method of plotting, we can see the interactions between different spices. 
 
 ```python 
 nodes_data = [(i, {'count':spice_adj_freq.loc[i, i]}) for i in spice_col_name]
