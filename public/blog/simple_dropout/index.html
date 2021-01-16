@@ -116,12 +116,34 @@
   <div class="my-auto">
     <h2 class="mb-0"><span class="text-primary">Simple Dropout using PyTorch</span></h2>
     <p><a href="https://github.com/pgg1610/misc_notebooks/blob/master/Simple_dropout.ipynb">Link to Jupyter Notebook</a></p>
-    <ul>
+    <h1 id="simple-dropout-to-implement-uncertainty-estimates-bayesian-neural-networks">Simple dropout to implement uncertainty estimates: Bayesian Neural Networks</h1>
+<ul>
 <li>Adapted from Deep Learning online course notes from NYU. <a href="https://atcold.github.io/pytorch-Deep-Learning/en/week14/14-3/">Note link</a></li>
 <li><a href="https://arxiv.org/pdf/1506.02142.pdf">Paper about using Dropout as a Bayesian Approximation</a></li>
 </ul>
+<p>Another notebook which uses PyTorch dropout: <a href="https://xuwd11.github.io/Dropout_Tutorial_in_PyTorch/">Link</a></p>
+<ul>
+<li>
+<p><a href="https://pubs.acs.org/doi/abs/10.1021/acs.jcim.0c00502">Review article on application of uncertainty-quantification for small-molecule property prediction</a></p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/1910.02600">New paper on evidential deep learning</a></p>
+</li>
+</ul>
 <p>In addition to predicting a value from a model it is also important to know the confidence in that prediction. Dropout is one way of estimating this. After multiple rounds of predictions, the mean and standard deviation in the prediction can be viewed as the prediction value and the corresponding confidence in the prediction. It is important to note that this is different from the error in the prediction. The model may have error in the prediction but could be precise in that value. It is similar to the idea of accuracy vs precision.</p>
-<p>When done with dropout &ndash; the weights in the NN are scale by $\frac{1}{1-r}$ to account for dropping of the weights</p>
+<p>Type of uncertainties:
+<a href="https://arxiv.org/abs/1703.04977">Aleaotric and Epistemic uncertainty</a></p>
+<ul>
+<li>Aleatoric uncertainty captures noise inherent in the observations</li>
+<li>Epistemic uncertainty accounts for uncertainty in the model</li>
+</ul>
+<p>The ideal way to measure <code>epistemic</code> uncertainty is to train many different models, each time using a different random seed and possibly varying hyperparameters. Then use all of them for each input and see how much the predictions vary. This is very expensive to do, since it involves repeating the whole training process many times. Fortunately, we can approximate the same effect in a less expensive way: by using dropout &ndash; effectively training a huge ensemble of different models all at once. Each training sample is evaluated with a different dropout mask, corresponding to a different random subset of the connections in the full model. Usually we only perform dropout during training and use a single averaged mask for prediction. But instead, let&rsquo;s use dropout for prediction too. We can compute the output for lots of different dropout masks, then see how much the predictions vary. This turns out to give a reasonable estimate of the <strong>epistemic uncertainty in the outputs</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Training set</span>
+m <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+x <span style="color:#f92672">=</span> (torch<span style="color:#f92672">.</span>rand(m) <span style="color:#f92672">-</span> <span style="color:#ae81ff">0.5</span>) <span style="color:#f92672">*</span> <span style="color:#ae81ff">20</span> <span style="color:#75715e">#Returns a tensor filled with random numbers from a uniform distribution on the interval [0, 1)</span>
+y <span style="color:#f92672">=</span> x <span style="color:#f92672">*</span> torch<span style="color:#f92672">.</span>sin(x) 
+</code></pre></div><p><img src="/img/simple_dropout/ground_truth.png" alt="ground_state function"></p>
+<p>We define a simple feed-forward NN to learn the function.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Define a simple NN </span>
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MLP</span>(nn<span style="color:#f92672">.</span>Module):
     <span style="color:#66d9ef">def</span> __init__(self, hidden_layers<span style="color:#f92672">=</span>[<span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">20</span>], droprate<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, activation<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;relu&#39;</span>):
@@ -151,8 +173,29 @@
         
     <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
         <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>model(x)
+        
+<span style="color:#75715e"># Define the model </span>
+net <span style="color:#f92672">=</span> MLP(hidden_layers<span style="color:#f92672">=</span>[<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">80</span>], droprate<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>)<span style="color:#f92672">.</span>to(device) <span style="color:#75715e">#Move model to the GPU </span>
+<span style="color:#66d9ef">print</span>(net)
+
+<span style="color:#75715e"># Objective and optimizer </span>
+criterion <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>MSELoss()
+optimizer <span style="color:#f92672">=</span> optim<span style="color:#f92672">.</span>Adam(net<span style="color:#f92672">.</span>parameters(), lr<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>, weight_decay<span style="color:#f92672">=</span><span style="color:#ae81ff">0.00001</span>)
+
+<span style="color:#75715e"># Training loop </span>
+<span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">6000</span>):
+    x_dev <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(device)
+    y_dev <span style="color:#f92672">=</span> y<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>to(device)
+    y_hat <span style="color:#f92672">=</span> net(x_dev)
+    loss <span style="color:#f92672">=</span> criterion(y_hat, y_dev)
+    optimizer<span style="color:#f92672">.</span>zero_grad()
+    loss<span style="color:#f92672">.</span>backward()
+    optimizer<span style="color:#f92672">.</span>step()
+    <span style="color:#66d9ef">if</span> epoch <span style="color:#f92672">%</span> <span style="color:#ae81ff">500</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Epoch[{}] - Loss:{}&#39;</span><span style="color:#f92672">.</span>format(epoch, loss<span style="color:#f92672">.</span>item()))
 </code></pre></div><p>Once a NN with a dropout implemented is instantiated, the model is called multiple times to predict the output for a given input. While doing so it is important to ensure the model is in <code>train()</code> state.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict_reg</span>(model, X, T<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>):
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Function to evaluate mean and std dev </span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict_reg</span>(model, X, T<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>):
     
     model <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>train()
     Y_hat <span style="color:#f92672">=</span> list()
@@ -166,7 +209,21 @@
         Y_eval <span style="color:#f92672">=</span> model(X<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>))<span style="color:#f92672">.</span>squeeze()
 
     <span style="color:#66d9ef">return</span> Y_hat, Y_eval
-</code></pre></div><p><img src="/img/simple_dropout/final_image.png" alt="final"></p>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Prediction on the points</span>
+XX <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>linspace(<span style="color:#f92672">-</span><span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">11</span>, <span style="color:#ae81ff">1000</span>) <span style="color:#75715e">#New set of points </span>
+y_hat, y_eval <span style="color:#f92672">=</span> predict_reg(net, XX, T<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>)
+mean_y_hat <span style="color:#f92672">=</span> y_hat<span style="color:#f92672">.</span>mean(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+std_y_hat <span style="color:#f92672">=</span> y_hat<span style="color:#f92672">.</span>std(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Plotting </span>
+<span style="color:#75715e"># Visualise mean and mean ± std -&gt; confidence range</span>
+fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>, figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">10</span>))
+ax<span style="color:#f92672">.</span>plot(XX<span style="color:#f92672">.</span>numpy(), mean_y_hat<span style="color:#f92672">.</span>numpy(), <span style="color:#e6db74">&#39;C1&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;prediction&#39;</span>)
+ax<span style="color:#f92672">.</span>fill_between(XX<span style="color:#f92672">.</span>numpy(), (mean_y_hat <span style="color:#f92672">+</span> std_y_hat)<span style="color:#f92672">.</span>numpy(), (mean_y_hat <span style="color:#f92672">-</span> std_y_hat)<span style="color:#f92672">.</span>numpy(), color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;C2&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;confidence&#39;</span>)
+ax<span style="color:#f92672">.</span>plot(x<span style="color:#f92672">.</span>numpy(), y<span style="color:#f92672">.</span>numpy(), <span style="color:#e6db74">&#39;oC0&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ground truth&#39;</span>)
+ax<span style="color:#f92672">.</span>plot(XX<span style="color:#f92672">.</span>numpy(), (XX <span style="color:#f92672">*</span> torch<span style="color:#f92672">.</span>sin(XX))<span style="color:#f92672">.</span>numpy(), <span style="color:#e6db74">&#39;k&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;base function&#39;</span>)
+ax<span style="color:#f92672">.</span>axis(<span style="color:#e6db74">&#39;equal&#39;</span>)
+plt<span style="color:#f92672">.</span>legend()
+</code></pre></div><p><img src="/img/simple_dropout/final_image_mod.png" alt="final"></p>
 
     <p class="mt-3">
     <ul class="tags">

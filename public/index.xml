@@ -36,7 +36,10 @@ Water-Gas Shift reaction (WGSR) is one such reaction which is expected to show s
       <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>/blog/simple_dropout/</guid>
-      <description>Adapted from Deep Learning online course notes from NYU. Note link Paper about using Dropout as a Bayesian Approximation  In addition to predicting a value from a model it is also important to know the confidence in that prediction. Dropout is one way of estimating this. After multiple rounds of predictions, the mean and standard deviation in the prediction can be viewed as the prediction value and the corresponding confidence in the prediction.</description>
+      <description>Simple dropout to implement uncertainty estimates: Bayesian Neural Networks  Adapted from Deep Learning online course notes from NYU. Note link Paper about using Dropout as a Bayesian Approximation  Another notebook which uses PyTorch dropout: Link
+  Review article on application of uncertainty-quantification for small-molecule property prediction
+  New paper on evidential deep learning
+  In addition to predicting a value from a model it is also important to know the confidence in that prediction.</description>
     </item>
     
     <item>
