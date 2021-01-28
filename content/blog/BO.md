@@ -4,11 +4,12 @@ description: Minimal example explaining how bayesian optimization works
 pubtype: Jupyter Notebook
 fact: 
 featured: true
-image: /img/BO.png
-link: https://github.com/pgg1610/misc_notebooks/blob/master/Bayesian_optimisation/bayesian_optimisation.ipynb
+image: /img/bo/BO_New/test_function.png
+link: https://github.com/pgg1610/misc_notebooks/blob/master/Bayesian_optimisation/modular/demo.ipynb
 tags:
 - Python
 - Optimization
+- Bayesian Stats
 
 title: Bayesian Optimization using Gaussian Processes
 ---
