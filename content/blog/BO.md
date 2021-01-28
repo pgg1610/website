@@ -36,40 +36,113 @@ Popular acquisition functions:
 * Expected improvement
 * Lower/Upper confidence bound (UCB)
 
-```python 
-from scipy.stats import norm
-#Acquisition function modeled as Expected improvement 
-def expected_improvement(X, X_sample, Y_sample, gpr, xi=0.05):
-    '''
-    Computes the EI at points X based on existing samples X_sample
-    and Y_sample using a Gaussian process surrogate model.
-    
-    PARAMETERS:
-    --------------------------------------
-        X: Points at which EI shall be computed (m x d).
-        X_sample: Sample locations (n x d).
-        Y_sample: Sample values (n x 1).
-        gpr: A GaussianProcessRegressor fitted to samples.
-        xi: Exploitation-exploration trade-off parameter.
-    
-    RETURNS:
-    -------------------------------------
-        ei: Expected improvement at points X
-    '''
-    
-    mu, sigma = gpr.predict(X, return_std=True)
-    mu_sample = gpr.predict(X_sample)
+*1. Expected Improvement*
 
-    sigma = sigma.reshape(-1, 1)
+```python
+def EI(X_new, gpr, delta, noisy, minimize_objective):
+    """
+    Compute the expected improvement at points X_new, from a Gaussian
+    process surrogate model fit to observed data (X_sample, Y_sample).
+            
+    Arguments
+    ---------
+    X_new : array_like; shape (num_new_pts, input_dimension)
+    Locations at which to compute expected improvement.
+                
+    gpr : GaussianProcessRegressor
+    Regressor object, pre-fit to the sample data via the command
+    gpr.fit(X_sample, Y_sample).
+                
+    delta : float
+    Trade-off parameter for exploration vs. exploitation. Must be
+    a non-negative value. A value of zero corresponds to pure ex-
+    ploitation, with more exploration at larger values of delta.
+                
+    noisy : bool
+    If True, assumes a noisy model and predicts the expected
+    outputs at X_sample, rather than using Y_sample.
+                
+    minimize_objective : bool
+    Designates whether the objective function is to be minimized
+    or maximized. By default, minimization is assumed. In either
+    case, the expected improvement is defined such that its value            
+    should be maximized.
+            
+    Returns
+    -------
+    ei : np.ndarray; shape (num_points,)
+    The expected improvement at each of the points in X_new.
+    """
+    if delta < 0.0:
+        raise ValueError("Exploration parameter must be non-negative.")
 
-    mu_sample_opt = np.min(mu_sample) #Max for maximization 
+    if minimize_objective:
+        best = np.min
+        sign = -1.0
+    else:
+        best = np.max
+        sign = 1.0
+            
+    (mu, sigma) = gpr.predict(X_new, return_std = True)
+    
+    if (mu.ndim > 1 and mu.shape[1] > 1) or mu.ndim > 2:
+        raise RuntimeError("Invalid shape for predicted "
+                                   "mean: %s" % (mu.shape,))
+    else:
+        mu = mu.flatten()
 
-    with np.errstate(divide='warn'):
-        imp = - (mu - mu_sample_opt - xi) #Positive for maximization 
-        Z = imp / sigma
-        ei = imp * norm.cdf(Z) + sigma * norm.pdf(Z)
-        ei[sigma == 0.0] = 0.0
-    return ei
+    sigma = np.maximum(1e-15, sigma.flatten())
+    # Bump small variances to prevent divide-by-zero.
+            
+    if noisy:
+        mu_sample = gpr.predict(gpr.X_train_)
+        best_y = best(mu_sample)
+    else:
+        best_y = best(gpr.y_train_)
+            
+    improvement = sign*(mu - best_y + delta)
+    Z = improvement/sigma
+    return improvement*stats.norm.cdf(Z) + sigma*stats.norm.pdf(Z)
+```
+
+*2. Lower Confidence Bound*
+
+```python
+def LCB(X_new, gpr, sigma):
+    """
+    Compute the lower confidence bound at points X_new, from a Gaussian
+    process surrogate model fit to observed data (X_sample, Y_sample).
+            
+    Arguments
+    ---------
+    X_new : array_like; shape (num_new_pts, input_dimension)
+        Locations at which to compute confidence bound.
+                
+    gpr : GaussianProcessRegressor
+        Regressor object, pre-fit to the sample data via the command
+        gpr.fit(X_sample, Y_sample).
+                
+    sigma : float
+        Trade-off parameter for exploration vs. exploitation. Must be
+        a non-negative value. A value of zero corresponds to pure exploitation, with more                   exploration at larger values of sigma.
+            
+    Returns
+    -------
+    lcb : np.ndarray; shape (num_points,)
+    The lower confidence bound at each of the points in X_new.
+    """
+    if sigma < 0.0:
+        raise ValueError("Exploration parameter must be non-negative.")
+            
+    (mean, std_dev) = gpr.predict(X_new, return_std = True)
+    
+    if (mean.ndim > 1 and mean.shape[1] > 1) or mean.ndim > 2:
+        raise RuntimeError("Invalid shape for predicted "
+                            "mean: %s" % (mean.shape,))
+    else:
+        mean = mean.flatten()
+            
+    return mean - sigma*std_dev
 ```
 
 ### Objective function
@@ -106,9 +179,8 @@ Bayesian optimization runs for few iterations.
 
 For the inital points and the function value a GPR model as implemented in the `sklearn.gaussian_process.GaussianProcessRegressor` module is used. The prediction from the GPR is then used to optimize the acquisition function -- Expected Improvement Criterion or Lower Confidence Bound. 
 
-* Fit a surrogate function on initial points 
+#### Running a few more iterations: 
 
-Running a few more iterations: 
 ![iter_final](/img/bo/BO_New/final_iterations.png)
 
 In total the noisy estimation of the ground-truth is conducted on 30 additional points. It is evident from the plot that most of those points are near the x = (4,6) since that is the minimum value region for the function.  
