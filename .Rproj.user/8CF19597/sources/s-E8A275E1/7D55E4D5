@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1612724592746.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7D55E4D5",
+    "lastKnownWriteTime" : 1612726853,
+    "last_content_update" : 1612726853563,
+    "path" : "~/Documents/Personal/new_website/content/blog/graph_nn.md",
+    "project_path" : "content/blog/graph_nn.md",
+    "properties" : {
+        "cursorPosition" : "212,9",
+        "scrollLine" : "230"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "markdown"
+}

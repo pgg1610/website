@@ -6,8 +6,8 @@
   <title>Pushkar Ghanekar | Simple Graph Neural Network</title>
   <meta property="og:title" content="Pushkar Ghanekar | Simple Graph Neural Network" />
   <meta property="og:image" content="/img/main_image.jpg" />
-  <meta name="description" content="Simple example of graph neural network">
-  <meta property="og:description" content="Simple example of graph neural network" />
+  <meta name="description" content="Simple example of applying graph neural networks for node classification">
+  <meta property="og:description" content="Simple example of applying graph neural networks for node classification" />
   <meta name="author" content="Pushkar Ghanekar">
   
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -115,29 +115,44 @@
 <section class="resume-section p-3 p-lg-5 d-flex d-column content">
   <div class="my-auto">
     <h2 class="mb-0"><span class="text-primary">Simple Graph Neural Network</span></h2>
-    <p><a href="https://github.com/pgg1610/misc_notebooks/blob/master/Bayesian_optimisation/modular/demo.ipynb">Link to Jupyter Notebook</a></p>
-    <p>Simple example to illustrate the utility of graph neural networks.</p>
-<p><strong>Task:</strong> Generating embedding for a graph dataset using a Graph Convolution Neural Network (GCN) on Zachary&rsquo;s Karate Club Network. Categorize the members of the club</p>
+    <p><a href="https://github.com/pgg1610/misc_notebooks/blob/master/graphs/GCN_basics_w_pytorch_geometric.ipynb">Link to Jupyter Notebook</a></p>
+    <p>Simple example to illustrate the utility and working of graph neural networks.</p>
+<p>A natural way to represent information in a structured form is as a graph. A graph is a data structure describing a collection of entities, represented as nodes, and their pairwise relationships, represented as edges. Think of it as a mathematical abstraction to present relational data.</p>
+<p>Graphs are everywhere: social networks, the world wide web, street maps, knowledge bases used in search engines, and even chemical molecules are frequently represented as a set of entities and relations between them.</p>
+<p>Machine learning deals with the question of how we can build systems and design algorithms that learn from data and experience (e.g., by interacting with an environment), which is in contrast to the traditional approach in science where systems are explicitly programmed to follow a precisely outlined sequence of instructions. The problem of learning is commonly approached by fitting a model to data with the goal that this learned model will generalize to new data or experiences.</p>
+<p>Furthermore, Graph network learning provides a promising combination of two ideas:</p>
+<p>(1) having strong relational inductive bias for a data structure which is amenable for graph representation</p>
+<p>(2) find hidden features/reprenstation that can be &lsquo;learned&rsquo; with more data.</p>
+<p>This idea is explored in futher details in this fairly exhaustive <a href="https://arxiv.org/abs/1806.01261">review of graph networks</a></p>
+<hr>
+<p>In this post we will look at a simple case of using Graph Neural Networks to aid labeling and separating nodes in the graph structured data.</p>
+<p><strong>Task:</strong> Generating embedding for a graph dataset using a Graph Convolution Neural Network (GCN) on Zachary&rsquo;s Karate Club Network.</p>
 <ul>
-<li>Data file from: <a href="http://vlado.fmf.uni-lj.si/pub/networks/data/Ucinet/UciData.htm">Zachary W. (1977). An information flow model for conflict and fission in small groups. Journal of Anthropological Research, 33, 452-473</a></li>
+<li>Dataset: <a href="http://vlado.fmf.uni-lj.si/pub/networks/data/Ucinet/UciData.htm">Zachary W. (1977). An information flow model for conflict and fission in small groups. Journal of Anthropological Research, 33, 452-473</a></li>
 </ul>
-<p>This is a classic dataset to look at relationships between users and its final effect on the decision. The dataset describes the social interaction of 34 members and the communities that rise from it. The new version of the data categorizes the nodes (each member) in 4 clubs. These clubs are emerged from the connections each members has with others in the &lsquo;club&rsquo;.</p>
-<h3 id="how-is-this-useful">How is this useful?</h3>
-<ul>
-<li>Calculate embedding to compress the graph dataset into 2 dimensions</li>
-<li>Can we predict communities of club members based on their vicinity with other members</li>
-</ul>
+<p>The dataset describes the social interaction of 34 members and the communities that rise from it, 4 in this case. Each members of the club is defined as a node. Each node is connected to other members in the club. This connection would determine the final grouping of the community in 4 separate labels.</p>
+<h3 id="how-is-gnn-useful-here">How is GNN useful here?</h3>
+<p>Consider a situation where: We knew how every one is connected to each other in the club. However we only know the final label of only 4 members in the club. That means, out of 34 members we know only 4 members&rsquo; final label. Can we use the node connections and the GCN idea to predict and cluster other members of the group? In addition currently the data is structured in a tuple of (node, edge connections) can we use graph neural network to estimate lower dimensional embedding to describe each node?</p>
 <h2 id="setup">Setup</h2>
 <p>Karate Club Dataset:</p>
 <p>======================</p>
 <p>Number of graphs: 1</p>
 <p>Number of features: 34</p>
 <p>Number of classes: 4</p>
-<p><img src="/img/Simple_GCN/springlayout.png" alt="spring_layout"></p>
-<p>Each node in the graph is a person. Every person has an associated number (index) and the club they would eventually join. In this form of visualization - node 0 and node 33 are Mr. Hi and Officer respectively. Besides that, each node has an associated edges with other nodes in the network based on connections (how exactly are those determined is not clear at first). Now having that connection we can construct an adjacency matrix. The environment of each node can be used to predict the final community the user would end up in.</p>
-<p>We can re-express this problem as given the nodes and the connections which club would each node join. We can see if the GCN network can predict the targets properly or rather if the targets can be used to find low dimensional embeddings for the graph objects such that each node is expressed in 2D.</p>
-<p><img src="/img/Simple_GCN/barplot_classes.png" alt="barplot"></p>
-<p>To describe each members in the network a one-hot encoding is used where the entry corresponding to the index of the node is 1 and everything else is 0. Sorting these nodes based on index we get a identity matrix (34, 34)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> torch_geometric.utils <span style="color:#f92672">import</span> to_networkx
+<span style="color:#f92672">from</span> torch_geometric.datasets <span style="color:#f92672">import</span> KarateClub
+
+dataset <span style="color:#f92672">=</span> KarateClub()
+G <span style="color:#f92672">=</span> to_networkx(dataset[<span style="color:#ae81ff">0</span>], to_undirected<span style="color:#f92672">=</span>True)
+fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">10</span>))
+
+<span style="color:#75715e">#Plot the dataset using Networkx</span>
+nx<span style="color:#f92672">.</span>draw_networkx(G, pos<span style="color:#f92672">=</span>nx<span style="color:#f92672">.</span>spring_layout(G, seed<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>), node_size<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span><span style="color:#f92672">**</span><span style="color:#ae81ff">3</span>, with_labels<span style="color:#f92672">=</span>True, node_color<span style="color:#f92672">=</span>data<span style="color:#f92672">.</span>y, cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Set2&#34;</span>, ax<span style="color:#f92672">=</span>ax)
+</code></pre></div><p><img src="/img/Simple_GCN/springlayout.png" alt="spring_layout"></p>
+<p>Like introduced in the previous section: Each node in the graph is a person. Every person has an associated number (index) and the community or club they would eventually join. There are 4 clubs in total. Each node has an associated edges with other nodes in the network based on connections. Now having that connection we can construct an adjacency matrix. The environment of each node can be used to predict the final community the user would end up in.</p>
+<p>We can re-express this problem as given the nodes and the connections which club would each node join. We can see if the GCN network can predict the targets properly, and if the targets can be used to find low dimensional representation for the graph.</p>
+<p>To describe each members in the network a one-hot encoding is used where the entry corresponding to the index of the node is 1 and everything else is 0. Sorting these nodes based on index we get a identity matrix (34, 34). More elaborate schemes can be thought of to describe the node entries. Like in case of molecule property prediction each atom which would be a node can be expressed as combination of chemical properties.</p>
+<p><strong>Node features used to describe the 34 members:</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">tensor([[1., 0., 0.,  ..., 0., 0., 0.],
         [0., 1., 0.,  ..., 0., 0., 0.],
         [0., 0., 1.,  ..., 0., 0., 0.],
@@ -146,6 +161,7 @@
         [0., 0., 0.,  ..., 0., 1., 0.],
         [0., 0., 0.,  ..., 0., 0., 1.]])
 </code></pre></div><p>Next, every node in the graph is attached to other nodes. This information is stored in adjacency matrix. Self-connections are by default labelled 0. Every row of the adjacency matrix shows node connections</p>
+<p><strong>Node ajcency matrix used to describe the connections of 34 nodes:</strong></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">tensor([[0., 1., 1.,  ..., 1., 0., 0.],
         [1., 0., 1.,  ..., 0., 0., 0.],
         [1., 1., 0.,  ..., 0., 1., 0.],
@@ -153,12 +169,17 @@
         [1., 0., 0.,  ..., 0., 1., 1.],
         [0., 0., 1.,  ..., 1., 0., 1.],
         [0., 0., 0.,  ..., 1., 1., 0.]])
-</code></pre></div><p>For example: as shown figure at the top if we look at node (16) it is connected to node (5,6) only. Hence in the adjacency matrix those index are 1 other that all other entries are 0</p>
+</code></pre></div><p>For example: as shown figure at the top if we look at node (16) it is connected to node (5,6). Hence in the adjacency matrix the entries belonging to node (16) are index (5,6) are 1, other that all other entries are 0</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">np<span style="color:#f92672">.</span>where( Karate_adjacency[<span style="color:#ae81ff">16</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> )[<span style="color:#ae81ff">0</span>]
 <span style="color:#f92672">&gt;&gt;</span> array([<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>])
-</code></pre></div><p><strong>Utility of graph neural network:</strong></p>
-<p>In this example we test the application of graph neural network to cluster/identify communities in the graph given information about the connections of the members and data of only 4 members&rsquo; community choice. Given the 4 datapoints our GNN would predict and subsequently cluster the other members of the network</p>
-<p><em>1. Tipf&rsquo;s Graph Convolution Implementation</em></p>
+</code></pre></div><blockquote>
+<p>Besides storing whole adjacency matrix information where many entries would be 0 and not important, sometimes edge connection information is stored in a <code>coordinate format</code>. In this format the edge-connections are described in tuples and only non-zero entries are populated. This way the representation is sparse and not memory intensive.</p>
+</blockquote>
+<hr>
+<h2 id="graph-neural-network-implementation">Graph neural network implementation</h2>
+<p>Given the graph, node features, and the node connections with other nodes we can contruct the graph convolution operation to use the geometric information and predict properties of the graph and the nodes.</p>
+<p><strong>1. Tipf&rsquo;s Graph Convolution Implementation</strong></p>
+<p>Basic implementation of GCN used when making the neural network.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GCNConv</span>(nn<span style="color:#f92672">.</span>Module):
     <span style="color:#66d9ef">def</span> __init__(self, A, input_dims, output_dims):
         super(GCNConv, self)<span style="color:#f92672">.</span>__init__()
@@ -189,7 +210,8 @@
         out <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tanh(torch<span style="color:#f92672">.</span>mm( torch<span style="color:#f92672">.</span>mm(self<span style="color:#f92672">.</span>A_hat, X), self<span style="color:#f92672">.</span>W ))
         
         <span style="color:#66d9ef">return</span> out
-</code></pre></div><p>This module is used when making the neural network modeling</p>
+</code></pre></div><p>Building the total neural network model:</p>
+<p>The model consists of 3 GCN parts which you can think of going upto 3 nearest neighbors to account for the local information. Finally the updated nodes features post each convolution is fed in to a fully-connected neural network where the output is one of the 4 classes.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Net</span>(torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Module):
     <span style="color:#66d9ef">def</span> __init__(self, A, nfeat, nhid, c):
         super(Net, self)<span style="color:#f92672">.</span>__init__()
@@ -208,21 +230,24 @@
 </code></pre></div><h3 id="training-the-model">Training the model</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
     e, out <span style="color:#f92672">=</span> simple_GCN(node_features)
-    optimizer<span style="color:#f92672">.</span>zero_grad()
-    loss<span style="color:#f92672">=</span>criterion(out[data<span style="color:#f92672">.</span>train_mask], data<span style="color:#f92672">.</span>y[data<span style="color:#f92672">.</span>train_mask])
-    <span style="color:#75715e">#loss=criterion(out, data.y)</span>
-    loss<span style="color:#f92672">.</span>backward()
-    optimizer<span style="color:#f92672">.</span>step()
+    optimizer<span style="color:#f92672">.</span>zero_grad() <span style="color:#75715e">#reset optimizer cache </span>
+    loss<span style="color:#f92672">=</span>criterion(out[data<span style="color:#f92672">.</span>train_mask], data<span style="color:#f92672">.</span>y[data<span style="color:#f92672">.</span>train_mask]) <span style="color:#75715e">#estimate loss on ONLY 4 nodes -- mask to identify the nodes </span>
+    loss<span style="color:#f92672">.</span>backward() <span style="color:#75715e">#initiate back-prop </span>
+    optimizer<span style="color:#f92672">.</span>step() <span style="color:#75715e">#update the NN weights </span>
     <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">100</span><span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>:
         <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Step: {} Cross Entropy Loss = {}&#34;</span><span style="color:#f92672">.</span>format(i, loss<span style="color:#f92672">.</span>item()))
         output_, _ <span style="color:#f92672">=</span> simple_GCN(node_features)
         visualize_graph(data, output_)
-</code></pre></div><p>First forward-pass result:</p>
+</code></pre></div><p><strong>First forward-pass result:</strong></p>
+<p>At first visualizing the output there is not clear distinction in the nodes. The coloring is done as the ground truth labels.</p>
 <p><img src="/img/Simple_GCN/simple/first.png" alt="first_simple"></p>
-<p>Final optimized weights prediction:</p>
+<p><strong>Visualizing post-GNN training:</strong></p>
+<p>Once the weight in the GCN defined above are trained on the node connections and node label and ONLY 4 nodes, the clustering of all nodes in 4 groups becomes apparent. The Class 2 which is the light blue group is the most distinct and it is also the most well separated of the group in the original represtnation too. There is some overlap in the Class 1 3 4 which is captured in the low dimensional as well. However given information of final label of only 4 nodes the GCN does a nice job of clustering all the nodes in their respective 4 clusters.</p>
 <p><img src="/img/Simple_GCN/simple/final_output.png" alt="final_simple"></p>
-<p><em>2. PyTorch Geometric Implementation</em></p>
+<hr>
+<p><strong>2. PyTorch Geometric Implementation</strong></p>
 <p>This part is adapted from PyTorch Geometric&rsquo;s tutorial page. <a href="https://colab.research.google.com/drive/1h3-vJGRVloF5zStxL5I0rSy4ZUPNsjy8?usp=sharing#scrollTo=7cjjyFVnpKB0">Link</a></p>
+<p>In this case we use the <code>GCN</code> module built in the <code>PyTorch Geometric</code> package.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> torch_geometric.nn <span style="color:#f92672">import</span> GCNConv
 <span style="color:#f92672">from</span> torch_geometric.utils <span style="color:#f92672">import</span> add_self_loops, degree
 
@@ -267,7 +292,7 @@ optimizer <span style="color:#f92672">=</span> torch<span style="color:#f92672">
         visualize_graph(data, h)
 </code></pre></div><p>First forward-pass result:</p>
 <p><img src="/img/Simple_GCN/pyg_gcn/first.png" alt="pyg_first"></p>
-<p>Final optimized weights prediction:</p>
+<p><strong>Visualizing post-GNN training:</strong></p>
 <p><img src="/img/Simple_GCN/pyg_gcn/final_output.png" alt="pyg_final"></p>
 
     <p class="mt-3">

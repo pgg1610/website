@@ -36,9 +36,9 @@ Water-Gas Shift reaction (WGSR) is one such reaction which is expected to show s
       <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>/blog/graph_nn/</guid>
-      <description>Simple example to illustrate the utility of graph neural networks.
-Task: Generating embedding for a graph dataset using a Graph Convolution Neural Network (GCN) on Zachary&amp;rsquo;s Karate Club Network. Categorize the members of the club
- Data file from: Zachary W. (1977). An information flow model for conflict and fission in small groups. Journal of Anthropological Research, 33, 452-473  This is a classic dataset to look at relationships between users and its final effect on the decision.</description>
+      <description>Simple example to illustrate the utility and working of graph neural networks.
+A natural way to represent information in a structured form is as a graph. A graph is a data structure describing a collection of entities, represented as nodes, and their pairwise relationships, represented as edges. Think of it as a mathematical abstraction to present relational data.
+Graphs are everywhere: social networks, the world wide web, street maps, knowledge bases used in search engines, and even chemical molecules are frequently represented as a set of entities and relations between them.</description>
     </item>
     
     <item>
