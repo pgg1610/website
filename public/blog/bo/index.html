@@ -115,7 +115,7 @@
 <section class="resume-section p-3 p-lg-5 d-flex d-column content">
   <div class="my-auto">
     <h2 class="mb-0"><span class="text-primary">Bayesian Optimization using Gaussian Processes</span></h2>
-    <p><a href="https://github.com/pgg1610/misc_notebooks/blob/master/Bayesian_optimisation/bayesian_optimisation.ipynb">Link to Jupyter Notebook</a></p>
+    <p><a href="https://github.com/pgg1610/misc_notebooks/blob/master/Bayesian_optimisation/modular/demo.ipynb">Link to Jupyter Notebook</a></p>
     <ul>
 <li>Notebook explaining the idea behind bayesian optimization alongside a small example showing its use. This notebook was adapted from Martin Krasser&rsquo;s <a href="http://krasserm.github.io/2018/03/21/bayesian-optimization/">blogpost</a></li>
 <li>Good introductory write-up on Bayesian optimization <a href="https://distill.pub/2020/bayesian-optimization/">here</a></li>
@@ -132,55 +132,133 @@
 <ul>
 <li>Maximum probability of improvement</li>
 <li>Expected improvement</li>
-<li>Upper confidence bound (UCB)</li>
+<li>Lower/Upper confidence bound (UCB)</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> norm
-<span style="color:#75715e">#Acquisition function modeled as Expected improvement </span>
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">expected_improvement</span>(X, X_sample, Y_sample, gpr, xi<span style="color:#f92672">=</span><span style="color:#ae81ff">0.05</span>):
-    <span style="color:#e6db74">&#39;&#39;&#39;
-</span><span style="color:#e6db74">    Computes the EI at points X based on existing samples X_sample
-</span><span style="color:#e6db74">    and Y_sample using a Gaussian process surrogate model.
-</span><span style="color:#e6db74">    
-</span><span style="color:#e6db74">    PARAMETERS:
-</span><span style="color:#e6db74">    --------------------------------------
-</span><span style="color:#e6db74">        X: Points at which EI shall be computed (m x d).
-</span><span style="color:#e6db74">        X_sample: Sample locations (n x d).
-</span><span style="color:#e6db74">        Y_sample: Sample values (n x 1).
-</span><span style="color:#e6db74">        gpr: A GaussianProcessRegressor fitted to samples.
-</span><span style="color:#e6db74">        xi: Exploitation-exploration trade-off parameter.
-</span><span style="color:#e6db74">    
-</span><span style="color:#e6db74">    RETURNS:
-</span><span style="color:#e6db74">    -------------------------------------
-</span><span style="color:#e6db74">        ei: Expected improvement at points X
-</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+<p><em>1. Expected Improvement</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">EI</span>(X_new, gpr, delta, noisy, minimize_objective):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Compute the expected improvement at points X_new, from a Gaussian
+</span><span style="color:#e6db74">    process surrogate model fit to observed data (X_sample, Y_sample).
+</span><span style="color:#e6db74">            
+</span><span style="color:#e6db74">    Arguments
+</span><span style="color:#e6db74">    ---------
+</span><span style="color:#e6db74">    X_new : array_like; shape (num_new_pts, input_dimension)
+</span><span style="color:#e6db74">    Locations at which to compute expected improvement.
+</span><span style="color:#e6db74">                
+</span><span style="color:#e6db74">    gpr : GaussianProcessRegressor
+</span><span style="color:#e6db74">    Regressor object, pre-fit to the sample data via the command
+</span><span style="color:#e6db74">    gpr.fit(X_sample, Y_sample).
+</span><span style="color:#e6db74">                
+</span><span style="color:#e6db74">    delta : float
+</span><span style="color:#e6db74">    Trade-off parameter for exploration vs. exploitation. Must be
+</span><span style="color:#e6db74">    a non-negative value. A value of zero corresponds to pure ex-
+</span><span style="color:#e6db74">    ploitation, with more exploration at larger values of delta.
+</span><span style="color:#e6db74">                
+</span><span style="color:#e6db74">    noisy : bool
+</span><span style="color:#e6db74">    If True, assumes a noisy model and predicts the expected
+</span><span style="color:#e6db74">    outputs at X_sample, rather than using Y_sample.
+</span><span style="color:#e6db74">                
+</span><span style="color:#e6db74">    minimize_objective : bool
+</span><span style="color:#e6db74">    Designates whether the objective function is to be minimized
+</span><span style="color:#e6db74">    or maximized. By default, minimization is assumed. In either
+</span><span style="color:#e6db74">    case, the expected improvement is defined such that its value            
+</span><span style="color:#e6db74">    should be maximized.
+</span><span style="color:#e6db74">            
+</span><span style="color:#e6db74">    Returns
+</span><span style="color:#e6db74">    -------
+</span><span style="color:#e6db74">    ei : np.ndarray; shape (num_points,)
+</span><span style="color:#e6db74">    The expected improvement at each of the points in X_new.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">if</span> delta <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.0</span>:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Exploration parameter must be non-negative.&#34;</span>)
+
+    <span style="color:#66d9ef">if</span> minimize_objective:
+        best <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>min
+        sign <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span>
+    <span style="color:#66d9ef">else</span>:
+        best <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>max
+        sign <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>
+            
+    (mu, sigma) <span style="color:#f92672">=</span> gpr<span style="color:#f92672">.</span>predict(X_new, return_std <span style="color:#f92672">=</span> True)
     
-    mu, sigma <span style="color:#f92672">=</span> gpr<span style="color:#f92672">.</span>predict(X, return_std<span style="color:#f92672">=</span>True)
-    mu_sample <span style="color:#f92672">=</span> gpr<span style="color:#f92672">.</span>predict(X_sample)
+    <span style="color:#66d9ef">if</span> (mu<span style="color:#f92672">.</span>ndim <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">and</span> mu<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">or</span> mu<span style="color:#f92672">.</span>ndim <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">RuntimeError</span>(<span style="color:#e6db74">&#34;Invalid shape for predicted &#34;</span>
+                                   <span style="color:#e6db74">&#34;mean: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (mu<span style="color:#f92672">.</span>shape,))
+    <span style="color:#66d9ef">else</span>:
+        mu <span style="color:#f92672">=</span> mu<span style="color:#f92672">.</span>flatten()
 
-    sigma <span style="color:#f92672">=</span> sigma<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)
-
-    mu_sample_opt <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>min(mu_sample) <span style="color:#75715e">#Max for maximization </span>
-
-    <span style="color:#66d9ef">with</span> np<span style="color:#f92672">.</span>errstate(divide<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;warn&#39;</span>):
-        imp <span style="color:#f92672">=</span> <span style="color:#f92672">-</span> (mu <span style="color:#f92672">-</span> mu_sample_opt <span style="color:#f92672">-</span> xi) <span style="color:#75715e">#Positive for maximization </span>
-        Z <span style="color:#f92672">=</span> imp <span style="color:#f92672">/</span> sigma
-        ei <span style="color:#f92672">=</span> imp <span style="color:#f92672">*</span> norm<span style="color:#f92672">.</span>cdf(Z) <span style="color:#f92672">+</span> sigma <span style="color:#f92672">*</span> norm<span style="color:#f92672">.</span>pdf(Z)
-        ei[sigma <span style="color:#f92672">==</span> <span style="color:#ae81ff">0.0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
-    <span style="color:#66d9ef">return</span> ei
-</code></pre></div><p><img src="/img/bo/objective_function.png" alt="objective_function"></p>
-<p>Bayesian optimization runs for few iterations. In each iteration, a row with two plots is produced.</p>
+    sigma <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>maximum(<span style="color:#ae81ff">1e-15</span>, sigma<span style="color:#f92672">.</span>flatten())
+    <span style="color:#75715e"># Bump small variances to prevent divide-by-zero.</span>
+            
+    <span style="color:#66d9ef">if</span> noisy:
+        mu_sample <span style="color:#f92672">=</span> gpr<span style="color:#f92672">.</span>predict(gpr<span style="color:#f92672">.</span>X_train_)
+        best_y <span style="color:#f92672">=</span> best(mu_sample)
+    <span style="color:#66d9ef">else</span>:
+        best_y <span style="color:#f92672">=</span> best(gpr<span style="color:#f92672">.</span>y_train_)
+            
+    improvement <span style="color:#f92672">=</span> sign<span style="color:#f92672">*</span>(mu <span style="color:#f92672">-</span> best_y <span style="color:#f92672">+</span> delta)
+    Z <span style="color:#f92672">=</span> improvement<span style="color:#f92672">/</span>sigma
+    <span style="color:#66d9ef">return</span> improvement<span style="color:#f92672">*</span>stats<span style="color:#f92672">.</span>norm<span style="color:#f92672">.</span>cdf(Z) <span style="color:#f92672">+</span> sigma<span style="color:#f92672">*</span>stats<span style="color:#f92672">.</span>norm<span style="color:#f92672">.</span>pdf(Z)
+</code></pre></div><p><em>2. Lower Confidence Bound</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">LCB</span>(X_new, gpr, sigma):
+    <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">    Compute the lower confidence bound at points X_new, from a Gaussian
+</span><span style="color:#e6db74">    process surrogate model fit to observed data (X_sample, Y_sample).
+</span><span style="color:#e6db74">            
+</span><span style="color:#e6db74">    Arguments
+</span><span style="color:#e6db74">    ---------
+</span><span style="color:#e6db74">    X_new : array_like; shape (num_new_pts, input_dimension)
+</span><span style="color:#e6db74">        Locations at which to compute confidence bound.
+</span><span style="color:#e6db74">                
+</span><span style="color:#e6db74">    gpr : GaussianProcessRegressor
+</span><span style="color:#e6db74">        Regressor object, pre-fit to the sample data via the command
+</span><span style="color:#e6db74">        gpr.fit(X_sample, Y_sample).
+</span><span style="color:#e6db74">                
+</span><span style="color:#e6db74">    sigma : float
+</span><span style="color:#e6db74">        Trade-off parameter for exploration vs. exploitation. Must be
+</span><span style="color:#e6db74">        a non-negative value. A value of zero corresponds to pure exploitation, with more                   exploration at larger values of sigma.
+</span><span style="color:#e6db74">            
+</span><span style="color:#e6db74">    Returns
+</span><span style="color:#e6db74">    -------
+</span><span style="color:#e6db74">    lcb : np.ndarray; shape (num_points,)
+</span><span style="color:#e6db74">    The lower confidence bound at each of the points in X_new.
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">if</span> sigma <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0.0</span>:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Exploration parameter must be non-negative.&#34;</span>)
+            
+    (mean, std_dev) <span style="color:#f92672">=</span> gpr<span style="color:#f92672">.</span>predict(X_new, return_std <span style="color:#f92672">=</span> True)
+    
+    <span style="color:#66d9ef">if</span> (mean<span style="color:#f92672">.</span>ndim <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">and</span> mean<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">or</span> mean<span style="color:#f92672">.</span>ndim <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">RuntimeError</span>(<span style="color:#e6db74">&#34;Invalid shape for predicted &#34;</span>
+                            <span style="color:#e6db74">&#34;mean: </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> (mean<span style="color:#f92672">.</span>shape,))
+    <span style="color:#66d9ef">else</span>:
+        mean <span style="color:#f92672">=</span> mean<span style="color:#f92672">.</span>flatten()
+            
+    <span style="color:#66d9ef">return</span> mean <span style="color:#f92672">-</span> sigma<span style="color:#f92672">*</span>std_dev
+</code></pre></div><h3 id="objective-function">Objective function</h3>
+<p>Objective function <code>f</code> we are interested in optimizing is the <code>Egg Carton</code> function which has quite peculiar shape, as seen in the schematic below. While there are local &lsquo;swiggles&rsquo; the overall function tends to a lower value around x = (4,6). We want to see if bayesian optimization can find this minimum value by optimizing not the ground function but rather a surrogate function which hypothetically would be &lsquo;cheaper&rsquo; to evaluate and optimize on.</p>
+<p>The plot shown below has two main things: 1. The ground truth function which is the Egg carton function (shown by the black line) 2. The randomly sampled points which have some error built into them. Think of this like a sampling of surface with some error built-into the measuring the device, so it wont accurate sample the ground-truth function. We will use this &lsquo;noisy&rsquo; function for optimization.</p>
+<p>Plot for the objective function:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">egg_carton</span>(x, f_noise <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>):
+    x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>asarray(x)
+    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>sin(<span style="color:#ae81ff">4.25</span><span style="color:#f92672">*</span>x) <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.25</span><span style="color:#f92672">*</span>(x <span style="color:#f92672">-</span> <span style="color:#ae81ff">4.8</span>)<span style="color:#f92672">**</span><span style="color:#ae81ff">2.0</span> <span style="color:#f92672">+</span> f_noise <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(<span style="color:#f92672">*</span>x<span style="color:#f92672">.</span>shape) 
+</code></pre></div><p>Initial points are sampled from numpy&rsquo;s random number in a uniform distribution:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">num_sample_points <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+noise_ <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>
+generator <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>default_rng(<span style="color:#ae81ff">42</span>)
+x_sample <span style="color:#f92672">=</span> generator<span style="color:#f92672">.</span>uniform(low, high, size <span style="color:#f92672">=</span> (num_sample_points, <span style="color:#ae81ff">1</span>))
+y_sample <span style="color:#f92672">=</span> objective(x_sample, noise_)
+</code></pre></div><p><img src="/img/bo/BO_New/test_function.png" alt="objective_function"></p>
+<h3 id="bayesian-optimization">Bayesian optimization</h3>
 <ul>
-<li>
-<p>The left plot shows: the noise-free objective function, the surrogate function which is the GP predicted mean value, the 95% confidence interval of the mean and the noisy samples obtained from the objective function so far.</p>
-</li>
-<li>
-<p>The right plot shows the acquisition function value, EI in this case.</p>
-</li>
+<li>Fit a surrogate function on initial points</li>
 </ul>
-<p>The vertical dashed line in both plots shows the proposed sampling point for the next iteration which corresponds to the maximum of the acquisition function.</p>
-<p><img src="/img/bo/iter.png" alt="iter"></p>
-<p>Note how the two initial samples at first drive search into the direction of the local maximum on the right side but exploration allows the algorithm to escape from that local optimum and find the minimum optimum on the left side. Also note how sampling point proposals often fall within regions of high uncertainty (exploration) and are not only driven by the highest surrogate function values (exploitation).</p>
-<p><img src="/img/bo/iter15.png" alt="iter_final"></p>
+<p><img src="/img/bo/BO_New/initial_gpr_eval.png" alt="initial_fit"></p>
+<p>Bayesian optimization runs for few iterations.</p>
+<p>For the inital points and the function value a GPR model as implemented in the <code>sklearn.gaussian_process.GaussianProcessRegressor</code> module is used. The prediction from the GPR is then used to optimize the acquisition function &ndash; Expected Improvement Criterion or Lower Confidence Bound.</p>
+<h4 id="running-a-few-more-iterations">Running a few more iterations:</h4>
+<p><img src="/img/bo/BO_New/final_iterations.png" alt="iter_final"></p>
+<p>In total the noisy estimation of the ground-truth is conducted on 30 additional points. It is evident from the plot that most of those points are near the x = (4,6) since that is the minimum value region for the function.</p>
 
     <p class="mt-3">
     <ul class="tags">
@@ -188,6 +266,8 @@
       <li><a class="tag" href="/tags/python">Python</a></li>
     
       <li><a class="tag" href="/tags/optimization">Optimization</a></li>
+    
+      <li><a class="tag" href="/tags/bayesian-stats">Bayesian Stats</a></li>
     
 </ul>
 

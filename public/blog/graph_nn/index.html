@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Pushkar Ghanekar | Simple Graph Neural Network</title>
+  <meta property="og:title" content="Pushkar Ghanekar | Simple Graph Neural Network" />
+  <meta property="og:image" content="/img/main_image.jpg" />
+  <meta name="description" content="Simple example of graph neural network">
+  <meta property="og:description" content="Simple example of graph neural network" />
+  <meta name="author" content="Pushkar Ghanekar">
+  
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"></noscript>
+  
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+      <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"></noscript>
+  <link rel="preload" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"></noscript>
+  
+  <link rel="preload" href="/css/resume.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/resume.css"></noscript>
+  <link rel="preload" href="/css/tweaks.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/tweaks.css"></noscript>
+  <link rel="preload" href="/css/resume-override.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/resume-override.css"></noscript>
+  <meta name="generator" content="Hugo 0.69.0" />
+  
+   
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Pushkar Ghanekar</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/main_image.jpg" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#skills">Skills</a>
+          </li>
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#Publications">Publications</a>
+          </li>
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#experience">Experience</a>
+          </li>
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#education">Education</a>
+          </li>
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="/">Home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="/blog/graph_nn/">Simple Graph Neural Network</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column content">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">Simple Graph Neural Network</span></h2>
+    <p><a href="https://github.com/pgg1610/misc_notebooks/blob/master/Bayesian_optimisation/modular/demo.ipynb">Link to Jupyter Notebook</a></p>
+    <p>Simple example to illustrate the utility of graph neural networks.</p>
+<p><strong>Task:</strong> Generating embedding for a graph dataset using a Graph Convolution Neural Network (GCN) on Zachary&rsquo;s Karate Club Network. Categorize the members of the club</p>
+<ul>
+<li>Data file from: <a href="http://vlado.fmf.uni-lj.si/pub/networks/data/Ucinet/UciData.htm">Zachary W. (1977). An information flow model for conflict and fission in small groups. Journal of Anthropological Research, 33, 452-473</a></li>
+</ul>
+<p>This is a classic dataset to look at relationships between users and its final effect on the decision. The dataset describes the social interaction of 34 members and the communities that rise from it. The new version of the data categorizes the nodes (each member) in 4 clubs. These clubs are emerged from the connections each members has with others in the &lsquo;club&rsquo;.</p>
+<h3 id="how-is-this-useful">How is this useful?</h3>
+<ul>
+<li>Calculate embedding to compress the graph dataset into 2 dimensions</li>
+<li>Can we predict communities of club members based on their vicinity with other members</li>
+</ul>
+<h2 id="setup">Setup</h2>
+<p>Karate Club Dataset:</p>
+<p>======================</p>
+<p>Number of graphs: 1</p>
+<p>Number of features: 34</p>
+<p>Number of classes: 4</p>
+<p><img src="/img/Simple_GCN/springlayout.png" alt="spring_layout"></p>
+<p>Each node in the graph is a person. Every person has an associated number (index) and the club they would eventually join. In this form of visualization - node 0 and node 33 are Mr. Hi and Officer respectively. Besides that, each node has an associated edges with other nodes in the network based on connections (how exactly are those determined is not clear at first). Now having that connection we can construct an adjacency matrix. The environment of each node can be used to predict the final community the user would end up in.</p>
+<p>We can re-express this problem as given the nodes and the connections which club would each node join. We can see if the GCN network can predict the targets properly or rather if the targets can be used to find low dimensional embeddings for the graph objects such that each node is expressed in 2D.</p>
+<p><img src="/img/Simple_GCN/barplot_classes.png" alt="barplot"></p>
+<p>To describe each members in the network a one-hot encoding is used where the entry corresponding to the index of the node is 1 and everything else is 0. Sorting these nodes based on index we get a identity matrix (34, 34)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">tensor([[1., 0., 0.,  ..., 0., 0., 0.],
+        [0., 1., 0.,  ..., 0., 0., 0.],
+        [0., 0., 1.,  ..., 0., 0., 0.],
+        ...,
+        [0., 0., 0.,  ..., 1., 0., 0.],
+        [0., 0., 0.,  ..., 0., 1., 0.],
+        [0., 0., 0.,  ..., 0., 0., 1.]])
+</code></pre></div><p>Next, every node in the graph is attached to other nodes. This information is stored in adjacency matrix. Self-connections are by default labelled 0. Every row of the adjacency matrix shows node connections</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">tensor([[0., 1., 1.,  ..., 1., 0., 0.],
+        [1., 0., 1.,  ..., 0., 0., 0.],
+        [1., 1., 0.,  ..., 0., 1., 0.],
+        ...,
+        [1., 0., 0.,  ..., 0., 1., 1.],
+        [0., 0., 1.,  ..., 1., 0., 1.],
+        [0., 0., 0.,  ..., 1., 1., 0.]])
+</code></pre></div><p>For example: as shown figure at the top if we look at node (16) it is connected to node (5,6) only. Hence in the adjacency matrix those index are 1 other that all other entries are 0</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">np<span style="color:#f92672">.</span>where( Karate_adjacency[<span style="color:#ae81ff">16</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> )[<span style="color:#ae81ff">0</span>]
+<span style="color:#f92672">&gt;&gt;</span> array([<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>])
+</code></pre></div><p><strong>Utility of graph neural network:</strong></p>
+<p>In this example we test the application of graph neural network to cluster/identify communities in the graph given information about the connections of the members and data of only 4 members&rsquo; community choice. Given the 4 datapoints our GNN would predict and subsequently cluster the other members of the network</p>
+<p><em>1. Tipf&rsquo;s Graph Convolution Implementation</em></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GCNConv</span>(nn<span style="color:#f92672">.</span>Module):
+    <span style="color:#66d9ef">def</span> __init__(self, A, input_dims, output_dims):
+        super(GCNConv, self)<span style="color:#f92672">.</span>__init__()
+        <span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">        As per Tipf explanation: 
+</span><span style="color:#e6db74">        https://tkipf.github.io/graph-convolutional-networks/
+</span><span style="color:#e6db74">        https://arxiv.org/abs/1609.02907
+</span><span style="color:#e6db74">        
+</span><span style="color:#e6db74">        PARAMETERS: 
+</span><span style="color:#e6db74">        ---------------
+</span><span style="color:#e6db74">        A: numpy.array, Adjacency matrix for the graph object 
+</span><span style="color:#e6db74">        input_dims: int, Input dimensions for the NN params
+</span><span style="color:#e6db74">        output_dims: int, Output dimensions for the NN params 
+</span><span style="color:#e6db74">        
+</span><span style="color:#e6db74">        RETURNS: 
+</span><span style="color:#e6db74">        ---------------
+</span><span style="color:#e6db74">        out: torch.Tensor, N x output for the NN prediction
+</span><span style="color:#e6db74">        &#39;&#39;&#39;</span>
+        torch<span style="color:#f92672">.</span>manual_seed(<span style="color:#ae81ff">42</span>)
+        
+        self<span style="color:#f92672">.</span>A_hat <span style="color:#f92672">=</span> A <span style="color:#f92672">+</span> torch<span style="color:#f92672">.</span>eye(A<span style="color:#f92672">.</span>size(<span style="color:#ae81ff">0</span>))
+        self<span style="color:#f92672">.</span>D     <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>diag(torch<span style="color:#f92672">.</span>sum(A,<span style="color:#ae81ff">1</span>)) <span style="color:#75715e">#Diagonal node-degree matrix </span>
+        self<span style="color:#f92672">.</span>D     <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>D<span style="color:#f92672">.</span>inverse()<span style="color:#f92672">.</span>sqrt()
+        self<span style="color:#f92672">.</span>A_hat <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mm( torch<span style="color:#f92672">.</span>mm(self<span style="color:#f92672">.</span>D, self<span style="color:#f92672">.</span>A_hat), self<span style="color:#f92672">.</span>D )
+        self<span style="color:#f92672">.</span>W     <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Parameter(torch<span style="color:#f92672">.</span>rand(input_dims, output_dims, requires_grad<span style="color:#f92672">=</span>True))
+    
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, X):
+        out <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tanh(torch<span style="color:#f92672">.</span>mm( torch<span style="color:#f92672">.</span>mm(self<span style="color:#f92672">.</span>A_hat, X), self<span style="color:#f92672">.</span>W ))
+        
+        <span style="color:#66d9ef">return</span> out
+</code></pre></div><p>This module is used when making the neural network modeling</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Net</span>(torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Module):
+    <span style="color:#66d9ef">def</span> __init__(self, A, nfeat, nhid, c):
+        super(Net, self)<span style="color:#f92672">.</span>__init__()
+        self<span style="color:#f92672">.</span>conv1 <span style="color:#f92672">=</span> GCNConv(A, nfeat, nhid)
+        self<span style="color:#f92672">.</span>conv2 <span style="color:#f92672">=</span> GCNConv(A, nhid, nhid)
+        self<span style="color:#f92672">.</span>conv3 <span style="color:#f92672">=</span> GCNConv(A, nhid, <span style="color:#ae81ff">2</span>)
+        self<span style="color:#f92672">.</span>linear <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(<span style="color:#ae81ff">2</span>, nhid)
+        
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self,X):
+        H0  <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conv1(X)
+        H1 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conv2(H0)
+        H2 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conv3(H1)
+        out <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>linear(H2)
+        
+        <span style="color:#66d9ef">return</span> H2, out 
+</code></pre></div><h3 id="training-the-model">Training the model</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+    e, out <span style="color:#f92672">=</span> simple_GCN(node_features)
+    optimizer<span style="color:#f92672">.</span>zero_grad()
+    loss<span style="color:#f92672">=</span>criterion(out[data<span style="color:#f92672">.</span>train_mask], data<span style="color:#f92672">.</span>y[data<span style="color:#f92672">.</span>train_mask])
+    <span style="color:#75715e">#loss=criterion(out, data.y)</span>
+    loss<span style="color:#f92672">.</span>backward()
+    optimizer<span style="color:#f92672">.</span>step()
+    <span style="color:#66d9ef">if</span> i <span style="color:#f92672">%</span> <span style="color:#ae81ff">100</span><span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Step: {} Cross Entropy Loss = {}&#34;</span><span style="color:#f92672">.</span>format(i, loss<span style="color:#f92672">.</span>item()))
+        output_, _ <span style="color:#f92672">=</span> simple_GCN(node_features)
+        visualize_graph(data, output_)
+</code></pre></div><p>First forward-pass result:</p>
+<p><img src="/img/Simple_GCN/simple/first.png" alt="first_simple"></p>
+<p>Final optimized weights prediction:</p>
+<p><img src="/img/Simple_GCN/simple/final_output.png" alt="final_simple"></p>
+<p><em>2. PyTorch Geometric Implementation</em></p>
+<p>This part is adapted from PyTorch Geometric&rsquo;s tutorial page. <a href="https://colab.research.google.com/drive/1h3-vJGRVloF5zStxL5I0rSy4ZUPNsjy8?usp=sharing#scrollTo=7cjjyFVnpKB0">Link</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> torch_geometric.nn <span style="color:#f92672">import</span> GCNConv
+<span style="color:#f92672">from</span> torch_geometric.utils <span style="color:#f92672">import</span> add_self_loops, degree
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">GCN</span>(torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Module):
+    <span style="color:#66d9ef">def</span> __init__(self, graph_data):
+        super(GCN, self)<span style="color:#f92672">.</span>__init__()
+        torch<span style="color:#f92672">.</span>manual_seed(<span style="color:#ae81ff">42</span>)
+        self<span style="color:#f92672">.</span>graph_data <span style="color:#f92672">=</span> graph_data
+        self<span style="color:#f92672">.</span>conv1 <span style="color:#f92672">=</span> GCNConv(self<span style="color:#f92672">.</span>graph_data<span style="color:#f92672">.</span>num_features, <span style="color:#ae81ff">4</span>)
+        self<span style="color:#f92672">.</span>conv2 <span style="color:#f92672">=</span> GCNConv(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>)
+        self<span style="color:#f92672">.</span>conv3 <span style="color:#f92672">=</span> GCNConv(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">2</span>)
+        self<span style="color:#f92672">.</span>classifier <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(<span style="color:#ae81ff">2</span>, self<span style="color:#f92672">.</span>graph_data<span style="color:#f92672">.</span>num_classes)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, node_features, edge_index):
+        h <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conv1(node_features, edge_index)
+        h <span style="color:#f92672">=</span> h<span style="color:#f92672">.</span>tanh()
+        h <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conv2(h, edge_index)
+        h <span style="color:#f92672">=</span> h<span style="color:#f92672">.</span>tanh()
+        h <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conv3(h, edge_index)
+        h <span style="color:#f92672">=</span> h<span style="color:#f92672">.</span>tanh()  <span style="color:#75715e"># Final GNN embedding space.</span>
+        
+        <span style="color:#75715e"># Apply a final (linear) classifier.</span>
+        out <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>classifier(h)
+
+        <span style="color:#66d9ef">return</span> out, h
+</code></pre></div><h3 id="training-the-model-1">Training the model</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">criterion <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>CrossEntropyLoss()  <span style="color:#75715e"># Define loss criterion.</span>
+optimizer <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>Adam(model<span style="color:#f92672">.</span>parameters(), lr<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>)  <span style="color:#75715e"># Define optimizer.</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">train</span>(data):
+    optimizer<span style="color:#f92672">.</span>zero_grad()  <span style="color:#75715e"># Clear gradients.</span>
+    out, h <span style="color:#f92672">=</span> model(node_features, data<span style="color:#f92672">.</span>edge_index)  <span style="color:#75715e"># Perform a single forward pass.</span>
+    loss <span style="color:#f92672">=</span> criterion(out[data<span style="color:#f92672">.</span>train_mask], data<span style="color:#f92672">.</span>y[data<span style="color:#f92672">.</span>train_mask])  <span style="color:#75715e"># Compute the loss solely based on the training nodes.</span>
+    loss<span style="color:#f92672">.</span>backward()  <span style="color:#75715e"># Derive gradients.</span>
+    optimizer<span style="color:#f92672">.</span>step()  <span style="color:#75715e"># Update parameters based on gradients.</span>
+    <span style="color:#66d9ef">return</span> loss, h
+
+<span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+    loss, h <span style="color:#f92672">=</span> train(data)
+    <span style="color:#66d9ef">if</span> epoch <span style="color:#f92672">%</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Step: {} Cross Entropy Loss = {}&#34;</span><span style="color:#f92672">.</span>format(epoch, loss<span style="color:#f92672">.</span>item()))
+        visualize_graph(data, h)
+</code></pre></div><p>First forward-pass result:</p>
+<p><img src="/img/Simple_GCN/pyg_gcn/first.png" alt="pyg_first"></p>
+<p>Final optimized weights prediction:</p>
+<p><img src="/img/Simple_GCN/pyg_gcn/final_output.png" alt="pyg_final"></p>
+
+    <p class="mt-3">
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/python">Python</a></li>
+    
+      <li><a class="tag" href="/tags/pytorch">Pytorch</a></li>
+    
+      <li><a class="tag" href="/tags/graphs">Graphs</a></li>
+    
+</ul>
+
+    </p>
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script async src="/js/resume.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167983168-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-167983168-1');
+  </script>
+  
+
+  
+</body>
+</html>
