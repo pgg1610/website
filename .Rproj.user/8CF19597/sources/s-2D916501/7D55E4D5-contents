@@ -90,7 +90,7 @@ tensor([[1., 0., 0.,  ..., 0., 0., 0.],
 
 Next, every node in the graph is attached to other nodes. This information is stored in adjacency matrix. Self-connections are by default labelled 0. Every row of the adjacency matrix shows node connections
 
-**Node ajcency matrix used to describe the connections of 34 nodes:**
+**Node adjacency matrix used to describe the connections of 34 nodes:**
 ```
 tensor([[0., 1., 1.,  ..., 1., 0., 0.],
         [1., 0., 1.,  ..., 0., 0., 0.],
