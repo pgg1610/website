@@ -27,9 +27,9 @@ Furthermore, Graph network learning provides a promising combination of two idea
 
 (1) having strong relational inductive bias for a data structure which is amenable for graph representation 
 
-(2) find hidden features/reprenstation that can be 'learned' with more data. 
+(2) find hidden features/representation that can be 'learned' with more data. 
 
-This idea is explored in futher details in this fairly exhaustive [review of graph networks](https://arxiv.org/abs/1806.01261)
+This idea is explored in further details in this fairly exhaustive [review of graph networks](https://arxiv.org/abs/1806.01261)
 
 ----------------
 
@@ -114,7 +114,7 @@ np.where( Karate_adjacency[16] == 1 )[0]
 
 ## Graph neural network implementation
 
-Given the graph, node features, and the node connections with other nodes we can contruct the graph convolution operation to use the geometric information and predict properties of the graph and the nodes. 
+Given the graph, node features, and the node connections with other nodes we can construct the graph convolution operation to use the geometric information and predict properties of the graph and the nodes. 
 
 **1. Tipf's Graph Convolution Implementation**
 
@@ -198,7 +198,7 @@ At first visualizing the output there is not clear distinction in the nodes. The
 
 **Visualizing post-GNN training:**
 
-Once the weight in the GCN defined above are trained on the node connections and node label and ONLY 4 nodes, the clustering of all nodes in 4 groups becomes apparent. The Class 2 which is the light blue group is the most distinct and it is also the most well separated of the group in the original represtnation too. There is some overlap in the Class 1 3 4 which is captured in the low dimensional as well. However given information of final label of only 4 nodes the GCN does a nice job of clustering all the nodes in their respective 4 clusters. 
+Once the weight in the GCN defined above are trained on the node connections and node label and ONLY 4 nodes, the clustering of all nodes in 4 groups becomes apparent. The Class 2 which is the light blue group is the most distinct and it is also the most well separated of the group in the original representation too. There is some overlap in the Class 1 3 4 which is captured in the low dimensional as well. However given information of final label of only 4 nodes the GCN does a nice job of clustering all the nodes in their respective 4 clusters. 
 
 ![final_simple](/img/Simple_GCN/simple/final_output.png)
 
