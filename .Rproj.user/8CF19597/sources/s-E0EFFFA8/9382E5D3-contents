@@ -15,6 +15,6 @@ Working in close collaboration with experimentalists, at [Purdue](https://engine
 
 In addition, I am co-developing an online tool which aims to democratize setting up lab-scale experiments and provide a platform to identify likely chemical/operational hazards when doing so. This work is jointly supported by the [CISTAR](https://cistar.us/) consortium and the [Purdue Process Safety and Assurance Center (P2SAC)](https://engineering.purdue.edu/P2SAC)
 
-Besides research, I am passionate about improving channels of pubilc dissemation of science and scientific literacy. I teach introductory concepts of scientific method and mathematics to middle-schoolers, and have assisted in designing modules that introduce critical thinking skills and coding in high-school curricula.
+Besides research, I am passionate about improving pubilc dissemination of science and scientific literacy. I teach introductory scientific method and mathematics concepts to middle-schoolers, and have assisted in designing modules that introduce critical thinking skills and coding in high-school curricula.
 
 Outside of work, I enjoy cooking [(link to some latest experiments)](https://www.instagram.com/pgg1610/), gaming, diving deep in arcane internet rabbit holes, and going on longer-than-necessary bike rides. 
