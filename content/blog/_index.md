@@ -14,6 +14,4 @@ This page represents the landing page for "creations" section. It is also shown 
 
 \-->
 
-
-
 <p>A collection of side-projects I've worked on</p>
