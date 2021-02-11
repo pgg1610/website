@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1613012530960.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DEBD8BDE",
+    "lastKnownWriteTime" : 1613012534,
+    "last_content_update" : 1613012534952,
+    "path" : "~/Documents/Personal/new_website/themes/hugo-resume/static/css/resume.css",
+    "project_path" : "themes/hugo-resume/static/css/resume.css",
+    "properties" : {
+        "cursorPosition" : "135,0",
+        "scrollLine" : "121"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "css"
+}
