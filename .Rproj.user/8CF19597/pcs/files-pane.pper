@@ -1,8 +1,8 @@
 {
-    "path" : "~/Documents/Personal/new_website/content/blog",
+    "path" : "~/Documents/Personal/new_website/themes/hugo-resume/static/css",
     "sortOrder" : [
         {
-            "ascending" : true,
+            "ascending" : false,
             "columnIndex" : 2
         }
     ]
