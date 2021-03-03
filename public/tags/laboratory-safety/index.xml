@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Laboratory Safety on Pushkar Ghanekar</title>
+    <link>/tags/laboratory-safety/</link>
+    <description>Recent content in Laboratory Safety on Pushkar Ghanekar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 02 Mar 2021 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/laboratory-safety/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Promoting a Safe Laboratory Environment Using the Reactive Hazard Evaluation and Analysis Compilation Tools</title>
+      <link>/publications/rheact/</link>
+      <pubDate>Tue, 02 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/publications/rheact/</guid>
+      <description>Synopsis: In the past several years, the U.S. Chemical Safety Board has found an increase in the frequency of laboratory accidents and injuries. A framework to document, assess, and mitigate hazards is a critical starting point for ensuring safe laboratory practices. To address this requirement, I was part of a team working on developing Reactive Hazards Evaluation Analysis and Compilation Tool (RHEACT), an online platform to compile and scrutinize hazards-related information, was developed.</description>
+    </item>
+    
+  </channel>
+</rss>
