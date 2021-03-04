@@ -1,6 +1,6 @@
 ---
 date: "2021-03-02"
-description: Reactive Hazards Evaluation Analysis and Compilation Tool (RHEACT) helps identify likely hazards when planning lab-scale experiments.
+description: Reactive Hazards Evaluation Analysis and Compilation Tool (RHEACT) helps identify likely shazards when planning lab-scale experiments.
 fact: 
 featured: true
 image: /img/rheact/TOC_v2.jpg
