@@ -15,18 +15,18 @@ title: Property Price Prediction ML-model
 
 ## End-to-end Machine Learning Project
 
-This project is obtained from Aurelien Geron's ML book Chapter 2. The aim to predict median house values in Californian districts, given a number of features from these districts.
+This project is adapted from Aurelien Geron's Hands-on Machine Learning Book 
 
-Main steps we will go through: 
-1. Formulate the problem
-2. Get the data
-3. Discover and visualize data / Data exploration to gain insight 
-4. Prep data for ML algorithm testing 
-5. Select model and train it
-6. Fine-tuning the model 
+I build a regression model to predict median house values in Californian districts, given a number of features from these districts. More importantly, this project go through the basic building blocks when setting up any ML projects. 
 
-https://github.com/pgg1610/handson-ml/blob/master/02_end_to_end_machine_learning_project.ipynb
-
+#### Following are main steps to consider: 
+* Formulating the problem, defining the boundary conditions
+* Data acquisition
+* Discover and visualize data / Data exploration to gain insight
+* Prepare data for ML algorithm training and testing
+* Explore various model architectures to use
+* Select model and train it
+* Fine-tuning the model
 
 ### Step 1: Formulate the problem 
 
