@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Pushkar Ghanekar | Property Price Prediction ML-model</title>
+  <meta property="og:title" content="Pushkar Ghanekar | Property Price Prediction ML-model" />
+  <meta property="og:image" content="/img/main_image.jpg" />
+  <meta name="description" content="Regression model to predict median house values in Californian districts">
+  <meta property="og:description" content="Regression model to predict median house values in Californian districts" />
+  <meta name="author" content="Pushkar Ghanekar">
+  
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"></noscript>
+  
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+      <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap"></noscript>
+  <link rel="preload" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/devicons/1.8.0/css/devicons.min.css"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"></noscript>
+  
+  <link rel="preload" href="/css/resume.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/resume.css"></noscript>
+  <link rel="preload" href="/css/tweaks.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/tweaks.css"></noscript>
+  <link rel="preload" href="/css/resume-override.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/css/resume-override.css"></noscript>
+  <meta name="generator" content="Hugo 0.69.0" />
+  
+   
+  
+</head>
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+    <span class="d-block d-lg-none">Pushkar Ghanekar</span>
+    <span class="d-none d-lg-block">
+      <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img/main_image.jpg" alt="">
+    </span>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" href="/#about">About</a>
+      </li>
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#skills">Skills</a>
+          </li>
+      
+      
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#Publications">Publications</a>
+          </li>
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#experience">Experience</a>
+          </li>
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#education">Education</a>
+          </li>
+      
+      
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/#blog">Blog</a>
+          </li>
+      
+    </ul>
+  </div>
+</nav>
+
+  <div class="container-fluid p-0">
+    
+<nav aria-label="breadcrumb">
+  <ol  class="breadcrumb">
+    
+
+
+
+
+
+<li class="breadcrumb-item">
+  <a href="/">Home</a>
+</li>
+
+
+<li class="breadcrumb-item">
+  <a href="/blog/">Blog</a>
+</li>
+
+
+<li class="breadcrumb-item active">
+  <a href="/blog/ml_project_temp/">Property Price Prediction ML-model</a>
+</li>
+
+  </ol>
+</nav>
+
+
+
+
+<section class="resume-section p-3 p-lg-5 d-flex d-column content">
+  <div class="my-auto">
+    <h2 class="mb-0"><span class="text-primary">Property Price Prediction ML-model</span></h2>
+    <p><a href="https://github.com/pgg1610/misc_notebooks/blob/master/sample_machine_learning_project/end2endML_housing.ipynb">Link to Jupyter Notebook</a></p>
+    <h2 id="end-to-end-machine-learning-project">End-to-end Machine Learning Project</h2>
+<p>This project is obtained from Aurelien Geron&rsquo;s ML book Chapter 2. The aim to predict median house values in Californian districts, given a number of features from these districts.</p>
+<p>Main steps we will go through:</p>
+<ol>
+<li>Formulate the problem</li>
+<li>Get the data</li>
+<li>Discover and visualize data / Data exploration to gain insight</li>
+<li>Prep data for ML algorithm testing</li>
+<li>Select model and train it</li>
+<li>Fine-tuning the model</li>
+</ol>
+<p><a href="https://github.com/pgg1610/handson-ml/blob/master/02_end_to_end_machine_learning_project.ipynb">https://github.com/pgg1610/handson-ml/blob/master/02_end_to_end_machine_learning_project.ipynb</a></p>
+<h3 id="step-1-formulate-the-problem">Step 1: Formulate the problem</h3>
+<p>Prediction of district&rsquo;s median housing price given all other metrics. A supervised learning task is where we are given &lsquo;labelled&rsquo; data for training purpose. Regression model to predict a continuous variable i.e. district median housing price. Given multiple features, this is a multi-class regression type problem. Univariate regression since a single output is estimated.</p>
+<h3 id="step-2-get-the-data">Step 2: Get the data</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np 
+<span style="color:#f92672">%</span>config InlineBackend<span style="color:#f92672">.</span>figure_format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;retina&#39;</span>
+<span style="color:#f92672">import</span> matplotlib <span style="color:#f92672">as</span> mpl
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Load the dataset </span>
+housing <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;housing.csv&#39;</span>)
+housing<span style="color:#f92672">.</span>sample(<span style="color:#ae81ff">7</span>)
+</code></pre></div><p><img src="/img/ML_project_temp/data_sample.png" alt="png"></p>
+<p>Each row presents one district. Each of these districts has 10 attributes (features).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing<span style="color:#f92672">.</span>info()
+</code></pre></div><pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 20640 entries, 0 to 20639
+Data columns (total 10 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   longitude           20640 non-null  float64
+ 1   latitude            20640 non-null  float64
+ 2   housing_median_age  20640 non-null  float64
+ 3   total_rooms         20640 non-null  float64
+ 4   total_bedrooms      20433 non-null  float64
+ 5   population          20640 non-null  float64
+ 6   households          20640 non-null  float64
+ 7   median_income       20640 non-null  float64
+ 8   median_house_value  20640 non-null  float64
+ 9   ocean_proximity     20640 non-null  object 
+dtypes: float64(9), object(1)
+memory usage: 1.6+ MB
+</code></pre>
+<p>One thing to notice in this dataset is the number of <code>total_bedroom</code> entries is different from other entries. This suggests there are some missing entries or null in the dataset.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#To show the null elements (if any in the total_bedroom entries)</span>
+housing[housing<span style="color:#f92672">.</span>total_bedrooms<span style="color:#f92672">.</span>isnull()]
+</code></pre></div><p>For categorical entries (here, ocean_proximity entries) we can find out the entries and their number using the value_counts(). We can do this for any entry we wish but makes more sense for categorical entries.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing[<span style="color:#e6db74">&#34;ocean_proximity&#34;</span>]<span style="color:#f92672">.</span>value_counts()
+</code></pre></div><pre><code>&lt;1H OCEAN     9136
+INLAND        6551
+NEAR OCEAN    2658
+NEAR BAY      2290
+ISLAND           5
+Name: ocean_proximity, dtype: int64
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing<span style="color:#f92672">.</span>describe()<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">2</span>)
+</code></pre></div><p><img src="/img/ML_project_temp/describe.png" alt="png"></p>
+<p>Describe is powerful subroutine since that allows us to check the stat summary of numerical attributes</p>
+<p>The 25%-50%-75% entries for each column show corresponding percentiles. It indicates the value below which a given percentage of observations in a group of observations fall. For example, 25% of observation have median income below 2.56, 50% observations have median income below 3.53, and 75% observations have median income below 4.74. 25% &ndash;&gt; 1st Quartile, 50% &ndash;&gt; Median, 75% &ndash;&gt; 3rd Quartile</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing<span style="color:#f92672">.</span>hist(bins<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>,figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">20</span>))
+</code></pre></div><p><img src="/img/ML_project_temp/output_12_1.png" alt="png"></p>
+<p>Few observations from the Histogram plots, again remember each row is an entry for an ENTIRE district:</p>
+<blockquote>
+<p>NOTICE: From the dataset&rsquo;s source disclaimer: The housing_median_value, housing_median_age, median_income_value are capped at an arbitrary value.</p>
+</blockquote>
+<ol>
+<li>
+<p>From latitute and longitude plots there seems to be lots of district in four particular locations (34,37 &ndash; latitude) and (-120,-118 &ndash; longitude). We cannot comment on the exact location but only one on these pairs giving most data.</p>
+</li>
+<li>
+<p>We see a tighter distribution for <code>total_rooms</code>, <code>total_bedrooms</code>, and population but spread for <code>house_value</code> and an intresting spike at its end.</p>
+</li>
+<li>
+<p>Small spike at the end of <code>median_income</code> plot suggests presence of small group of affluent families but interestingly that spike does not correlate with the spike in the <code>house_value</code> (More high-end property entries than more &ldquo;rich&rdquo; people in a district)</p>
+</li>
+</ol>
+<p>Finally, the dataset is tail-heavy that is they extend further to the right from the median which might make modeling using some ML algorithm a bit chanellenging.</p>
+<p>Few entries should be scaled such that the distribution is more normal.</p>
+<h3 id="create-a-test-set">Create a test-set</h3>
+<p>This ensures that this is the data on which training, testing occurs and we do not try overfitting to account for all the variance in the data. Typical 20% of data-points are randomly chosen.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">split_train_test</span>(data,test_ratio):
+    shuffled_indices<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>permutation(len(data))
+    test_set_size<span style="color:#f92672">=</span>int(len(data)<span style="color:#f92672">*</span>test_ratio)
+    test_indices<span style="color:#f92672">=</span>shuffled_indices[:test_set_size]
+    train_indices<span style="color:#f92672">=</span>shuffled_indices[test_set_size:]
+    <span style="color:#66d9ef">return</span>(data<span style="color:#f92672">.</span>iloc[train_indices],data<span style="color:#f92672">.</span>iloc[test_indices])
+
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#To ensure we get similar results at each run -- if not initiated every successive will give more random </span>
+<span style="color:#75715e">#shuffled indices risking the possibility of the algo seeing the entire dataset! </span>
+
+np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">42</span>)
+
+<span style="color:#75715e">#Random seed set to 42 for no particular reason </span>
+<span style="color:#75715e">#but just cause its the answer to the Ultimate Question of Life, The Universe, and Everything</span>
+
+train_set, test_set <span style="color:#f92672">=</span> split_train_test(housing, <span style="color:#ae81ff">0.2</span>)
+<span style="color:#66d9ef">print</span>(len(train_set), <span style="color:#e6db74">&#34;train +&#34;</span>, len(test_set), <span style="color:#e6db74">&#34;test&#34;</span>)
+</code></pre></div><pre><code>16512 train + 4128 test
+</code></pre>
+<p>Better way is to have an instance identifier (like id) for each entry to distingusih each entry and see if its sampled or not.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> zlib <span style="color:#f92672">import</span> crc32
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_set_check</span>(identifier, test_ratio):
+    <span style="color:#66d9ef">return</span> crc32(np<span style="color:#f92672">.</span>int64(identifier)) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xffffffff</span> <span style="color:#f92672">&lt;</span> test_ratio <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">32</span>
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">split_train_test_by_id</span>(data, test_ratio, id_column):
+    ids <span style="color:#f92672">=</span> data[id_column]
+    in_test_set <span style="color:#f92672">=</span> ids<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> id_: test_set_check(id_, test_ratio))
+    <span style="color:#66d9ef">return</span> data<span style="color:#f92672">.</span>loc[<span style="color:#f92672">~</span>in_test_set], data<span style="color:#f92672">.</span>loc[in_test_set]
+</code></pre></div><p>The dataset currently doesnt have inherent id. We could use the row index as id. Or we could use an ad-hoc unique identifier as an interim id.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#HOUSING DATA WITH ID as ROW INDEX</span>
+housing_with_id <span style="color:#f92672">=</span> housing<span style="color:#f92672">.</span>reset_index()   <span style="color:#75715e"># adds an `index` column</span>
+train_set, test_set <span style="color:#f92672">=</span> split_train_test_by_id(housing_with_id, <span style="color:#ae81ff">0.2</span>, <span style="color:#e6db74">&#34;index&#34;</span>)
+
+<span style="color:#75715e">#HOUSING DATA WITH ID AS COMBO OF LAT AND LONG. </span>
+housing_with_id[<span style="color:#e6db74">&#34;id&#34;</span>] <span style="color:#f92672">=</span> housing[<span style="color:#e6db74">&#34;longitude&#34;</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span> <span style="color:#f92672">+</span> housing[<span style="color:#e6db74">&#34;latitude&#34;</span>]
+train_set, test_set <span style="color:#f92672">=</span> split_train_test_by_id(housing_with_id, <span style="color:#ae81ff">0.2</span>, <span style="color:#e6db74">&#34;id&#34;</span>)
+
+<span style="color:#75715e">#SCIKIT-LEARN IMPLEMENTATION</span>
+<span style="color:#75715e">#from sklearn.model_selection import train_test_split</span>
+<span style="color:#75715e">#train_set, test_set = train_test_split(housing, test_size=0.2, random_state=42)</span>
+</code></pre></div><p>However the sampling we have considered here or the one used in Scikit-learn is random sampling by default. This is fine for large dataset however for smaller dataset it is utmost important that the sampled data is representative of the main population data or else we will introduce sampling bias.</p>
+<p>This is an important bias that could be introduced without prior knowledge and could be overlooked at multiple occassion leading to wrong conclusions. To ensure the sampled dataset is representative of the population set we  use stratified sampling (pseudo-random sampling). To make the stratified sampling tractable we first divide the main data into multiple &lsquo;stratas&rsquo; based on an variable which we feel is an feature that should be replicated in our test set. The sample is divided into strata and right number of instances are chosen from each strata. We must not have too many stratas and the each strate must have appropriate number of instances.</p>
+<p>For the case of property pricing in the district, median_income variable is chosen as the variable whose distribution in the main population and the randomly chosen test sample is same. This attribute is an important attribute to predict the final median housing price. So we can think of converting the continuous variable of median_variable into categorical variable &ndash; that is stratas.</p>
+<h4 id="stratified-sampling-using-median-income">Stratified sampling using median income</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing[<span style="color:#e6db74">&#34;median_income&#34;</span>]<span style="color:#f92672">.</span>hist()
+</code></pre></div><p><img src="/img/ML_project_temp/output_22_1.png" alt="png"></p>
+<p>From the median_income histogram it is seen that most of the entries are clustered in the range of 2-5 (arbitrary units). We can then use this information to make stratas around these instances. Cut routine in the pandas is used for this purpose. This function is also useful for going from a continuous variable to a categorical variable. For example, cut could convert ages to groups of age ranges.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing[<span style="color:#e6db74">&#34;income_cat&#34;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>cut(housing[<span style="color:#e6db74">&#34;median_income&#34;</span>],
+                               bins<span style="color:#f92672">=</span>[<span style="color:#ae81ff">0.</span>, <span style="color:#ae81ff">1.5</span>, <span style="color:#ae81ff">3.0</span>, <span style="color:#ae81ff">4.5</span>, <span style="color:#ae81ff">6.</span>, np<span style="color:#f92672">.</span>inf], <span style="color:#75715e">#bins around 2-5 income bracket</span>
+                               labels<span style="color:#f92672">=</span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>])
+housing[<span style="color:#e6db74">&#34;income_cat&#34;</span>]<span style="color:#f92672">.</span>value_counts()
+</code></pre></div><pre><code>3    7236
+2    6581
+4    3639
+5    2362
+1     822
+Name: income_cat, dtype: int64
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing[<span style="color:#e6db74">&#34;income_cat&#34;</span>]<span style="color:#f92672">.</span>hist()
+</code></pre></div><p><img src="/img/ML_project_temp/output_25_1.png" alt="png"></p>
+<p>Now with the population categorised into various median income groups we can use stratified sampling routine (as implemented in scikit-learn) to make our test-set. As an additional proof let&rsquo;s compare this to a randomly sampled test_case. We will redo the random sampling we did prviously but with the new population with categorised median_income.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Stratified sampling from scikit-learn </span>
+<span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> StratifiedShuffleSplit, train_test_split
+split <span style="color:#f92672">=</span> StratifiedShuffleSplit(n_splits<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
+<span style="color:#66d9ef">for</span> train_index, test_index <span style="color:#f92672">in</span> split<span style="color:#f92672">.</span>split(housing, housing[<span style="color:#e6db74">&#34;income_cat&#34;</span>]):
+    strat_train_set <span style="color:#f92672">=</span> housing<span style="color:#f92672">.</span>loc[train_index]
+    strat_test_set <span style="color:#f92672">=</span> housing<span style="color:#f92672">.</span>loc[test_index]
+
+<span style="color:#75715e">#Using random sampling</span>
+rand_train_set, rand_test_set <span style="color:#f92672">=</span> train_test_split(housing, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
+</code></pre></div><p>Let&rsquo;s check the distribution of the income_cat variable in the strat_test, random_test, and the main sample.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing[<span style="color:#e6db74">&#34;income_cat&#34;</span>]<span style="color:#f92672">.</span>value_counts()<span style="color:#f92672">/</span>len(housing[<span style="color:#e6db74">&#34;income_cat&#34;</span>])
+</code></pre></div><pre><code>3    0.350581
+2    0.318847
+4    0.176308
+5    0.114438
+1    0.039826
+Name: income_cat, dtype: float64
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">rand_test_set[<span style="color:#e6db74">&#34;income_cat&#34;</span>]<span style="color:#f92672">.</span>value_counts()<span style="color:#f92672">/</span>len(rand_test_set[<span style="color:#e6db74">&#34;income_cat&#34;</span>])
+</code></pre></div><pre><code>3    0.358527
+2    0.324370
+4    0.167393
+5    0.109496
+1    0.040213
+Name: income_cat, dtype: float64
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">strat_test_set[<span style="color:#e6db74">&#34;income_cat&#34;</span>]<span style="color:#f92672">.</span>value_counts()<span style="color:#f92672">/</span>len(strat_test_set[<span style="color:#e6db74">&#34;income_cat&#34;</span>])
+</code></pre></div><pre><code>3    0.350533
+2    0.318798
+4    0.176357
+5    0.114583
+1    0.039729
+Name: income_cat, dtype: float64
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">income_cat_proportions</span>(data):
+    <span style="color:#66d9ef">return</span> data[<span style="color:#e6db74">&#34;income_cat&#34;</span>]<span style="color:#f92672">.</span>value_counts() <span style="color:#f92672">/</span> len(data)
+
+compare_props <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+    <span style="color:#e6db74">&#34;Overall&#34;</span>: income_cat_proportions(housing),
+    <span style="color:#e6db74">&#34;Stratified&#34;</span>: income_cat_proportions(strat_test_set),
+    <span style="color:#e6db74">&#34;Random&#34;</span>: income_cat_proportions(rand_test_set),
+})<span style="color:#f92672">.</span>sort_index()
+compare_props[<span style="color:#e6db74">&#34;Rand. </span><span style="color:#e6db74">%e</span><span style="color:#e6db74">rror&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> compare_props[<span style="color:#e6db74">&#34;Random&#34;</span>] <span style="color:#f92672">/</span> compare_props[<span style="color:#e6db74">&#34;Overall&#34;</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">100</span>
+compare_props[<span style="color:#e6db74">&#34;Strat. </span><span style="color:#e6db74">%e</span><span style="color:#e6db74">rror&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> compare_props[<span style="color:#e6db74">&#34;Stratified&#34;</span>] <span style="color:#f92672">/</span> compare_props[<span style="color:#e6db74">&#34;Overall&#34;</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">100</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">compare_props
+</code></pre></div><p>Now, we can remove the income_cat column</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> set_ <span style="color:#f92672">in</span> (strat_train_set, strat_test_set):
+    set_<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#34;income_cat&#34;</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, inplace<span style="color:#f92672">=</span>True)
+</code></pre></div><h3 id="preliminary-visualization-of-the-data">Preliminary visualization of the data</h3>
+<p>Let&rsquo;s now dive a bit deeper into the data visualization and analysis. Before we do so, copy the strat_train_set as that would be the data-set we would be playing around and make sure the main data-set is not touched.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing<span style="color:#f92672">=</span>strat_train_set<span style="color:#f92672">.</span>copy()
+housing<span style="color:#f92672">.</span>info()
+</code></pre></div><pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+Int64Index: 16512 entries, 17606 to 15775
+Data columns (total 10 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   longitude           16512 non-null  float64
+ 1   latitude            16512 non-null  float64
+ 2   housing_median_age  16512 non-null  float64
+ 3   total_rooms         16512 non-null  float64
+ 4   total_bedrooms      16354 non-null  float64
+ 5   population          16512 non-null  float64
+ 6   households          16512 non-null  float64
+ 7   median_income       16512 non-null  float64
+ 8   median_house_value  16512 non-null  float64
+ 9   ocean_proximity     16512 non-null  object 
+dtypes: float64(9), object(1)
+memory usage: 1.4+ MB
+</code></pre>
+<h4 id="geographical-visualization">Geographical visualization</h4>
+<p>Let&rsquo;s now plot the data entries in the housing data as per the latitude and longitude.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing<span style="color:#f92672">.</span>plot(kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;scatter&#39;</span>,x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;longitude&#39;</span>,y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;latitude&#39;</span>)
+</code></pre></div><p><img src="/img/ML_project_temp/output_39_1.png" alt="png"></p>
+<p>This look&rsquo;s like California however, we cannot infer anything more out of this. Let&rsquo;s play around a little bit more&hellip;</p>
+<ol>
+<li>Playing with the alpha value in the plotting routine allows us to see the frequency of THAT datapoint in the plot</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing<span style="color:#f92672">.</span>plot(kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;scatter&#39;</span>,x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;longitude&#39;</span>,y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;latitude&#39;</span>,alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>)
+</code></pre></div><p><img src="/img/ML_project_temp/output_41_1.png" alt="png"></p>
+<p>From here, we can see the high density of listings in the Bay area and LA also around Sacramento and Fresco.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing<span style="color:#f92672">.</span>plot(kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;scatter&#34;</span>, x<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;longitude&#34;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;latitude&#34;</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.4</span>,
+    s<span style="color:#f92672">=</span>housing[<span style="color:#e6db74">&#34;population&#34;</span>]<span style="color:#f92672">/</span><span style="color:#ae81ff">100</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;population&#34;</span>, figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">10</span>),
+    c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;median_house_value&#34;</span>, cmap<span style="color:#f92672">=</span>plt<span style="color:#f92672">.</span>get_cmap(<span style="color:#e6db74">&#34;jet&#34;</span>), colorbar<span style="color:#f92672">=</span>True,
+    sharex<span style="color:#f92672">=</span>False)
+plt<span style="color:#f92672">.</span>legend()
+</code></pre></div><p><img src="/img/ML_project_temp/output_43_1.png" alt="png"></p>
+<p>This is more interesting! We have now plotted the data with more information. Each data-point has two additional set of info apart of frequency of occurence. First being the color of the point is the median_house_value entry (option c). The radius of the data-point is the population of that district (option s). It can be seen that the housing prices are very much related to the location. The ones closer to the bay area are more expensive but need not be densely populated.</p>
+<h4 id="looking-for-simple-correlations">Looking for simple correlations</h4>
+<p>In addition to looking at the plot of housing price, we can check for simpler correaltions. Pearson&rsquo;s correlation matrix is something which is in-built in pandas and can be directly used. It checks for correlation between every pair of feature provided in the data-set. It estimates the covariance of the two features and estimates whether the correlation is inverse, direct, or none.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">corr_matrix<span style="color:#f92672">=</span>housing<span style="color:#f92672">.</span>corr()
+corr_matrix<span style="color:#f92672">.</span>style<span style="color:#f92672">.</span>background_gradient(cmap<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;coolwarm&#39;</span>)<span style="color:#f92672">.</span>set_precision(<span style="color:#ae81ff">2</span>)
+</code></pre></div><p><img src="/img/ML_project_temp/pearson_correlation.png" alt="png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">corr_matrix[<span style="color:#e6db74">&#39;median_house_value&#39;</span>]<span style="color:#f92672">.</span>sort_values(ascending<span style="color:#f92672">=</span>True)
+</code></pre></div><pre><code>latitude             -0.142724
+longitude            -0.047432
+population           -0.026920
+total_bedrooms        0.047689
+households            0.064506
+housing_median_age    0.114110
+total_rooms           0.135097
+median_income         0.687160
+median_house_value    1.000000
+Name: median_house_value, dtype: float64
+</code></pre>
+<p>The correlation matrix suggests the amount of correlation between a pair of variables. When close to 1 it means a strong +ve correlation whereas, -1 means an inverse correlation. Looking at the correlation between median_house_values and other variables, we can see that there&rsquo;s some correlation with median_income (0.68 &ndash; so +ve), and with the latitude (-0.14 &ndash; so an inverse relation).</p>
+<p>Another to check this relation is to plot scatter plots for each pair of variables in the dataset. Below we plot this for few potential/interesting variables</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># from pandas.tools.plotting import scatter_matrix # For older versions of Pandas</span>
+<span style="color:#f92672">from</span> pandas.plotting <span style="color:#f92672">import</span> scatter_matrix
+
+attributes <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;median_house_value&#34;</span>, <span style="color:#e6db74">&#34;median_income&#34;</span>, <span style="color:#e6db74">&#34;total_rooms&#34;</span>,
+              <span style="color:#e6db74">&#34;housing_median_age&#34;</span>]
+scatter_matrix(housing[attributes], figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">8</span>))
+</code></pre></div><p><img src="/img/ML_project_temp/output_48_1.png" alt="png"></p>
+<p>The diagonal entries show the histogram for each variable. We saw this previously for some variables. The most promising variable from this analysis seems to be the median_income.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing<span style="color:#f92672">.</span>plot(kind<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;scatter&#34;</span>, x<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;median_income&#34;</span>, y<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;median_house_value&#34;</span>,
+             alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>)
+</code></pre></div><p><img src="/img/ML_project_temp/output_50_1.png" alt="png"></p>
+<p>Plotting it shows the stronger correlation with the target variable i.e. median_house_value however we can see horizontal lines (especially at USD 500k, 450k 350k) these could be due to some stratifying done in the dataset implicitly. It would be better to remove those to ensure our model does not spuriously fit for those since they are some of the quirks in the data.</p>
+<h3 id="experimenting-with-attributes">Experimenting with attributes</h3>
+<p>Before we began proposing models for the data. We can play around with the variables and try different combinations of them to see if we get better trends. Let&rsquo;s look at a few. First, the <code>total_room</code> and/or <code>total_bedroom</code> variable could be changed to <code>average_bedroom_per_house</code> to better for bedrooms rather than looking for total bedroom in that district we would be looking at avg_bedroom per district and similarly we would do it for rooms.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Average bedroom per house-holds in the district </span>
+housing[<span style="color:#e6db74">&#39;avg_bedroom&#39;</span>]<span style="color:#f92672">=</span>housing[<span style="color:#e6db74">&#39;total_bedrooms&#39;</span>]<span style="color:#f92672">/</span>housing[<span style="color:#e6db74">&#39;households&#39;</span>]
+
+<span style="color:#75715e">#Average room per house-holds in the district </span>
+housing[<span style="color:#e6db74">&#39;avg_room&#39;</span>]<span style="color:#f92672">=</span>housing[<span style="color:#e6db74">&#39;total_rooms&#39;</span>]<span style="color:#f92672">/</span>housing[<span style="color:#e6db74">&#39;households&#39;</span>]
+
+<span style="color:#75715e">#Average bedrooms per rooms in a given district</span>
+housing[<span style="color:#e6db74">&#39;bedroom_per_room&#39;</span>]<span style="color:#f92672">=</span>housing[<span style="color:#e6db74">&#39;total_bedrooms&#39;</span>]<span style="color:#f92672">/</span>housing[<span style="color:#e6db74">&#39;total_rooms&#39;</span>]
+
+<span style="color:#75715e">#Average population per household in a given district</span>
+housing[<span style="color:#e6db74">&#39;population_per_household&#39;</span>]<span style="color:#f92672">=</span>housing[<span style="color:#e6db74">&#39;population&#39;</span>]<span style="color:#f92672">/</span>housing[<span style="color:#e6db74">&#39;households&#39;</span>]
+
+<span style="color:#75715e">#Average room per population in a given district</span>
+housing[<span style="color:#e6db74">&#39;room_per_popoulation&#39;</span>]<span style="color:#f92672">=</span>housing[<span style="color:#e6db74">&#39;total_rooms&#39;</span>]<span style="color:#f92672">/</span>housing[<span style="color:#e6db74">&#39;population&#39;</span>]
+
+<span style="color:#75715e">#Average room per population in a given district</span>
+housing[<span style="color:#e6db74">&#39;room_per_popoulation&#39;</span>]<span style="color:#f92672">=</span>housing[<span style="color:#e6db74">&#39;total_rooms&#39;</span>]<span style="color:#f92672">/</span>housing[<span style="color:#e6db74">&#39;population&#39;</span>]
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">corr_matrix[<span style="color:#e6db74">&#39;median_house_value&#39;</span>]<span style="color:#f92672">.</span>sort_values(ascending<span style="color:#f92672">=</span>True)
+</code></pre></div><pre><code>bedroom_per_room           -0.259984
+latitude                   -0.142724
+longitude                  -0.047432
+avg_bedroom                -0.043343
+population                 -0.026920
+population_per_household   -0.021985
+total_bedrooms              0.047689
+households                  0.064506
+housing_median_age          0.114110
+total_rooms                 0.135097
+avg_room                    0.146285
+room_per_popoulation        0.199429
+median_income               0.687160
+median_house_value          1.000000
+Name: median_house_value, dtype: float64
+</code></pre>
+<p>This is interesting! We see that <code>bedroom_per_room</code> is another potential descriptor with negative corelation moreover we get <code>room_per_population</code> and <code>avg_room</code> to be decent new descriptors for the <code>median_house_value</code>. Not bad for a simple math manipulation to better represent the data. This is a crucial step and where domain knowledge and intuition would come handy.</p>
+<h3 id="data-cleaning-and-prepping">Data cleaning and prepping</h3>
+<ol>
+<li>Separate the predictors and the target values</li>
+<li>Write functions to conduct various data transformations ensuring consistency and ease</li>
+<li>Make sure the data is devoid of any NaN values since that would raise warning and errors. We have three strategies we can implement here:
+a. Get rid of those points (districts) entirely
+b. Get rid of whole attribute
+c. Set missing values to either zero or one of the averages (mean, median, or mode)</li>
+</ol>
+<p>In our case, total bedrooms had some missing values.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Option a:</span>
+housing<span style="color:#f92672">.</span>dropna(subset<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;total_bedrooms&#34;</span>])
+<span style="color:#75715e"># Option b:</span>
+housing<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#34;total_bedrooms&#34;</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+<span style="color:#75715e"># Option c:</span>
+median <span style="color:#f92672">=</span> housing[<span style="color:#e6db74">&#34;total_bedrooms&#34;</span>]<span style="color:#f92672">.</span>median()
+housing[<span style="color:#e6db74">&#34;total_bedrooms&#34;</span>]<span style="color:#f92672">.</span>fillna(median, inplace<span style="color:#f92672">=</span>True) <span style="color:#75715e"># option 3</span>
+</code></pre></div><p>Before we do any of this let&rsquo;s first separate the predictor and target_values</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing <span style="color:#f92672">=</span> strat_train_set<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#34;median_house_value&#34;</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e"># drop labels for training set</span>
+housing_labels <span style="color:#f92672">=</span> strat_train_set[<span style="color:#e6db74">&#34;median_house_value&#34;</span>]<span style="color:#f92672">.</span>copy()
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Checking the NULL enties in the dataset</span>
+sample_incomplete_rows <span style="color:#f92672">=</span> housing[housing<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>any(axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)]<span style="color:#f92672">.</span>head()
+sample_incomplete_rows
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sample_incomplete_rows<span style="color:#f92672">.</span>dropna(subset<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;total_bedrooms&#34;</span>])    <span style="color:#75715e"># option 1</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sample_incomplete_rows<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#34;total_bedrooms&#34;</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)   <span style="color:#75715e">#option 2</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">median <span style="color:#f92672">=</span> housing[<span style="color:#e6db74">&#34;total_bedrooms&#34;</span>]<span style="color:#f92672">.</span>median()
+sample_incomplete_rows[<span style="color:#e6db74">&#34;total_bedrooms&#34;</span>]<span style="color:#f92672">.</span>fillna(median, inplace<span style="color:#f92672">=</span>True) <span style="color:#75715e"># option 3</span>
+sample_incomplete_rows
+</code></pre></div><h5 id="scikit-learn-imputer-class">Scikit-learn imputer class</h5>
+<p>This is a handy class to take of missing values. First, we create an instance of that class with specifying what is to be replaced and what strategy is used. Before doing so, we need to make srue the entire data-set has ONLY numerical entries and Imputer will evaluate the given average for all the dataset and store it in the <code>statistics_</code> instance</p>
+<p>What the imputer will do is,</p>
+<ol>
+<li>Evaluate an specified type of average.</li>
+<li>For a given numerical data-set look for NaN or Null entires in a given attribute and replace it with the computed avearge for that attribute</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">try</span>:
+    <span style="color:#f92672">from</span> sklearn.impute <span style="color:#f92672">import</span> SimpleImputer <span style="color:#75715e"># Scikit-Learn 0.20+</span>
+<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ImportError</span>:
+    <span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> Imputer <span style="color:#66d9ef">as</span> SimpleImputer
+
+imputer <span style="color:#f92672">=</span> SimpleImputer(strategy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;median&#34;</span>) <span style="color:#75715e">#We define the strategy here </span>
+housing_num <span style="color:#f92672">=</span> housing<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#39;ocean_proximity&#39;</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+<span style="color:#75715e"># alternatively: housing_num = housing.select_dtypes(include=[np.number])</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">imputer<span style="color:#f92672">.</span>fit(housing_num)
+</code></pre></div><pre><code>SimpleImputer(strategy='median')
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">imputer<span style="color:#f92672">.</span>statistics_
+</code></pre></div><pre><code>array([-118.51  ,   34.26  ,   29.    , 2119.5   ,  433.    , 1164.    ,
+        408.    ,    3.5409])
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing_num<span style="color:#f92672">.</span>median()<span style="color:#f92672">.</span>values
+</code></pre></div><pre><code>array([-118.51  ,   34.26  ,   29.    , 2119.5   ,  433.    , 1164.    ,
+        408.    ,    3.5409])
+</code></pre>
+<p>We can now use this as a training variables set for our model</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">X <span style="color:#f92672">=</span> imputer<span style="color:#f92672">.</span>transform(housing_num)
+</code></pre></div><p>We convert the Pandas dataframe entries to a numpy array which is transformed with appropriately replacing the missing entries with median.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(type(X), type(housing_num))
+</code></pre></div><pre><code>&lt;class 'numpy.ndarray'&gt; &lt;class 'pandas.core.frame.DataFrame'&gt;
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(np<span style="color:#f92672">.</span>shape(X), housing_num<span style="color:#f92672">.</span>shape)
+<span style="color:#e6db74">&#39;&#39;&#39;
+</span><span style="color:#e6db74">If we need the data-frame back
+</span><span style="color:#e6db74">housing_tr = pd.DataFrame(X, columns=housing_num.columns,
+</span><span style="color:#e6db74">                          index=housing.index)
+</span><span style="color:#e6db74">&#39;&#39;&#39;</span>
+</code></pre></div><pre><code>(16512, 8) (16512, 8)
+</code></pre>
+<h3 id="handling-text-and-categorical-attribute">Handling Text and Categorical Attribute</h3>
+<p>Now let&rsquo;s preprocess the categorical input feature, <code>ocean_proximity</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing_cat <span style="color:#f92672">=</span> housing[[<span style="color:#e6db74">&#39;ocean_proximity&#39;</span>]]
+type(housing_cat)
+</code></pre></div><pre><code>pandas.core.frame.DataFrame
+</code></pre>
+<p>Converting the categorical entries to integers</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">try</span>:
+    <span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> OrdinalEncoder
+<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ImportError</span>:
+    <span style="color:#f92672">from</span> future_encoders <span style="color:#f92672">import</span> OrdinalEncoder <span style="color:#75715e"># Scikit-Learn &lt; 0.20</span>
+    
+ordinal_encoder <span style="color:#f92672">=</span> OrdinalEncoder()
+housing_cat_encoded <span style="color:#f92672">=</span> ordinal_encoder<span style="color:#f92672">.</span>fit_transform(housing_cat)
+housing_cat_encoded[:<span style="color:#ae81ff">10</span>]
+</code></pre></div><pre><code>array([[0.],
+       [0.],
+       [4.],
+       [1.],
+       [0.],
+       [1.],
+       [0.],
+       [1.],
+       [0.],
+       [0.]])
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing[<span style="color:#e6db74">&#34;ocean_proximity&#34;</span>]<span style="color:#f92672">.</span>value_counts()
+</code></pre></div><pre><code>&lt;1H OCEAN     7276
+INLAND        5263
+NEAR OCEAN    2124
+NEAR BAY      1847
+ISLAND           2
+Name: ocean_proximity, dtype: int64
+</code></pre>
+<p>Now, <code>housing_cat_encoded</code> has converted the categorical entries to purely numerical values for each category</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ordinal_encoder<span style="color:#f92672">.</span>categories_
+</code></pre></div><pre><code>[array(['&lt;1H OCEAN', 'INLAND', 'ISLAND', 'NEAR BAY', 'NEAR OCEAN'],
+       dtype=object)]
+</code></pre>
+<p>Now, this is helpful with the string categories getting converted to numerical categories. However, there is still an small issue. The categorical numbering may introduce some bias in the final model. <strong>ML algorithms will assume that two nearby values are more similar than two distant values.</strong></p>
+<p>In the above case, &lsquo;&lt;1H OCEAN&rsquo; and &lsquo;INLAND&rsquo;have category values as 0 and 1 however &lsquo;&lt;1H OCEAN&rsquo; is more closer to &lsquo;NEAR OCEAN&rsquo; with category value 4.</p>
+<p>To fix this issue, one solution is to create one binary attribute per category. This is called <strong>One-hot encoding</strong> as ONLY one of the attribute in the vector is 1 (hot) and others are 0 (cold).</p>
+<p>Scikit-learn provides a <code>OneHotEncoder</code> encoder to convert integer categorical values to one-hot vectors.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">try</span>:
+    <span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> OrdinalEncoder <span style="color:#75715e"># just to raise an ImportError if Scikit-Learn &lt; 0.20</span>
+    <span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> OneHotEncoder
+<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ImportError</span>:
+    <span style="color:#f92672">from</span> future_encoders <span style="color:#f92672">import</span> OneHotEncoder <span style="color:#75715e"># Scikit-Learn &lt; 0.20</span>
+
+cat_encoder <span style="color:#f92672">=</span> OneHotEncoder()
+<span style="color:#75715e">#1-Hot encoded vector for the housing training data-set </span>
+housing_cat_1hot <span style="color:#f92672">=</span> cat_encoder<span style="color:#f92672">.</span>fit_transform(housing_cat)
+type(housing_cat_1hot)
+</code></pre></div><pre><code>scipy.sparse.csr.csr_matrix
+</code></pre>
+<p>A sparse array is declared in this case which has the position of the non-zero value and not necessarily the entire numpy matrix. This is helpful in the cases where there are too many categories and also many datapoints. For examples, if we have 4 categories and 1000 datapoints the final one-hot matrix would be 1000x4 size. Most of that would be full of 0s, with only one 1 per row for a particular category.</p>
+<p>The <code>housing_cat_1hot</code> can be converted to numpy array by using the <code>housing_cat_1hot.toarray()</code></p>
+<p>Alternatively, you can set <code>sparse=False</code> when creating the <code>OneHotEncoder</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">cat_encoder<span style="color:#f92672">.</span>categories_
+</code></pre></div><pre><code>[array(['&lt;1H OCEAN', 'INLAND', 'ISLAND', 'NEAR BAY', 'NEAR OCEAN'],
+       dtype=object)]
+</code></pre>
+<p>Let&rsquo;s create a custom transformer to add extra attributes:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing<span style="color:#f92672">.</span>columns
+</code></pre></div><pre><code>Index(['longitude', 'latitude', 'housing_median_age', 'total_rooms',
+       'total_bedrooms', 'population', 'households', 'median_income',
+       'ocean_proximity'],
+      dtype='object')
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.base <span style="color:#f92672">import</span> BaseEstimator, TransformerMixin
+<span style="color:#75715e"># get the right column indices: safer than hard-coding indices</span>
+rooms_ix, bedrooms_ix, population_ix, household_ix <span style="color:#f92672">=</span> [
+    list(housing<span style="color:#f92672">.</span>columns)<span style="color:#f92672">.</span>index(col) <span style="color:#66d9ef">for</span> col <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#34;total_rooms&#34;</span>, <span style="color:#e6db74">&#34;total_bedrooms&#34;</span>, <span style="color:#e6db74">&#34;population&#34;</span>, <span style="color:#e6db74">&#34;households&#34;</span>)]
+
+<span style="color:#75715e">#Here we convert the housing.columns to list and </span>
+<span style="color:#75715e">#then find the index for the entry which matches the string in the loop </span>
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CombinedAttributesAdder</span>(BaseEstimator, TransformerMixin):
+    <span style="color:#66d9ef">def</span> __init__(self, add_bedrooms_per_room <span style="color:#f92672">=</span> True): <span style="color:#75715e"># no *args or **kwargs</span>
+        self<span style="color:#f92672">.</span>add_bedrooms_per_room <span style="color:#f92672">=</span> add_bedrooms_per_room
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, X, y<span style="color:#f92672">=</span>None):
+        <span style="color:#66d9ef">return</span> self  <span style="color:#75715e"># nothing else to do</span>
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">transform</span>(self, X, y<span style="color:#f92672">=</span>None):
+        rooms_per_household <span style="color:#f92672">=</span> X[:, rooms_ix] <span style="color:#f92672">/</span> X[:, household_ix]
+        population_per_household <span style="color:#f92672">=</span> X[:, population_ix] <span style="color:#f92672">/</span> X[:, household_ix]
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>add_bedrooms_per_room:
+            bedrooms_per_room <span style="color:#f92672">=</span> X[:, bedrooms_ix] <span style="color:#f92672">/</span> X[:, rooms_ix]
+            <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>c_[X, rooms_per_household, population_per_household,
+                         bedrooms_per_room]
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>c_[X, rooms_per_household, population_per_household]
+
+attr_adder <span style="color:#f92672">=</span> CombinedAttributesAdder(add_bedrooms_per_room<span style="color:#f92672">=</span>True)
+housing_extra_attribs <span style="color:#f92672">=</span> attr_adder<span style="color:#f92672">.</span>transform(housing<span style="color:#f92672">.</span>values)
+</code></pre></div><p>From the above class, there&rsquo;s only one hyperparameter in the class. <code>add_bedrooms_per_room</code> is the only option and is set True by default. Let&rsquo;s check the new feature space by converting it to a <code>Pandas Dataframe</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing_extra_attribs <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(
+    housing_extra_attribs,
+    columns<span style="color:#f92672">=</span>list(housing<span style="color:#f92672">.</span>columns)<span style="color:#f92672">+</span>[<span style="color:#e6db74">&#34;bedrooms_per_room&#34;</span>,<span style="color:#e6db74">&#34;rooms_per_household&#34;</span>, <span style="color:#e6db74">&#34;population_per_household&#34;</span>],
+    index<span style="color:#f92672">=</span>housing<span style="color:#f92672">.</span>index)
+housing_extra_attribs<span style="color:#f92672">.</span>head()
+</code></pre></div><h3 id="feature-scaling">Feature scaling</h3>
+<p>Feaature scaling is an important transformation needed to be applied to the data. With some exceptions, ML algorithms dont perform well when the input numerical entries have very different scales. Eg: One variable has range 0-1 but other variable has range 1-1000. This is the case in our data-base where the total number of rooms range from 6 to 39,320 while the objective variable i.e. median income only ranges from 0-15. Two common ways of scaling:</p>
+<ol>
+<li>Min-max scaling (also called Normalization)</li>
+</ol>
+<p>Values are shifted such that they are normalized. They are rescaled in the range of 0-1. We do this by subtracting the min value and dividing by the range in the data</p>
+<p>\begin{equation}
+x_{i} = \frac{X_{i}-min}{max-min}
+\end{equation}</p>
+<ol start="2">
+<li>Standardization
+This is when the mean of the dataset is subtracted from each entry so that the data has mean as 0 and then divided by the standard deviation so that the resulting distribution has a unit variance. Unlike min-max scaling, standardization does not bound to a particular range like 0-1. However, <strong>standardisation is much less affected by outliers.</strong> If a particular values is extremely high or low that could affect the other inputs in the case of min-max scaling. However that effect is reduced in the case of standardization given it does not directly account for the range in the scaling but the mean and variance.</li>
+</ol>
+<p>\begin{equation}
+x_{i} = \frac{X_{i}-\mu}{\sigma}
+\end{equation}</p>
+<blockquote>
+<p><strong>NOTE:</strong> It is important that these scaling operations are performed on the training data only and not on the full dataset</p>
+</blockquote>
+<h3 id="transformation-pipelines">Transformation pipelines</h3>
+<p><code>Pipeline</code> class in scikit-learn can help with sequences of transformations.
+Now let&rsquo;s build a pipeline for preprocessing the numerical attributes (note that we could use <code>CombinedAttributesAdder()</code> instead of <code>FunctionTransformer(...)</code> if we preferred):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.pipeline <span style="color:#f92672">import</span> Pipeline
+<span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> StandardScaler
+
+num_pipeline <span style="color:#f92672">=</span> Pipeline([
+        (<span style="color:#e6db74">&#39;imputer&#39;</span>, SimpleImputer(strategy<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;median&#34;</span>)), <span style="color:#75715e">#Fill in missing values using the median of each entry </span>
+        (<span style="color:#e6db74">&#39;attribs_adder&#39;</span>, CombinedAttributesAdder(add_bedrooms_per_room<span style="color:#f92672">=</span>True)), <span style="color:#75715e">#Add additional columns entrys</span>
+        (<span style="color:#e6db74">&#39;std_scaler&#39;</span>, StandardScaler()), <span style="color:#75715e">#Feature scaling -- using standardisation here </span>
+    ])
+
+housing_num_tr <span style="color:#f92672">=</span> num_pipeline<span style="color:#f92672">.</span>fit_transform(housing_num)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing_num_tr
+</code></pre></div><pre><code>array([[-1.15604281,  0.77194962,  0.74333089, ..., -0.31205452,
+        -0.08649871,  0.15531753],
+       [-1.17602483,  0.6596948 , -1.1653172 , ...,  0.21768338,
+        -0.03353391, -0.83628902],
+       [ 1.18684903, -1.34218285,  0.18664186, ..., -0.46531516,
+        -0.09240499,  0.4222004 ],
+       ...,
+       [ 1.58648943, -0.72478134, -1.56295222, ...,  0.3469342 ,
+        -0.03055414, -0.52177644],
+       [ 0.78221312, -0.85106801,  0.18664186, ...,  0.02499488,
+         0.06150916, -0.30340741],
+       [-1.43579109,  0.99645926,  1.85670895, ..., -0.22852947,
+        -0.09586294,  0.10180567]])
+</code></pre>
+<p>This <code>Pipeline</code> constructor takes a list of name/estimator pairs defining a sequence of steps. <strong>All but the last step/estimator must be the trasnformers (like feature scaling).</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">try</span>:
+    <span style="color:#f92672">from</span> sklearn.compose <span style="color:#f92672">import</span> ColumnTransformer
+<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">ImportError</span>:
+    <span style="color:#f92672">from</span> future_encoders <span style="color:#f92672">import</span> ColumnTransformer <span style="color:#75715e"># Scikit-Learn &lt; 0.20</span>
+</code></pre></div><p><strong>Now let&rsquo;s join all these components into a big pipeline that will preprocess both the numerical and the categorical features (again, we could use <code>CombinedAttributesAdder()</code> instead of <code>FunctionTransformer(...)</code> if we preferred):</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">num_attribs <span style="color:#f92672">=</span> list(housing_num)
+cat_attribs <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;ocean_proximity&#34;</span>]
+
+full_pipeline <span style="color:#f92672">=</span> ColumnTransformer([
+        (<span style="color:#e6db74">&#34;num&#34;</span>, num_pipeline, num_attribs),
+        (<span style="color:#e6db74">&#34;cat&#34;</span>, OneHotEncoder(), cat_attribs),
+    ])
+
+housing_prepared <span style="color:#f92672">=</span> full_pipeline<span style="color:#f92672">.</span>fit_transform(housing)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing_prepared
+</code></pre></div><pre><code>array([[-1.15604281,  0.77194962,  0.74333089, ...,  0.        ,
+         0.        ,  0.        ],
+       [-1.17602483,  0.6596948 , -1.1653172 , ...,  0.        ,
+         0.        ,  0.        ],
+       [ 1.18684903, -1.34218285,  0.18664186, ...,  0.        ,
+         0.        ,  1.        ],
+       ...,
+       [ 1.58648943, -0.72478134, -1.56295222, ...,  0.        ,
+         0.        ,  0.        ],
+       [ 0.78221312, -0.85106801,  0.18664186, ...,  0.        ,
+         0.        ,  0.        ],
+       [-1.43579109,  0.99645926,  1.85670895, ...,  0.        ,
+         1.        ,  0.        ]])
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing_prepared<span style="color:#f92672">.</span>shape
+</code></pre></div><pre><code>(16512, 16)
+</code></pre>
+<h3 id="training-and-evaluation-on-the-training-set">Training and evaluation on the training set</h3>
+<p>Given the prioir transformations, the features are scaled, categories are converted to one-hot vectors, and the missing variables are taken account of. Let&rsquo;s train a Linear Regression model first</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LinearRegression
+lin_reg <span style="color:#f92672">=</span> LinearRegression() 
+lin_reg<span style="color:#f92672">.</span>fit(housing_prepared, housing_labels)
+</code></pre></div><pre><code>LinearRegression()
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Test some data out on the model </span>
+trial_input <span style="color:#f92672">=</span> housing<span style="color:#f92672">.</span>iloc[:<span style="color:#ae81ff">5</span>] <span style="color:#75715e">#First 5 entries </span>
+trial_label <span style="color:#f92672">=</span> housing_labels<span style="color:#f92672">.</span>iloc[:<span style="color:#ae81ff">5</span>] <span style="color:#75715e">#First 5 labels corresponding to the entries </span>
+prep_trial_input <span style="color:#f92672">=</span> full_pipeline<span style="color:#f92672">.</span>transform(trial_input) <span style="color:#75715e">#Transforming the entries to suit the trained input </span>
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Predictions:&#39;</span>,lin_reg<span style="color:#f92672">.</span>predict(prep_trial_input))
+</code></pre></div><pre><code>Predictions: [210644.60459286 317768.80697211 210956.43331178  59218.98886849
+ 189747.55849879]
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#39;Labels:&#39;</span>,list(trial_label))
+</code></pre></div><pre><code>Labels: [286600.0, 340600.0, 196900.0, 46300.0, 254500.0]
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_squared_error
+
+housing_predictions <span style="color:#f92672">=</span> lin_reg<span style="color:#f92672">.</span>predict(housing_prepared)
+lin_mse <span style="color:#f92672">=</span> mean_squared_error(housing_labels, housing_predictions)
+lin_rmse <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(lin_mse)
+lin_rmse
+</code></pre></div><pre><code>68628.19819848923
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing_labels<span style="color:#f92672">.</span>describe()
+</code></pre></div><pre><code>count     16512.000000
+mean     206990.920724
+std      115703.014830
+min       14999.000000
+25%      119800.000000
+50%      179500.000000
+75%      263900.000000
+max      500001.000000
+Name: median_house_value, dtype: float64
+</code></pre>
+<p>As seen the RMSE is 68628 which is better than nothing but still it is quite high when the range of the <code>median_house_values</code> range from 15000 to 500000</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_error
+
+lin_mae <span style="color:#f92672">=</span> mean_absolute_error(housing_labels, housing_predictions)
+lin_mae
+</code></pre></div><pre><code>49439.89599001897
+</code></pre>
+<p>Here the model is underfitting the data since the RMSE is so high.</p>
+<blockquote>
+<p>When this happens either the features do not provide enough information to make good predictions or the model is not powerful enough.</p>
+</blockquote>
+<p>Let&rsquo;s try using a more complex model, <code>DecisionTreeRegressor</code> which is capable of finding non-linear relationships in the data</p>
+<h3 id="decision-tree-regressor">Decision Tree Regressor</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.tree <span style="color:#f92672">import</span> DecisionTreeRegressor
+
+tree_reg <span style="color:#f92672">=</span> DecisionTreeRegressor(random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
+tree_reg<span style="color:#f92672">.</span>fit(housing_prepared, housing_labels)
+</code></pre></div><pre><code>DecisionTreeRegressor(random_state=42)
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing_predictions <span style="color:#f92672">=</span> tree_reg<span style="color:#f92672">.</span>predict(housing_prepared)
+tree_mse <span style="color:#f92672">=</span> mean_squared_error(housing_labels, housing_predictions)
+tree_rmse <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(tree_mse)
+tree_rmse
+</code></pre></div><pre><code>0.0
+</code></pre>
+<p>This model is badly overfitting the data! Let&rsquo;s proof this hypothesis using cross-validation schemes. We dont want to touch the test set, JUST WORK WITH THE TRAINING SET. Only touch the test set when the model we are using is good enough. We will use the part of the training set for training and other part for model validation.</p>
+<h3 id="fine-tune-the-model">Fine-tune the model</h3>
+<p><strong>Cross-validation</strong></p>
+<p>Cross-validation is a method of getting reliable estimate of model performance using only the training data 10-fold cross-validation &mdash; breaking training data in 10 equal parts creating 10 miniature test/train splits. Out of the 10 folds, train data on 9 and test on 10th. Do this 10 times each time holding out different fold.</p>
+<blockquote>
+<p>Scikit-learn cross-validation feature expects a utility function (greater the better) rather than a cost function (lower the better), so to score the functions we use opposite of MSE, which is why we again compute <code>-scores</code> before calculating the square root</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> cross_val_score
+scores <span style="color:#f92672">=</span> cross_val_score(tree_reg, housing_prepared, housing_labels,
+                         scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;neg_mean_squared_error&#34;</span>, cv<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+tree_rmse_scores <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(<span style="color:#f92672">-</span>scores)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">display_scores</span>(scores):
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Scores:&#34;</span>, scores)
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Mean:&#34;</span>, scores<span style="color:#f92672">.</span>mean())
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Standard deviation:&#34;</span>, scores<span style="color:#f92672">.</span>std())
+
+display_scores(tree_rmse_scores)
+</code></pre></div><pre><code>Scores: [70194.33680785 66855.16363941 72432.58244769 70758.73896782
+ 71115.88230639 75585.14172901 70262.86139133 70273.6325285
+ 75366.87952553 71231.65726027]
+Mean: 71407.68766037929
+Standard deviation: 2439.4345041191004
+</code></pre>
+<p>Cross-validation not only allows us to get an estimate of the performance of the model but also the measure of how precise this estimate is (i.e. standard deviation). The Decision tree has high std-dev. This information could not be obtained with just one validation set. However, caveat is that cross-validation comes at the cost of training the model several times, so it is not always possible.</p>
+<p>Let&rsquo;s compute the same score for <code>LinearRegresson</code> model.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">lin_scores <span style="color:#f92672">=</span> cross_val_score(lin_reg, housing_prepared, housing_labels,
+                             scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;neg_mean_squared_error&#34;</span>, cv<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+lin_rmse_scores <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(<span style="color:#f92672">-</span>lin_scores)
+display_scores(lin_rmse_scores)
+</code></pre></div><pre><code>Scores: [66782.73843989 66960.118071   70347.95244419 74739.57052552
+ 68031.13388938 71193.84183426 64969.63056405 68281.61137997
+ 71552.91566558 67665.10082067]
+Mean: 69052.46136345083
+Standard deviation: 2731.674001798349
+</code></pre>
+<p>Here it can be seen that DecisionTree model performs much worse than the LinearRegression model.</p>
+<h3 id="random-forrest-regressor">Random Forrest Regressor</h3>
+<p>Random forrest works by employing many decision trees on random subsets of the features, then averaging out their predictions. Building a model on top of many other models is called <code>Ensemble Learning</code> and it is often great way to push ML algorithms even further.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.ensemble <span style="color:#f92672">import</span> RandomForestRegressor
+
+forest_reg <span style="color:#f92672">=</span> RandomForestRegressor(n_estimators<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
+forest_reg<span style="color:#f92672">.</span>fit(housing_prepared, housing_labels)
+</code></pre></div><pre><code>RandomForestRegressor(n_estimators=10, random_state=42)
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>:we specify <code>n_estimators=10</code> to avoid a warning about the fact that the default value is going to change to 100 in Scikit-Learn 0.22.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">housing_predictions <span style="color:#f92672">=</span> forest_reg<span style="color:#f92672">.</span>predict(housing_prepared)
+forest_mse <span style="color:#f92672">=</span> mean_squared_error(housing_labels, housing_predictions)
+forest_rmse <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(forest_mse)
+forest_rmse
+</code></pre></div><pre><code>21933.31414779769
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> cross_val_score
+
+forest_scores <span style="color:#f92672">=</span> cross_val_score(forest_reg, housing_prepared, housing_labels,
+                                scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;neg_mean_squared_error&#34;</span>, cv<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+forest_rmse_scores <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(<span style="color:#f92672">-</span>forest_scores)
+display_scores(forest_rmse_scores)
+</code></pre></div><pre><code>Scores: [51646.44545909 48940.60114882 53050.86323649 54408.98730149
+ 50922.14870785 56482.50703987 51864.52025526 49760.85037653
+ 55434.21627933 53326.10093303]
+Mean: 52583.72407377466
+Standard deviation: 2298.353351147122
+</code></pre>
+<p>Random forest regressor looks better than <code>DecisionTree</code> and <code>LinearRegression</code>. The RMSE is still quite high for production quality code and could be due to overfitting. We can try other algorithms before spending time on a particular algorithm tweaking the hyperparameters. The goal is to shortlist 2-3 methods that are promising then fine-tune the model. Before we move ahead we can take a look at one more ML algorithm which is commonly employed for such supervised learning cases: Support Vector Regression</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.svm <span style="color:#f92672">import</span> SVR
+
+svm_reg <span style="color:#f92672">=</span> SVR(kernel<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;linear&#34;</span>)
+svm_reg<span style="color:#f92672">.</span>fit(housing_prepared, housing_labels)
+housing_predictions <span style="color:#f92672">=</span> svm_reg<span style="color:#f92672">.</span>predict(housing_prepared)
+svm_mse <span style="color:#f92672">=</span> mean_squared_error(housing_labels, housing_predictions)
+svm_rmse <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(svm_mse)
+svm_rmse
+</code></pre></div><pre><code>111094.6308539982
+</code></pre>
+<h3 id="step-4-fine-tune-the-model">Step 4: Fine-tune the model</h3>
+<p>Once we settle for an algorithm we can fine-tune them efficiently using some of the in-built scikit-learn routines.</p>
+<p>** Grid Search **</p>
+<p><code>GridSearchCV</code> is a faster way of tweaking the hyper-parameters for a given algorithm. It needs the hyper-parameters you want to experiment with, what values to try out, and it will evaluate possible combination of hyperparameters values using cross-validation. We can do that step for <code>RandomForrestRegressor</code> which we found to have lowesst RMSE of the three methods we tried</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> GridSearchCV
+
+param_grid <span style="color:#f92672">=</span> [
+    <span style="color:#75715e"># try 12 (3×4) combinations of hyperparameters</span>
+    {<span style="color:#e6db74">&#39;n_estimators&#39;</span>: [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">30</span>], <span style="color:#e6db74">&#39;max_features&#39;</span>: [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>]},
+    <span style="color:#75715e"># then try 6 (2×3) combinations with bootstrap set as False</span>
+    {<span style="color:#e6db74">&#39;bootstrap&#39;</span>: [False], <span style="color:#e6db74">&#39;n_estimators&#39;</span>: [<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">10</span>], <span style="color:#e6db74">&#39;max_features&#39;</span>: [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]},
+  ]
+
+forest_reg <span style="color:#f92672">=</span> RandomForestRegressor(random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">42</span>)
+<span style="color:#75715e"># train across 5 folds, that&#39;s a total of (12+6)*5=90 rounds of training </span>
+grid_search <span style="color:#f92672">=</span> GridSearchCV(forest_reg, param_grid, cv<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>,
+                           scoring<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;neg_mean_squared_error&#39;</span>, return_train_score<span style="color:#f92672">=</span>True)
+grid_search<span style="color:#f92672">.</span>fit(housing_prepared, housing_labels)
+</code></pre></div><pre><code>GridSearchCV(cv=5, estimator=RandomForestRegressor(random_state=42),
+             param_grid=[{'max_features': [2, 4, 6, 8],
+                          'n_estimators': [3, 10, 30]},
+                         {'bootstrap': [False], 'max_features': [2, 3, 4],
+                          'n_estimators': [3, 10]}],
+             return_train_score=True, scoring='neg_mean_squared_error')
+</code></pre>
+<p>The <code>param_grid</code> tells Scikit-learn to:</p>
+<ol>
+<li>First evaluate 3x4 combinations of n_estimators and max_features with bootstrap <code>True</code> which is the default.</li>
+<li>Then with bootstrap set as <code>False</code> we look for 2x3 combinations of n_estimators and max_featurs for the random forest</li>
+<li>Finally, both these models are trained 5 times for the cross validation purposes in a 5-fold cross-validation fashion.</li>
+</ol>
+<p>Total of (12+6)x5=90 round of training are conducted. Finally when it is done we get the best model parameters which give lowest RMSE.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">grid_search<span style="color:#f92672">.</span>best_params_
+</code></pre></div><pre><code>{'max_features': 8, 'n_estimators': 30}
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">grid_search<span style="color:#f92672">.</span>best_estimator_
+</code></pre></div><pre><code>RandomForestRegressor(max_features=8, n_estimators=30, random_state=42)
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">cvres <span style="color:#f92672">=</span> grid_search<span style="color:#f92672">.</span>cv_results_
+<span style="color:#66d9ef">for</span> mean_score, params <span style="color:#f92672">in</span> zip(cvres[<span style="color:#e6db74">&#34;mean_test_score&#34;</span>], cvres[<span style="color:#e6db74">&#34;params&#34;</span>]):
+    <span style="color:#66d9ef">print</span>(np<span style="color:#f92672">.</span>sqrt(<span style="color:#f92672">-</span>mean_score), params)
+</code></pre></div><pre><code>63669.11631261028 {'max_features': 2, 'n_estimators': 3}
+55627.099719926795 {'max_features': 2, 'n_estimators': 10}
+53384.57275149205 {'max_features': 2, 'n_estimators': 30}
+60965.950449450494 {'max_features': 4, 'n_estimators': 3}
+52741.04704299915 {'max_features': 4, 'n_estimators': 10}
+50377.40461678399 {'max_features': 4, 'n_estimators': 30}
+58663.93866579625 {'max_features': 6, 'n_estimators': 3}
+52006.19873526564 {'max_features': 6, 'n_estimators': 10}
+50146.51167415009 {'max_features': 6, 'n_estimators': 30}
+57869.25276169646 {'max_features': 8, 'n_estimators': 3}
+51711.127883959234 {'max_features': 8, 'n_estimators': 10}
+49682.273345071546 {'max_features': 8, 'n_estimators': 30}
+62895.06951262424 {'bootstrap': False, 'max_features': 2, 'n_estimators': 3}
+54658.176157539405 {'bootstrap': False, 'max_features': 2, 'n_estimators': 10}
+59470.40652318466 {'bootstrap': False, 'max_features': 3, 'n_estimators': 3}
+52724.9822587892 {'bootstrap': False, 'max_features': 3, 'n_estimators': 10}
+57490.5691951261 {'bootstrap': False, 'max_features': 4, 'n_estimators': 3}
+51009.495668875716 {'bootstrap': False, 'max_features': 4, 'n_estimators': 10}
+</code></pre>
+<h3 id="randomised-search">Randomised search</h3>
+<p>Grid search approach is fine when we are exploring relatively few combinations. But when hyperparameter space is large it is often preferrable to use <code>RandomizedSearchCV</code> instead. Here instead of doing all the possible combinationes of hyperparameters, it evaluates a given number of random combinations by selecting a random value for each hyper parameter at every iteration.</p>
+<h3 id="ensemble-search">Ensemble search</h3>
+<p>Combine models that perform best. The group or &lsquo;ensemble&rsquo; will often perform better than the best individual model just like RandomForest peforms better than Decision Trees especially if we have individual models make different types of errors.</p>
+<h3 id="step-5-analyze-the-best-models-and-their-errors">Step 5: Analyze the Best Models and their Errors</h3>
+<p><code>RandomForestRegressor</code> can indicate the relative importance of each attribute for making the accurate predictions.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">feature_importances <span style="color:#f92672">=</span> grid_search<span style="color:#f92672">.</span>best_estimator_<span style="color:#f92672">.</span>feature_importances_
+feature_importances
+</code></pre></div><pre><code>array([7.33442355e-02, 6.29090705e-02, 4.11437985e-02, 1.46726854e-02,
+       1.41064835e-02, 1.48742809e-02, 1.42575993e-02, 3.66158981e-01,
+       5.64191792e-02, 1.08792957e-01, 5.33510773e-02, 1.03114883e-02,
+       1.64780994e-01, 6.02803867e-05, 1.96041560e-03, 2.85647464e-03])
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">extra_attribs <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;rooms_per_hhold&#34;</span>, <span style="color:#e6db74">&#34;pop_per_hhold&#34;</span>, <span style="color:#e6db74">&#34;bedrooms_per_room&#34;</span>]
+cat_encoder <span style="color:#f92672">=</span> full_pipeline<span style="color:#f92672">.</span>named_transformers_[<span style="color:#e6db74">&#34;cat&#34;</span>]
+cat_one_hot_attribs <span style="color:#f92672">=</span> list(cat_encoder<span style="color:#f92672">.</span>categories_[<span style="color:#ae81ff">0</span>])
+attributes <span style="color:#f92672">=</span> num_attribs <span style="color:#f92672">+</span> extra_attribs <span style="color:#f92672">+</span> cat_one_hot_attribs
+sorted(zip(feature_importances, attributes), reverse<span style="color:#f92672">=</span>True)
+</code></pre></div><pre><code>[(0.36615898061813423, 'median_income'),
+ (0.16478099356159054, 'INLAND'),
+ (0.10879295677551575, 'pop_per_hhold'),
+ (0.07334423551601243, 'longitude'),
+ (0.06290907048262032, 'latitude'),
+ (0.056419179181954014, 'rooms_per_hhold'),
+ (0.053351077347675815, 'bedrooms_per_room'),
+ (0.04114379847872964, 'housing_median_age'),
+ (0.014874280890402769, 'population'),
+ (0.014672685420543239, 'total_rooms'),
+ (0.014257599323407808, 'households'),
+ (0.014106483453584104, 'total_bedrooms'),
+ (0.010311488326303788, '&lt;1H OCEAN'),
+ (0.0028564746373201584, 'NEAR OCEAN'),
+ (0.0019604155994780706, 'NEAR BAY'),
+ (6.0280386727366e-05, 'ISLAND')]
+</code></pre>
+<h3 id="step-6-evaluate-the-model-on-the-test-set">Step 6: Evaluate the model on the Test Set</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">final_model <span style="color:#f92672">=</span> grid_search<span style="color:#f92672">.</span>best_estimator_
+
+X_test <span style="color:#f92672">=</span> strat_test_set<span style="color:#f92672">.</span>drop(<span style="color:#e6db74">&#34;median_house_value&#34;</span>, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+y_test <span style="color:#f92672">=</span> strat_test_set[<span style="color:#e6db74">&#34;median_house_value&#34;</span>]<span style="color:#f92672">.</span>copy()
+
+X_test_prepared <span style="color:#f92672">=</span> full_pipeline<span style="color:#f92672">.</span>transform(X_test)
+final_predictions <span style="color:#f92672">=</span> final_model<span style="color:#f92672">.</span>predict(X_test_prepared)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">fig, ax <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>subplots(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>, figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">8</span>))
+ax<span style="color:#f92672">.</span>scatter(y_test, final_predictions, s<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)
+
+lims <span style="color:#f92672">=</span> [np<span style="color:#f92672">.</span>min([ax<span style="color:#f92672">.</span>get_xlim(), ax<span style="color:#f92672">.</span>get_ylim()]),  <span style="color:#75715e"># min of both axes</span>
+        np<span style="color:#f92672">.</span>max([ax<span style="color:#f92672">.</span>get_xlim(), ax<span style="color:#f92672">.</span>get_ylim()]),  <span style="color:#75715e"># max of both axes</span>
+       ]
+
+ax<span style="color:#f92672">.</span>plot(lims, lims, <span style="color:#e6db74">&#39;k--&#39;</span>, linewidth<span style="color:#f92672">=</span><span style="color:#ae81ff">2.0</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.75</span>, zorder<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+ax<span style="color:#f92672">.</span>set_aspect(<span style="color:#e6db74">&#39;equal&#39;</span>)
+ax<span style="color:#f92672">.</span>set_xlim(lims)
+ax<span style="color:#f92672">.</span>set_ylim(lims)
+
+ax<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;ML Prediction&#39;</span>)
+ax<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;Actual Value&#39;</span>)
+</code></pre></div><p><img src="/img/ML_project_temp/output_135_1.png" alt="png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">final_mse <span style="color:#f92672">=</span> mean_squared_error(y_test, final_predictions)
+final_rmse <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sqrt(final_mse)
+<span style="color:#66d9ef">print</span>(final_rmse)
+</code></pre></div><pre><code>47730.22690385927
+</code></pre>
+<p>We can compute a 95% confidence interval for the test RMSE:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> scipy <span style="color:#f92672">import</span> stats
+confidence <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.95</span>
+squared_errors <span style="color:#f92672">=</span> (final_predictions <span style="color:#f92672">-</span> y_test) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>
+mean <span style="color:#f92672">=</span> squared_errors<span style="color:#f92672">.</span>mean()
+m <span style="color:#f92672">=</span> len(squared_errors)
+
+np<span style="color:#f92672">.</span>sqrt(stats<span style="color:#f92672">.</span>t<span style="color:#f92672">.</span>interval(confidence, m <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>,
+                         loc<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>mean(squared_errors),
+                         scale<span style="color:#f92672">=</span>stats<span style="color:#f92672">.</span>sem(squared_errors)))
+</code></pre></div><pre><code>array([45685.10470776, 49691.25001878])
+</code></pre>
+<p>Alternatively, we could use a z-scores rather than t-scores:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">zscore <span style="color:#f92672">=</span> stats<span style="color:#f92672">.</span>norm<span style="color:#f92672">.</span>ppf((<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> confidence) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
+zmargin <span style="color:#f92672">=</span> zscore <span style="color:#f92672">*</span> squared_errors<span style="color:#f92672">.</span>std(ddof<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">/</span> np<span style="color:#f92672">.</span>sqrt(m)
+np<span style="color:#f92672">.</span>sqrt(mean <span style="color:#f92672">-</span> zmargin), np<span style="color:#f92672">.</span>sqrt(mean <span style="color:#f92672">+</span> zmargin)
+<span style="color:#e6db74">``</span>
+(<span style="color:#ae81ff">45685.717918136594</span>, <span style="color:#ae81ff">49690.68623889426</span>)</code></pre></div>
+    <p class="mt-3">
+    <ul class="tags">
+    
+      <li><a class="tag" href="/tags/python">Python</a></li>
+    
+      <li><a class="tag" href="/tags/scikit-learn">Scikit-learn</a></li>
+    
+      <li><a class="tag" href="/tags/machine-learning">Machine learning</a></li>
+    
+</ul>
+
+    </p>
+  </div>
+</section>
+
+
+    <span style="color: #999999; font-size: 60%;">Nifty <a href="https://codepen.io/wbeeftink/pen/dIaDH">tech tag lists</a> from <a class="pen-owner-link" href="https://codepen.io/wbeeftink">Wouter Beeftink</a> </span>
+    
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+  
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  
+  <script async src="/js/resume.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-167983168-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-167983168-1');
+  </script>
+  
+
+  
+</body>
+</html>

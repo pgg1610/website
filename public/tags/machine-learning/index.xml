@@ -23,6 +23,17 @@ Following are main steps to consider:  Formulating the problem, defining the bou
     </item>
     
     <item>
+      <title>Property Price Prediction ML-model</title>
+      <link>/blog/ml_project_temp/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/ml_project_temp/</guid>
+      <description>End-to-end Machine Learning Project This project is obtained from Aurelien Geron&amp;rsquo;s ML book Chapter 2. The aim to predict median house values in Californian districts, given a number of features from these districts.
+Main steps we will go through:
+ Formulate the problem Get the data Discover and visualize data / Data exploration to gain insight Prep data for ML algorithm testing Select model and train it Fine-tuning the model  https://github.</description>
+    </item>
+    
+    <item>
       <title>Implement CNN in PyTorch</title>
       <link>/blog/pytorch_cnn_example/</link>
       <pubDate>Mon, 07 Oct 2019 00:00:00 +0000</pubDate>

@@ -169,6 +169,11 @@
   </url>
   
   <url>
+    <loc>/blog/ml_project_temp/</loc>
+    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/scikit-learn/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url>
