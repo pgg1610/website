@@ -1,5 +1,12 @@
 [
     {
+        "role":"Graduate Research Assistant",
+        "company":"Purdue University (West Lafayette, IN)",
+        "summary":"* Develop atomic-scale computational models and reactor simulations through a combination of chemistry, physics and machine-learning to model complex interplay of the catalyst, reactants, and reaction environment.\n * Design and develop tools that streamline catalyst modeling workflows. \n * Collaborate with research groups and industry partners (closed-loop feedback) to identify descriptors and predict reactivity trends.",
+        "range":"August 2016 - Present"  
+    },
+    
+    {
         "role":"Chemometric & AI Intern",
         "company":"Dow Chemical Company (Lake Jackson, TX)",
         "summary":"Research and Development intern in **Chemometric & AI (M&E)** and **Cheminformatics (Core R&D)** department. \n * Developed and deployed ML model for molecular discovery. Scaled-up model inference capabilities resulting 30-fold improvement in compute time, increasing capability to screen potential molecules from millions to billions. Benchmarked state-of-the-art chemistry-based deep-learning models for ligand design. Collaborated with Business R&D to validate model predictions. \n * Performed multivariate historical data analysis to troubleshoot complex manufacturing problems in collaboration with plant experts. Proposed key variables driving the manufacturing process upsets to detect anomaly at least 12 hours in advance, improving plant reliability & safety.",
