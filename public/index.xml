@@ -122,35 +122,13 @@ wiki_url = &amp;#39;https://en.wikipedia.org/wiki/List_of_S%26P_500_companies&am
     
     <item>
       <title>Property Price Prediction ML-model</title>
-      <link>/blog/end2end_ml_project-2/</link>
-      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/end2end_ml_project-2/</guid>
-      <description>This project is adapted from Aurelien Geron&amp;rsquo;s Hands-on Machine Learning Book (github link).
-I build a regression model to predict median house values in Californian districts, given a number of features from these districts. More importantly, this project go through the basic building blocks when setting up any ML projects.
-Following are main steps to consider:  Formulating the problem, defining the boundary conditions Data acquisition Discover and visualize data / Data exploration to gain insight Prepare data for ML algorithm training and testing Explore various model architectures to use Select model and train it Fine-tuning the model  Problem statement: Prediction of district&amp;rsquo;s median housing price given all other metrics.</description>
-    </item>
-    
-    <item>
-      <title>Property Price Prediction ML-model</title>
-      <link>/blog/end2end_ml_project/</link>
-      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/end2end_ml_project/</guid>
-      <description>This project is adapted from Aurelien Geron&amp;rsquo;s Hands-on Machine Learning Book (github link).
-I build a regression model to predict median house values in Californian districts, given a number of features from these districts. More importantly, this project go through the basic building blocks when setting up any ML projects.
-Following are main steps to consider:  Formulating the problem, defining the boundary conditions Data acquisition Discover and visualize data / Data exploration to gain insight Prepare data for ML algorithm training and testing Explore various model architectures to use Select model and train it Fine-tuning the model  Problem statement: Prediction of district&amp;rsquo;s median housing price given all other metrics.</description>
-    </item>
-    
-    <item>
-      <title>Property Price Prediction ML-model</title>
       <link>/blog/ml_project_temp/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>/blog/ml_project_temp/</guid>
-      <description>End-to-end Machine Learning Project This project is obtained from Aurelien Geron&amp;rsquo;s ML book Chapter 2. The aim to predict median house values in Californian districts, given a number of features from these districts.
-Main steps we will go through:
- Formulate the problem Get the data Discover and visualize data / Data exploration to gain insight Prep data for ML algorithm testing Select model and train it Fine-tuning the model  https://github.</description>
+      <description>End-to-end Machine Learning Project This project is adapted from Aurelien Geron&amp;rsquo;s Hands-on Machine Learning Book
+I build a regression model to predict median house values in Californian districts, given a number of features from these districts. More importantly, this project go through the basic building blocks when setting up any ML projects.
+Following are main steps to consider:  Formulating the problem, defining the boundary conditions Data acquisition Discover and visualize data / Data exploration to gain insight Prepare data for ML algorithm training and testing Explore various model architectures to use Select model and train it Fine-tuning the model  Step 1: Formulate the problem Prediction of district&amp;rsquo;s median housing price given all other metrics.</description>
     </item>
     
     <item>
