@@ -22,7 +22,7 @@ showProjects = false
 showPublications = true
 showQr = true
 showSkills = false
-showBlog = true 
+showBlog = false 
 
 [params.google]
 

@@ -14,3 +14,5 @@ Data aesthete at heart, I am a Ph.D. candidate in the [Davidson School of Chemic
 Besides research, I enjoy teaching and making scientific ideas accessible to the public. I have taught introductory chemistry and mathematics to middle-schoolers, and have assisted in designing modules that introduce critical thinking, logical reasoning, and coding in high-school curricula.
 
 Outside of work, I enjoy cooking [(link to some latest experiments)](https://www.instagram.com/pgg1610/), gaming, diving deep in arcane internet rabbit holes, reading philosophy, and going on longer-than-necessary bike rides. 
+
+[While here, check out my blog where I document my tinkerings in data and science.](https://pgg1610.github.io/blog_fastpages/)
