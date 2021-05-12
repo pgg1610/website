@@ -13,7 +13,7 @@ Data aesthete at heart, I am a Ph.D. candidate in the [Davidson School of Chemic
 
 I have been fortunate to be involved in multiple collaborations, industry and academia in India and USA, wherein I used data to pursue a narrative thread and unravel a rich tapestry of information to deliver key insights as simple and actionable goals.
 
-Besides research, I love to teach science and work towards improving scientific literacy. Currently I am involved in developing a data science + machine learning crash course for the incoming summer cohort of REU (Research Experience for Undergraduate).
+Besides research, I love to teach science with focus on improving scientific literacy. Currently I am involved in developing a data science + machine learning crash course for the incoming summer cohort of REU (Research Experience for Undergraduate).
 
 Outside of work, I enjoy cooking [(link to some latest experiments)](https://www.instagram.com/pgg1610/), gaming, diving deep in arcane internet rabbit holes, reading philosophy, and going on longer-than-necessary bike rides. 
 
