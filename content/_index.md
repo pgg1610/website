@@ -17,4 +17,4 @@ Besides research, I love to teach science with focus on improving scientific lit
 
 Outside of work, I enjoy cooking [(link to some latest experiments)](https://www.instagram.com/pgg1610/), gaming, diving deep in arcane internet rabbit holes, reading philosophy, and going on longer-than-necessary bike rides. 
 
-I maintain a [Data Science blog](https://pgg1610.github.io/blog_fastpages/) where I document tips, code, and helpful resource.
+I maintain a [Data Science blog](https://pgg1610.github.io/blog_fastpages/) where I document tips, code, and helpful resources I have accumulated so far.
