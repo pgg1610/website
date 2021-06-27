@@ -9,12 +9,12 @@ sitemap:
 title: Home
 ---
 
-Data aesthete at heart, I am a Ph.D. candidate in the [Davidson School of Chemical Engineering](https://engineering.purdue.edu/ChE) at Purdue University, advised by [Jeffrey P. Greeley](https://engineering.purdue.edu/ChE/people/ptProfile?resource_id=84163). Understanding molecular-level behavior of the catalyst through data and science is at the heart of my Ph.D. research. 
+Data aesthete at heart, I am a doctoral candidate in the [Davidson School of Chemical Engineering](https://engineering.purdue.edu/ChE) at Purdue University, advised by [Jeffrey P. Greeley](https://engineering.purdue.edu/ChE/people/ptProfile?resource_id=84163). Understanding molecular-level behavior of the catalyst through data and science is at the heart of my research. 
 
-To date, I have been fortunate to be involved in collaborations across industry-academia in India and USA, wherein I used data to pursue a narrative thread and unravel a rich tapestry of information and distill key insights as simple and actionable goals.
+I have experience in being part of data-driven industry-academia collaborations across India and USA that unravel a rich tapestry of insights and convert them to simple and actionable goals.
 
-Besides research, I love to teach and contribute to improving scientific literacy. Currently, I am involved in developing a data science + machine learning crash course for the incoming summer cohort of REU (Research Experience for Undergraduate).
+I love to teach and contribute to improving scientific literacy. Presently, I am involved in developing a data science & machine learning crash course for the summer REU (Research Experience for Undergraduate) cohort. 
 
 Outside of work, I enjoy cooking [(link to some latest experiments)](https://www.instagram.com/pgg1610/), gaming, diving deep in arcane internet rabbit holes, reading philosophy, and going on longer-than-necessary bike rides. 
 
-I maintain a [Data Science blog](https://pgg1610.github.io/blog_fastpages/) where I document tips, code, and helpful resources I have accumulated so far.
+I maintain a [Data Science blog](https://pgg1610.github.io/blog_fastpages/) where I document my thoughts, notebooks, tips, and list of helpful resources. 
