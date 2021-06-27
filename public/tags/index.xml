@@ -48,69 +48,6 @@
     </item>
     
     <item>
-      <title>Graphs</title>
-      <link>/tags/graphs/</link>
-      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/graphs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>/tags/python/</link>
-      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Pytorch</title>
-      <link>/tags/pytorch/</link>
-      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/pytorch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Guide</title>
-      <link>/tags/guide/</link>
-      <pubDate>Sun, 29 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/guide/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Network analysis</title>
-      <link>/tags/network-analysis/</link>
-      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/network-analysis/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bayesian Stats</title>
-      <link>/tags/bayesian-stats/</link>
-      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/bayesian-stats/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Optimization</title>
-      <link>/tags/optimization/</link>
-      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/optimization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Catalyst active-site design</title>
       <link>/tags/catalyst-active-site-design/</link>
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
@@ -143,51 +80,6 @@
       <pubDate>Fri, 03 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/tags/kinetic-modeling/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Random</title>
-      <link>/tags/random/</link>
-      <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/random/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Machine learning</title>
-      <link>/tags/machine-learning/</link>
-      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/machine-learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Scikit-learn</title>
-      <link>/tags/scikit-learn/</link>
-      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/scikit-learn/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Learning</title>
-      <link>/tags/learning/</link>
-      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/learning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Thermodynamics</title>
-      <link>/tags/thermodynamics/</link>
-      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/thermodynamics/</guid>
       <description></description>
     </item>
     

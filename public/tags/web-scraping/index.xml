@@ -20,34 +20,5 @@
       <description>Synopsis: In the past several years, the U.S. Chemical Safety Board has found an increase in the frequency of laboratory accidents and injuries. A framework to document, assess, and mitigate hazards is a critical starting point for ensuring safe laboratory practices. To address this requirement, I was part of a team working on developing Reactive Hazards Evaluation Analysis and Compilation Tool (RHEACT), an online platform to compile and scrutinize hazards-related information, was developed.</description>
     </item>
     
-    <item>
-      <title>Analysis on Spice Use in Indian Food</title>
-      <link>/blog/indian_spices_network_analysis/</link>
-      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/indian_spices_network_analysis/</guid>
-      <description>Indian food, like most of the food from the tropical region, uses a variety of different spices. Historically, the spices are thought to have been a way to increase the shelf-life and keep pests away. Whatever be the reason they sure are indespensible to food &amp;ndash; no matter which cuisine you&amp;rsquo;re making. Now, if you are planning to cook more Indian food lately, it would be great to know which spices would give you most bang for your buck.</description>
-    </item>
-    
-    <item>
-      <title>Bollywood Movie Rating Analysis</title>
-      <link>/blog/imdb_scrapping/</link>
-      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/imdb_scrapping/</guid>
-      <description>Analyzing averaging rating of Bollywood movies by using data from IMDb movie listing.</description>
-    </item>
-    
-    <item>
-      <title>Web scraping S&amp;P 500 data</title>
-      <link>/blog/sp500/</link>
-      <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/sp500/</guid>
-      <description>Generate list of companies in the S&amp;amp;P500 using BeautifulSoup. Next, use yfinance a alternative to Yahoo! Finance&amp;rsquo;s historical data API to extract stock information. Plot year-to-date return on certain stocks to check trends.
-List of SP500 companies is obtained from Wikipedia:
-wiki_url = &amp;#39;https://en.wikipedia.org/wiki/List_of_S%26P_500_companies&amp;#39; response = get(wiki_url) html_soup = BeautifulSoup(response.text, &amp;#39;html.parser&amp;#39;) tab = html_soup.find(&amp;#34;table&amp;#34;,{&amp;#34;class&amp;#34;:&amp;#34;wikitable sortable&amp;#34;}) column_headings = [entry.text.strip() for entry in tab.findAll(&amp;#39;th&amp;#39;)] SP_500_dict = {keys:[] for keys in column_headings} Populate pandas dataframe with the listings:</description>
-    </item>
-    
   </channel>
 </rss>
