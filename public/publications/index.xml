@@ -6,11 +6,7 @@
     <description>Recent content in Publications on Pushkar Ghanekar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Jan 2020 16:47:30 +0000</lastBuildDate>
-    
-	<atom:link href="/publications/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 07 Jan 2020 16:47:30 +0000</lastBuildDate><atom:link href="/publications/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Promoting a Safe Laboratory Environment Using the Reactive Hazard Evaluation and Analysis Compilation Tools</title>
       <link>/publications/rheact/</link>
